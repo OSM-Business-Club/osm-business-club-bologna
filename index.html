@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OSM Business Club Bologna</title>
+<meta name="description" content="Il club degli imprenditori del territorio: Business Day, webinar e Business Dinner a Bologna. Formazione, confronto e relazioni tra titolari d'azienda.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0E1F3A;
+    --navy-2: #182C4E;
+    --navy-line: rgba(246, 241, 231, .16);
+    --ivory: #F6F1E7;
+    --ivory-2: #ECE4D4;
+    --white: #FFFFFF;
+    --ink: #111111;
+    --text: #1E2430;
+    --muted: #5B6270;
+    --line: #DDD4C3;
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', Arial, sans-serif;
+    --wrap: 1160px;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body { margin: 0; background: var(--ivory); color: var(--text); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+  section { padding: 96px 0; }
+  .eyebrow { font-size: 12.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
+  body, h1, h2, h3, .day, .stat b, .next .d { font-variant-numeric: lining-nums; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; color: var(--ink); margin: 0; line-height: 1.08; letter-spacing: -.01em; }
+  h2 { font-size: clamp(34px, 4.4vw, 52px); max-width: 22ch; }
+  h3 { font-size: 26px; line-height: 1.15; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 60ch; margin: 22px 0 0; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 2px; font: 600 15px/1 var(--sans); letter-spacing: .02em; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .btn-light { background: var(--ivory); color: var(--navy); }
+  .btn-light:hover { background: var(--white); }
+  .btn-ghost { border-color: var(--navy-line); color: var(--ivory); }
+  .btn-ghost:hover { border-color: var(--ivory); }
+  .btn-dark { background: var(--navy); color: var(--ivory); }
+  .btn-dark:hover { background: var(--ink); }
+  .btn-outline { border-color: var(--navy); color: var(--navy); background: transparent; }
+  .btn-outline:hover { background: var(--navy); color: var(--ivory); }
+
+  /* ---------- header ---------- */
+  header.top { position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 231, .96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 24px; }
+  .brand { display: flex; align-items: center; text-decoration: none; color: var(--ink); }
+  .brand img { height: 68px; width: auto; }
+  .wordmark { display: flex; flex-direction: column; line-height: 1; }
+  .wordmark b { font-family: var(--serif); font-size: 25px; font-weight: 700; letter-spacing: .01em; }
+  .wordmark span { font-size: 10.5px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
+  nav.menu { display: flex; align-items: center; gap: 30px; }
+  nav.menu a { text-decoration: none; font-size: 14.5px; font-weight: 500; color: var(--text); }
+  nav.menu a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 6px; }
+  nav.menu a.btn { color: var(--ivory); text-decoration: none; padding: 12px 20px; }
+  .burger { display: none; background: none; border: 1px solid var(--line); width: 44px; height: 44px; border-radius: 2px; cursor: pointer; }
+  .burger span { display: block; width: 18px; height: 1.5px; background: var(--ink); margin: 4px auto; }
+
+  /* ---------- hero ---------- */
+  .hero { background: var(--navy); color: var(--ivory); padding: 110px 0 100px; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; right: -180px; top: -180px; width: 560px; height: 560px; border: 1px solid var(--navy-line); border-radius: 50%; }
+  .hero::before { content: ""; position: absolute; right: -60px; top: -60px; width: 320px; height: 320px; border: 1px solid var(--navy-line); border-radius: 50%; }
+  .hero .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: end; position: relative; z-index: 1; }
+  .hero .eyebrow { color: rgba(246, 241, 231, .7); }
+  .hero h1 { color: var(--ivory); font-size: clamp(42px, 6vw, 76px); max-width: 15ch; }
+  .hero .lead { color: rgba(246, 241, 231, .78); }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+  .next { border: 1px solid var(--navy-line); background: var(--navy-2); padding: 30px; }
+  .next .eyebrow { margin-bottom: 14px; }
+  .next .d { font-family: var(--serif); font-size: 44px; font-weight: 600; line-height: 1; }
+  .next .t { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: rgba(246, 241, 231, .7); margin-top: 10px; }
+  .next p { margin: 16px 0 22px; font-size: 18px; line-height: 1.45; }
+  .next .meta { font-size: 14px; color: rgba(246, 241, 231, .7); border-top: 1px solid var(--navy-line); padding-top: 16px; }
+
+  /* ---------- perché nasce ---------- */
+  .why .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .why blockquote { margin: 0; font-family: var(--serif); font-size: clamp(28px, 3.2vw, 38px); line-height: 1.2; color: var(--navy); border-left: 1px solid var(--navy); padding-left: 28px; }
+  .why p { margin: 0 0 18px; }
+
+  /* ---------- numeri ---------- */
+  .numbers { background: var(--white); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 52px; border-top: 1px solid var(--line); }
+  .stat { padding: 34px 30px 0 0; }
+  .stat + .stat { padding-left: 30px; border-left: 1px solid var(--line); }
+  .stat b { display: block; font-family: var(--serif); font-size: 68px; font-weight: 600; color: var(--navy); line-height: 1; }
+  .stat p { margin: 14px 0 10px; }
+  .stat small { font-size: 13px; color: var(--muted); }
+  .numbers .closing { margin-top: 48px; font-family: var(--serif); font-size: 28px; color: var(--ink); }
+
+  /* ---------- cos'è ---------- */
+  .isnot { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
+  .card { background: var(--white); border: 1px solid var(--line); padding: 36px; }
+  .card.dark { background: var(--navy); border-color: var(--navy); color: var(--ivory); }
+  .card.dark h3 { color: var(--ivory); }
+  .card h3 { margin-bottom: 14px; }
+  .card p { margin: 0; }
+  .tag { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 18px; color: var(--muted); }
+  .card.dark .tag { color: rgba(246, 241, 231, .65); }
+
+  /* ---------- per chi ---------- */
+  .who { background: var(--white); }
+  .who .head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: end; }
+  .who .quote { font-family: var(--serif); font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2; color: var(--navy); margin: 0; }
+  .themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 56px; }
+  .theme { background: var(--white); padding: 30px; }
+  .theme .n { font-family: var(--serif); font-size: 18px; color: var(--muted); }
+  .theme h3 { font-size: 24px; margin: 8px 0 8px; }
+  .theme p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+  /* ---------- formati ---------- */
+  .formats { background: var(--navy); color: var(--ivory); }
+  .formats h2, .formats h3 { color: var(--ivory); }
+  .formats .eyebrow, .formats .lead { color: rgba(246, 241, 231, .72); }
+  .fgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .fcard { border: 1px solid var(--navy-line); padding: 34px; display: flex; flex-direction: column; }
+  .fcard .freq { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: rgba(246, 241, 231, .65); margin-bottom: 16px; }
+  .fcard h3 { font-size: 32px; margin-bottom: 14px; }
+  .fcard p { margin: 0 0 22px; color: rgba(246, 241, 231, .82); }
+  .fcard ul { list-style: none; padding: 18px 0 0; margin: auto 0 0; border-top: 1px solid var(--navy-line); font-size: 14.5px; color: rgba(246, 241, 231, .78); }
+  .fcard li { padding: 4px 0; }
+  .path { margin-top: 80px; padding-top: 56px; border-top: 1px solid var(--navy-line); }
+  .path .motto { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; max-width: 24ch; }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-top: 44px; counter-reset: s; }
+  .step { counter-increment: s; }
+  .step::before { content: counter(s, decimal-leading-zero); display: block; font-family: var(--serif); font-size: 34px; color: rgba(246, 241, 231, .5); margin-bottom: 10px; }
+  .step b { display: block; font-size: 16px; margin-bottom: 6px; }
+  .step span { font-size: 14.5px; color: rgba(246, 241, 231, .72); }
+
+  /* ---------- calendario ---------- */
+  .cal-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filters button { font: 500 14px var(--sans); padding: 10px 16px; border: 1px solid var(--line); background: var(--white); color: var(--text); border-radius: 2px; cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--ivory); }
+  .month { margin-top: 52px; }
+  .month h3 { font-size: 30px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
+  .month h3 small { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .ev { display: grid; grid-template-columns: 92px 1fr auto; gap: 28px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--line); }
+  .ev .day { font-family: var(--serif); font-size: 50px; font-weight: 600; line-height: .9; color: var(--navy); }
+  .ev .day small { display: block; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+  .ev .kind { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+  .ev .kind i { font-style: normal; color: var(--muted); font-weight: 500; letter-spacing: .06em; text-transform: none; margin-left: 8px; }
+  .ev .title { font-family: var(--serif); font-size: 25px; line-height: 1.2; color: var(--ink); margin-top: 6px; }
+  .ev .invite { font-size: 14px; color: var(--muted); font-style: italic; white-space: nowrap; }
+  .empty { margin-top: 48px; padding: 44px; border: 1px solid var(--line); background: var(--white); text-align: center; }
+  .empty h3 { margin-bottom: 10px; }
+  .empty p { margin: 0 0 22px; color: var(--muted); }
+
+  /* ---------- chi incontri ---------- */
+  .meet { background: var(--white); }
+  .mgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
+  .mgrid .card { background: var(--ivory); }
+
+  /* ---------- iscrizione ---------- */
+  .join { background: var(--navy); color: var(--ivory); }
+  .join .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: start; }
+  .join h2 { color: var(--ivory); }
+  .join .eyebrow, .join .lead { color: rgba(246, 241, 231, .72); }
+  .howto { list-style: none; padding: 0; margin: 40px 0 0; }
+  .howto li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 16px 0; border-top: 1px solid var(--navy-line); }
+  .howto li b { font-family: var(--serif); font-size: 22px; color: rgba(246, 241, 231, .55); font-weight: 600; }
+  .howto li strong { display: block; font-weight: 600; }
+  .howto li span { font-size: 15px; color: rgba(246, 241, 231, .72); }
+  form.f { background: var(--ivory); color: var(--text); padding: 40px; }
+  .f .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .f label { display: block; font-size: 13.5px; font-weight: 600; margin: 0 0 7px; color: var(--ink); }
+  .f .fld { margin-bottom: 18px; }
+  .f input, .f select, .f textarea { width: 100%; font: 400 16px var(--sans); color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 2px; padding: 13px 14px; }
+  .f textarea { min-height: 92px; resize: vertical; }
+  .f input:focus, .f select:focus, .f textarea:focus { outline: 2px solid var(--navy); outline-offset: 1px; border-color: var(--navy); }
+  .f .check { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: var(--muted); margin: 6px 0 24px; }
+  .f .check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--navy); }
+  .f .check a { color: var(--navy); font-weight: 600; }
+  .f .btn { width: 100%; justify-content: center; padding: 17px; font-size: 16px; }
+  .f .note { font-size: 13px; color: var(--muted); margin: 14px 0 0; text-align: center; }
+  .hp { position: absolute; left: -9999px; }
+  .msg { display: none; padding: 16px 18px; margin-bottom: 20px; font-size: 15px; border: 1px solid; }
+  .msg.ok { display: block; border-color: #2E6B4F; background: #EAF3EE; color: #1D4A35; }
+  .msg.err { display: block; border-color: #9B2C2C; background: #FBEDED; color: #7A1F1F; }
+
+  /* ---------- contatti ---------- */
+  .contacts .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .clist { list-style: none; padding: 0; margin: 0; }
+  .clist li { padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .clist li:first-child { border-top: 1px solid var(--ink); }
+  .clist small { display: block; font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .clist a, .clist span { font-family: var(--serif); font-size: 26px; color: var(--ink); text-decoration: none; }
+  .clist a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 5px; }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--ink); color: rgba(255, 255, 255, .72); padding: 56px 0 40px; font-size: 14.5px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: end; }
+  footer .wordmark b { color: var(--white); }
+  footer .wordmark span { color: rgba(255, 255, 255, .55); }
+  footer .flogo { height: 118px; width: auto; }
+  footer a { color: rgba(255, 255, 255, .85); }
+  footer .legal { display: flex; gap: 22px; flex-wrap: wrap; }
+
+  /* ---------- privacy ---------- */
+  dialog { max-width: 640px; width: calc(100% - 32px); border: 0; padding: 40px; background: var(--ivory); color: var(--text); }
+  dialog::backdrop { background: rgba(14, 31, 58, .6); }
+  dialog h3 { margin-bottom: 16px; }
+  dialog p { font-size: 15px; margin: 0 0 12px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 960px) {
+    section { padding: 72px 0; }
+    .hero { padding: 72px 0; }
+    .hero .wrap, .why .wrap, .who .head, .join .wrap, .contacts .wrap { grid-template-columns: 1fr; gap: 40px; }
+    .fgrid, .mgrid { grid-template-columns: 1fr; }
+    .themes { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .stat, .stat + .stat { padding: 28px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+    nav.menu { display: none; position: absolute; top: 88px; left: 0; right: 0; background: var(--ivory); flex-direction: column; align-items: stretch; gap: 0; padding: 8px 24px 24px; border-bottom: 1px solid var(--line); }
+    nav.menu.open { display: flex; }
+    nav.menu a { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    nav.menu a.btn { margin-top: 16px; justify-content: center; border-bottom: 0; }
+    .burger { display: block; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    .isnot, .themes, .steps { grid-template-columns: 1fr; }
+    .ev { grid-template-columns: 64px 1fr; gap: 16px; }
+    .ev .day { font-size: 40px; }
+    .ev .act { grid-column: 2; }
+    .f .row { grid-template-columns: 1fr; gap: 0; }
+    form.f, .card, .fcard, .next, dialog { padding: 26px; }
+    .brand img { height: 60px; }
+    .wordmark b { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="OSM Business Club Bologna, torna all'inizio">
+      <!-- LOGO: logo.png (nero, trasparente). Se manca, compare la scritta testuale -->
+      <img src="logo.png" alt="OSM Business Club Bologna" onerror="this.remove(); document.querySelectorAll('.wm-fallback').forEach(function (e) { e.hidden = false; });">
+      <span class="wordmark wm-fallback" hidden><b>OSM Business Club</b><span>Bologna</span></span>
+    </a>
+    <button class="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav class="menu" id="menu">
+      <a href="#club">Il Club</a>
+      <a href="#per-chi">Per chi è</a>
+      <a href="#formati">Formati</a>
+      <a href="#calendario">Calendario</a>
+      <a href="#contatti">Contatti</a>
+      <a class="btn btn-dark" href="#iscriviti">Iscriviti</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Bologna · Il club degli imprenditori del territorio</p>
+        <h1>Un'azienda che funziona al meglio. Anche senza di te.</h1>
+        <p class="lead">OSM Business Club Bologna è il luogo in cui i titolari d'azienda si incontrano, si confrontano e guardano i propri problemi da prospettive diverse. Formazione di valore, relazioni vere, nessun pitch.</p>
+        <div class="ctas">
+          <a class="btn btn-light" href="#iscriviti">Iscriviti al prossimo incontro</a>
+          <a class="btn btn-ghost" href="#calendario">Guarda il calendario</a>
+        </div>
+      </div>
+      <aside class="next" id="next" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <!-- PERCHÉ NASCE -->
+  <section class="why" id="club">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Perché nasce</p>
+        <blockquote>Guidare un'azienda oggi significa decidere quasi sempre da soli.</blockquote>
+      </div>
+      <div>
+        <p>Il confronto con chi vive gli stessi problemi manca troppo spesso. Da questa esigenza nasce <strong>OSM Business Club Bologna</strong>.</p>
+        <p>Un club dove si incontrano imprenditori, consulenti e professionisti. Un luogo dove i titolari si confrontano e vedono i problemi della propria azienda da prospettive diverse.</p>
+        <p>Il valore viene prima di tutto: si entra per imparare qualcosa di utile e si torna perché ne vale la pena.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LA DOMANDA REALE -->
+  <section class="numbers">
+    <div class="wrap">
+      <p class="eyebrow">La domanda reale</p>
+      <h2>Il mercato non chiede consulenza organizzativa. Chiede persone.</h2>
+      <div class="stats">
+        <div class="stat"><b>83%</b><p>delle PMI dichiara difficoltà con il personale; il 64% ha pensato di vendere l'azienda.</p><small>Indagine Future Age, 2026</small></div>
+        <div class="stat"><b>43,2%</b><p>indica la carenza di personale qualificato come preoccupazione numero uno.</p><small>Rilevazione PMI 2026</small></div>
+        <div class="stat"><b>44,8%</b><p>delle assunzioni previste nel 2026 è difficile da coprire.</p><small>Unioncamere-Excelsior, luglio 2026</small></div>
+      </div>
+      <p class="closing">Se fatichi a trovare le persone giuste, non sei il solo.</p>
+    </div>
+  </section>
+
+  <!-- COS'È -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Che cosa è</p>
+      <h2>Un ecosistema permanente di relazione tra imprenditori.</h2>
+      <div class="isnot">
+        <div class="card dark">
+          <span class="tag">È</span>
+          <h3>Il luogo della relazione</h3>
+          <p>Eventi in sala, webinar, cene riservate e networking: un ambiente in cui vale la pena entrare anche solo per il confronto con altri titolari.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Non è</span>
+          <h3>Un calendario di eventi da vendere</h3>
+          <p>Non è un corso gratuito né una presentazione commerciale. Ogni incontro deve lasciarti qualcosa di concreto da applicare in azienda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PER CHI È -->
+  <section class="who" id="per-chi">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Per chi è</p>
+          <h2>Titolari d'azienda con un'organizzazione da gestire.</h2>
+        </div>
+        <div>
+          <p class="quote">«L'azienda funziona, ma funziona troppo grazie a te.»</p>
+          <p class="lead">Se hai una struttura da guidare, fatta di persone, organizzazione, vendite e delega, e ti riconosci in questa frase, il Club è pensato per te.</p>
+        </div>
+      </div>
+      <div class="themes">
+        <div class="theme"><span class="n">01</span><h3>Persone</h3><p>Selezione, leadership, collaboratori.</p></div>
+        <div class="theme"><span class="n">02</span><h3>Organizzazione e delega</h3><p>Ruoli chiari, controllo senza fare tutto da solo.</p></div>
+        <div class="theme"><span class="n">03</span><h3>Denaro e libertà</h3><p>Redditività, cash flow, margini.</p></div>
+        <div class="theme"><span class="n">04</span><h3>Vendite e crescita</h3><p>Acquisizione clienti e sviluppo.</p></div>
+        <div class="theme"><span class="n">05</span><h3>Imprenditore</h3><p>Da operativo a strategico.</p></div>
+        <div class="theme"><span class="n">06</span><h3>Tempo e cultura finanziaria</h3><p>Priorità, tempo, consapevolezza economica.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATI -->
+  <section class="formats" id="formati">
+    <div class="wrap">
+      <p class="eyebrow">I formati</p>
+      <h2>Tre modi di vivere il Club.</h2>
+      <p class="lead">Ogni incontro ha uno scopo diverso: dalla formazione in sala al confronto riservato a pochi.</p>
+      <div class="fgrid">
+        <article class="fcard">
+          <span class="freq">2 volte al mese · In sede</span>
+          <h3>Business Day</h3>
+          <p>Due ore di formazione su un tema concreto, con casi reali e uno strumento applicabile. Poi aperitivo e networking con gli altri imprenditori.</p>
+          <ul><li>16:00 · Accoglienza</li><li>16:30 – 18:30 · Formazione</li><li>18:30 · Aperitivo e networking</li></ul>
+        </article>
+        <article class="fcard">
+          <span class="freq">2 volte al mese · Online</span>
+          <h3>Webinar</h3>
+          <p>Approfondimenti online su un tema specifico del trimestre, per portare nuovi spunti in azienda senza spostarti.</p>
+          <ul><li>Un tema, un'ora di valore</li><li>Da ufficio o da casa</li></ul>
+        </article>
+        <article class="fcard">
+          <span class="freq">1 volta a trimestre · Su invito</span>
+          <h3>Business Dinner</h3>
+          <p>Un tavolo ristretto, pochi titolari, un solo tema. Il momento più riservato del Club, solo su invito personale.</p>
+          <ul><li>Pochi posti</li><li>Solo su invito personale</li></ul>
+        </article>
+      </div>
+
+      <div class="path">
+        <p class="eyebrow">Il percorso</p>
+        <p class="motto">Prima il problema. Poi il principio. Poi lo strumento.</p>
+        <div class="steps">
+          <div class="step"><b>Un invito</b><span>Legato a un problema che riconosci come tuo.</span></div>
+          <div class="step"><b>Due ore di valore</b><span>Un tema, casi reali, uno strumento applicabile.</span></div>
+          <div class="step"><b>L'aperitivo</b><span>Nascono le relazioni, nessun pitch.</span></div>
+          <div class="step"><b>Contatto entro 48 ore</b><span>Nessuno resta senza risposta.</span></div>
+          <div class="step"><b>Il passo successivo</b><span>Un altro incontro, un webinar, un approfondimento.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDARIO -->
+  <section id="calendario">
+    <div class="wrap">
+      <div class="cal-head">
+        <div>
+          <p class="eyebrow">Calendario</p>
+          <h2>I prossimi incontri.</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filtra per formato">
+          <button type="button" data-f="tutti" aria-pressed="true">Tutti</button>
+          <button type="button" data-f="day" aria-pressed="false">Business Day</button>
+          <button type="button" data-f="webinar" aria-pressed="false">Webinar</button>
+          <button type="button" data-f="dinner" aria-pressed="false">Business Dinner</button>
+        </div>
+      </div>
+      <div id="cal"></div>
+    </div>
+  </section>
+
+  <!-- CHI INCONTRI -->
+  <section class="meet">
+    <div class="wrap">
+      <p class="eyebrow">Chi incontri al Club</p>
+      <h2>Persone che vivono i tuoi stessi problemi.</h2>
+      <div class="mgrid">
+        <div class="card"><span class="tag">Imprenditori</span><h3>Titolari del territorio</h3><p>Aziende bolognesi con persone e processi da gestire: il confronto nasce tra chi prende ogni giorno le stesse decisioni.</p></div>
+        <div class="card"><span class="tag">Speaker</span><h3>Esperienza sul campo</h3><p>Chi sale sul palco non deve dimostrare quanto sa: deve farti vedere qualcosa che prima non vedevi.</p></div>
+        <div class="card"><span class="tag">Consulenti</span><h3>OSM Partner Bologna</h3><p>Consulenti che affiancano ogni giorno le aziende su persone, organizzazione, numeri e vendite. Al Club ascoltano prima di proporre.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ISCRIZIONE -->
+  <section class="join" id="iscriviti">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Come partecipare</p>
+        <h2>Posti limitati, poche regole semplici.</h2>
+        <p class="lead">Si entra su invito o su candidatura. Compila il modulo: ti ricontattiamo noi per confermare il tuo posto.</p>
+        <ol class="howto">
+          <li><b>01</b><div><strong>Le iscrizioni aprono</strong><span>Tre settimane prima di ogni incontro.</span></div></li>
+          <li><b>02</b><div><strong>Confermi il tuo posto</strong><span>In ordine di iscrizione, fino a esaurimento posti.</span></div></li>
+          <li><b>03</b><div><strong>Arrivi in sede</strong><span>Accoglienza alle 16:00, formazione dalle 16:30.</span></div></li>
+          <li><b>04</b><div><strong>Resti per l'aperitivo</strong><span>Networking libero con gli altri imprenditori del Club.</span></div></li>
+        </ol>
+      </div>
+
+      <form class="f" id="form" novalidate>
+        <div class="msg" id="msg" role="status"></div>
+        <div class="fld">
+          <label for="evento">A cosa vuoi partecipare?</label>
+          <select id="evento" name="Evento" required></select>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="nome">Nome</label><input id="nome" name="Nome" autocomplete="given-name" required></div>
+          <div class="fld"><label for="cognome">Cognome</label><input id="cognome" name="Cognome" autocomplete="family-name" required></div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="azienda">Azienda</label><input id="azienda" name="Azienda" autocomplete="organization" required></div>
+          <div class="fld"><label for="ruolo">Ruolo in azienda</label>
+            <select id="ruolo" name="Ruolo" required>
+              <option value="">Seleziona</option>
+              <option>Titolare</option><option>Socio</option><option>Amministratore delegato</option><option>Altro</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="collaboratori">Collaboratori in azienda</label>
+            <select id="collaboratori" name="Collaboratori" required>
+              <option value="">Seleziona</option>
+              <option>Meno di 5</option><option>Da 5 a 15</option><option>Da 16 a 50</option><option>Oltre 50</option>
+            </select>
+          </div>
+          <div class="fld"><label for="telefono">Telefono</label><input id="telefono" name="Telefono" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="fld"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
+        <div class="fld"><label for="note">Messaggio <span style="font-weight:400;color:var(--muted)">(facoltativo)</span></label><textarea id="note" name="Messaggio" placeholder="Un tema che ti sta a cuore, una domanda, come ci hai conosciuto…"></textarea></div>
+        <input class="hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check"><input type="checkbox" id="privacy" required><span>Ho letto l'<a href="#" data-privacy>informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato sulle iniziative di OSM Business Club Bologna.</span></label>
+        <button class="btn btn-dark" type="submit" id="send">Invia la richiesta</button>
+        <p class="note">Ti ricontattiamo entro 48 ore.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="contacts" id="contatti">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Contatti</p>
+        <h2>Ti aspettiamo in sede.</h2>
+        <p class="lead">Per informazioni sul Club, sugli incontri o per candidare la tua azienda, scrivici o chiamaci.</p>
+      </div>
+      <ul class="clist">
+        <li><small>Sede</small><a href="https://www.google.com/maps/search/?api=1&query=Via+Persicetana+Vecchia+24+40132+Bologna" target="_blank" rel="noopener">Via Persicetana Vecchia 24, 40132 Bologna</a></li>
+        <li><small>Telefono</small><a href="tel:+393313205200">331 320 5200</a></li>
+        <li><small>Email</small><a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a></li>
+        <li><small>Social</small><a href="https://www.instagram.com/osmbusinessclub/" target="_blank" rel="noopener">Instagram</a> <span>·</span> <a href="https://www.facebook.com/osmbusinessclub" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img class="flogo" src="logo-bianco.png" alt="OSM Business Club Bologna" onerror="this.remove(); document.querySelector('.fwm').hidden = false;">
+      <span class="wordmark fwm" hidden><b>OSM Business Club</b><span>Bologna</span></span>
+      <p style="margin:18px 0 0">Un'iniziativa di OSM Partner Bologna · Via Persicetana Vecchia 24, 40132 Bologna</p>
+    </div>
+    <div class="legal">
+      <a href="#" data-privacy>Informativa privacy</a>
+      <span>© <span id="year">2026</span> OSM Business Club Bologna</span>
+    </div>
+  </div>
+</footer>
+
+<dialog id="privacy-dlg" aria-labelledby="privacy-title">
+  <h3 id="privacy-title">Informativa privacy sintetica</h3>
+  <!-- TESTO DA FAR VERIFICARE: sostituire con l'informativa completa fornita dal consulente privacy / DPO di OSM Partner Bologna -->
+  <p>I dati inseriti nel modulo (nome, cognome, azienda, ruolo, numero di collaboratori, telefono, email ed eventuale messaggio) sono trattati da OSM Partner Bologna, Via Persicetana Vecchia 24, 40132 Bologna, al solo scopo di gestire la tua richiesta di partecipazione e ricontattarti sulle iniziative di OSM Business Club Bologna.</p>
+  <p>I dati non vengono ceduti a terzi per finalità commerciali. Puoi chiederne in qualsiasi momento l'accesso, la modifica o la cancellazione scrivendo a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a>.</p>
+  <form method="dialog"><button class="btn btn-dark" style="margin-top:12px">Chiudi</button></form>
+</dialog>
+
+<script>
+/* =====================================================================
+   CALENDARIO — per aggiornarlo modifica solo questa lista.
+   data: AAAA-MM-GG · formato: "day" | "webinar" | "dinner"
+   nome: come appare (es. "Business Monday") · tema: tema del mese
+   Gli incontri passati spariscono da soli dal sito.
+   ===================================================================== */
+var EVENTI = [
+  { data: '2026-10-05', formato: 'webinar', nome: 'Webinar',           tema: 'Analisi Finanziaria',         titolo: 'HR e selezione: come interagire con la Gen‑Z.' },
+  { data: '2026-10-08', formato: 'day',     nome: 'Business Thursday', tema: 'Analisi Finanziaria',         titolo: "Il cruscotto essenziale dell'imprenditore: dieci numeri, una pagina." },
+  { data: '2026-10-20', formato: 'webinar', nome: 'Webinar',           tema: 'Analisi Finanziaria',         titolo: 'Il punto di pareggio della tua azienda: sai a che punto sei oggi?' },
+  { data: '2026-10-26', formato: 'day',     nome: 'Business Monday',   tema: 'Analisi Finanziaria',         titolo: "L'agenda dell'imprenditore: dal pronto soccorso alla strategia." },
+  { data: '2026-11-02', formato: 'webinar', nome: 'Webinar',           tema: 'Time Management e Delega',    titolo: 'Il metodo Time Management: come aumentare la propria produttività!' },
+  { data: '2026-11-05', formato: 'day',     nome: 'Business Thursday', tema: 'Time Management e Delega',    titolo: "Quanto rende il capitale che hai dentro l'azienda." },
+  { data: '2026-11-19', formato: 'webinar', nome: 'Webinar',           tema: 'Time Management e Delega',    titolo: 'La tua azienda è un investimento o è il tuo posto di lavoro?' },
+  { data: '2026-11-23', formato: 'day',     nome: 'Business Monday',   tema: 'Time Management e Delega',    titolo: 'Delegare non è dare via il lavoro: è dare via il risultato.' },
+  { data: '2026-11-27', formato: 'dinner',  nome: 'Business Dinner',   tema: 'Time Management e Delega',    titolo: 'Un tavolo, pochi titolari, un solo tema.' },
+  { data: '2026-11-30', formato: 'webinar', nome: 'Webinar',           tema: 'Time Management e Delega',    titolo: "Se ti fermi tu, si ferma l'azienda." },
+  { data: '2026-12-09', formato: 'day',     nome: 'Business Wednesday', tema: 'Passaggio Generazionale',    titolo: 'I figli in azienda: ruoli veri o poltrone di cortesia.' },
+  { data: '2026-12-14', formato: 'webinar', nome: 'Webinar',           tema: 'Passaggio Generazionale',     titolo: "Il passaggio generazionale non si improvvisa a settant'anni." }
+];
+
+/* =====================================================================
+   ISCRIZIONI — le richieste arrivano via email a l.gorgo@osmpartnerbologna.it
+   (servizio Web3Forms). Incollare qui la chiave ricevuta da web3forms.com
+   ===================================================================== */
+var WEB3FORMS_KEY = 'a3fa3367-8427-4e0c-8e6a-5fdefbdc670d';
+
+var MESI = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+var GIORNI = ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'];
+var ORARI = { day: 'In sede · 16:00 accoglienza · 16:30–18:30 · aperitivo', webinar: 'Online', dinner: 'Solo su invito personale' };
+
+function parseData(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+function oggi() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function etichetta(e) { var d = parseData(e.data); return GIORNI[d.getDay()] + ' ' + d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase() + ' · ' + e.nome + ' · ' + e.titolo; }
+
+var futuri = EVENTI.filter(function (e) { return parseData(e.data) >= oggi(); })
+                   .sort(function (a, b) { return parseData(a.data) - parseData(b.data); });
+
+function renderCal(filtro) {
+  var lista = futuri.filter(function (e) { return filtro === 'tutti' || e.formato === filtro; });
+  var box = document.getElementById('cal');
+  if (!lista.length) {
+    box.innerHTML = '<div class="empty"><h3>Nuove date in arrivo</h3><p>Stiamo definendo i prossimi incontri. Lasciaci i tuoi contatti e ti avvisiamo appena si aprono le iscrizioni.</p><a class="btn btn-outline" href="#iscriviti">Avvisami</a></div>';
+    return;
+  }
+  var html = '', meseCorrente = '';
+  lista.forEach(function (e) {
+    var d = parseData(e.data), chiave = d.getFullYear() + '-' + d.getMonth();
+    if (chiave !== meseCorrente) {
+      if (meseCorrente) html += '</div>';
+      html += '<div class="month"><h3>' + MESI[d.getMonth()] + ' ' + d.getFullYear() + ' <small>' + esc(e.tema) + '</small></h3>';
+      meseCorrente = chiave;
+    }
+    var azione = e.formato === 'dinner'
+      ? '<span class="invite">Su invito</span>'
+      : '<a class="btn btn-outline" href="#iscriviti" data-iscrivi="' + esc(e.data) + '">Iscriviti</a>';
+    html += '<article class="ev"><div class="day">' + d.getDate() + '<small>' + GIORNI[d.getDay()] + '</small></div>' +
+            '<div><div class="kind">' + esc(e.nome) + '<i>' + ORARI[e.formato] + '</i></div><div class="title">' + esc(e.titolo) + '</div></div>' +
+            '<div class="act">' + azione + '</div></article>';
+  });
+  box.innerHTML = html + '</div>';
+}
+
+function renderNext() {
+  var el = document.getElementById('next');
+  var n = futuri.filter(function (e) { return e.formato !== 'dinner'; })[0];
+  if (!n) {
+    el.innerHTML = '<p class="eyebrow">Prossimo incontro</p><p>Le nuove date sono in arrivo. Lasciaci i tuoi contatti: ti avvisiamo appena si aprono le iscrizioni.</p><a class="btn btn-light" href="#iscriviti">Avvisami</a>';
+    return;
+  }
+  var d = parseData(n.data);
+  el.innerHTML = '<p class="eyebrow">Prossimo incontro</p>' +
+    '<div class="d">' + d.getDate() + ' ' + MESI[d.getMonth()] + '</div>' +
+    '<div class="t">' + GIORNI[d.getDay()] + ' · ' + esc(n.nome) + '</div>' +
+    '<p>' + esc(n.titolo) + '</p>' +
+    '<div class="meta">' + ORARI[n.formato] + '</div>' +
+    '<a class="btn btn-light" style="margin-top:22px" href="#iscriviti" data-iscrivi="' + esc(n.data) + '">Riserva il tuo posto</a>';
+}
+
+function renderSelect() {
+  var sel = document.getElementById('evento');
+  var opts = '<option value="">Seleziona</option>';
+  futuri.forEach(function (e) {
+    if (e.formato !== 'dinner') opts += '<option value="' + esc(etichetta(e)) + '" data-d="' + esc(e.data) + '">' + esc(etichetta(e)) + '</option>';
+  });
+  opts += '<option value="Avvisami dei prossimi incontri">Avvisami dei prossimi incontri</option>';
+  sel.innerHTML = opts;
+}
+
+document.addEventListener('click', function (ev) {
+  var a = ev.target.closest('[data-iscrivi]');
+  if (a) {
+    var o = document.querySelector('#evento option[data-d="' + a.getAttribute('data-iscrivi') + '"]');
+    if (o) o.selected = true;
+  }
+  var p = ev.target.closest('[data-privacy]');
+  if (p) { ev.preventDefault(); document.getElementById('privacy-dlg').showModal(); }
+});
+
+document.querySelectorAll('.filters button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('.filters button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+    b.setAttribute('aria-pressed', 'true');
+    renderCal(b.getAttribute('data-f'));
+  });
+});
+
+var burger = document.querySelector('.burger'), menu = document.getElementById('menu');
+burger.addEventListener('click', function () {
+  var open = menu.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } });
+
+document.getElementById('form').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var f = ev.target, msg = document.getElementById('msg'), btn = document.getElementById('send');
+  msg.className = 'msg';
+  var mancanti = Array.prototype.filter.call(f.querySelectorAll('[required]'), function (i) {
+    return i.type === 'checkbox' ? !i.checked : !i.value.trim();
+  });
+  if (mancanti.length || !f.Email.checkValidity()) {
+    msg.className = 'msg err';
+    msg.textContent = mancanti.some(function (i) { return i.id === 'privacy'; }) && mancanti.length === 1
+      ? "Per inviare la richiesta serve il consenso all'informativa privacy."
+      : 'Compila tutti i campi obbligatori con dati validi.';
+    (mancanti[0] || f.Email).focus();
+    return;
+  }
+  var dati = {};
+  new FormData(f).forEach(function (v, k) { dati[k] = v; });
+  if (dati.botcheck) return;          // compilato solo dai programmi automatici
+  delete dati.botcheck;
+  dati.access_key = WEB3FORMS_KEY;
+  dati.subject = 'Nuova richiesta OSM Business Club — ' + dati.Evento;
+  dati.from_name = 'Sito OSM Business Club Bologna';
+  btn.disabled = true; btn.textContent = 'Invio in corso…';
+  (WEB3FORMS_KEY ? fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(dati)
+  }) : Promise.reject(new Error('chiave Web3Forms mancante'))).then(function (r) { return r.json(); }).then(function (r) {
+    if (String(r.success) !== 'true') throw new Error(r.message || 'invio non riuscito');
+    f.reset(); renderSelect();
+    msg.className = 'msg ok';
+    msg.textContent = 'Grazie! Abbiamo ricevuto la tua richiesta: ti ricontattiamo entro 48 ore per confermare il posto.';
+  }).catch(function () {
+    msg.className = 'msg err';
+    msg.innerHTML = 'Non siamo riusciti a inviare la richiesta. Scrivici a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a> o chiama il 331 320 5200.';
+  }).then(function () {
+    btn.disabled = false; btn.textContent = 'Invia la richiesta';
+    msg.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+renderNext(); renderCal('tutti'); renderSelect();
+</script>
+</body>
+</html>
