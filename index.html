@@ -20,11 +20,13 @@
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0E1F3A;
     --navy-2: #182C4E;
+    --on-navy: rgba(246, 241, 231, .82);
+    --on-navy-soft: rgba(246, 241, 231, .68);
     --navy-line: rgba(246, 241, 231, .16);
     --ivory: #F6F1E7;
     --ivory-2: #ECE4D4;
@@ -34,220 +36,276 @@
     --muted: #5B6270;
     --line: #DDD4C3;
     --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-    --sans: 'Inter', Arial, sans-serif;
-    --wrap: 1160px;
+    --sans: 'Hanken Grotesk', Helvetica, Arial, sans-serif;
+    --wrap: 1200px;
   }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
-  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
-  body { margin: 0; background: var(--ivory); color: var(--text); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+  body { margin: 0; background: var(--ivory); color: var(--text); font-family: var(--sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; font-variant-numeric: lining-nums; }
   img { max-width: 100%; display: block; }
   a { color: inherit; }
   .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
-  section { padding: 96px 0; }
-  .eyebrow { font-size: 12.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
-  body, h1, h2, h3, .day, .stat b, .next .d { font-variant-numeric: lining-nums; }
-  h1, h2, h3 { font-family: var(--serif); font-weight: 600; color: var(--ink); margin: 0; line-height: 1.08; letter-spacing: -.01em; }
-  h2 { font-size: clamp(34px, 4.4vw, 52px); max-width: 22ch; }
-  h3 { font-size: 26px; line-height: 1.15; }
-  .lead { font-size: 19px; color: var(--muted); max-width: 60ch; margin: 22px 0 0; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 2px; font: 600 15px/1 var(--sans); letter-spacing: .02em; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  section { padding: 112px 0; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 20px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; color: var(--ink); margin: 0; line-height: 1.05; letter-spacing: -.005em; }
+  h2 { font-size: clamp(38px, 4.6vw, 58px); max-width: 24ch; }
+  h3 { font-size: 30px; line-height: 1.12; }
+  em.serif { font-style: italic; font-weight: 500; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 60ch; margin: 22px 0 0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 16px 26px; border-radius: 0; font: 600 16px/1.2 var(--sans); letter-spacing: .01em; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; white-space: nowrap; }
   .btn-light { background: var(--ivory); color: var(--navy); }
   .btn-light:hover { background: var(--white); }
-  .btn-ghost { border-color: var(--navy-line); color: var(--ivory); }
+  .btn-ghost { border-color: rgba(246, 241, 231, .35); color: var(--ivory); }
   .btn-ghost:hover { border-color: var(--ivory); }
   .btn-dark { background: var(--navy); color: var(--ivory); }
   .btn-dark:hover { background: var(--ink); }
   .btn-outline { border-color: var(--navy); color: var(--navy); background: transparent; }
   .btn-outline:hover { background: var(--navy); color: var(--ivory); }
 
-  /* ---------- header ---------- */
-  header.top { position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 231, .96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 88px; gap: 24px; }
+  /* ---------- intestazione ---------- */
+  header.top { position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 231, .97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 96px; gap: 24px; }
   .brand { display: flex; align-items: center; text-decoration: none; color: var(--ink); }
-  .brand img { height: 68px; width: auto; }
+  .brand img { height: 72px; width: auto; }
   .wordmark { display: flex; flex-direction: column; line-height: 1; }
-  .wordmark b { font-family: var(--serif); font-size: 25px; font-weight: 700; letter-spacing: .01em; }
+  .wordmark b { font-family: var(--serif); font-size: 25px; font-weight: 700; }
   .wordmark span { font-size: 10.5px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
-  nav.menu { display: flex; align-items: center; gap: 30px; }
-  nav.menu a { text-decoration: none; font-size: 14.5px; font-weight: 500; color: var(--text); }
+  nav.menu { display: flex; align-items: center; gap: 36px; }
+  nav.menu a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--text); }
   nav.menu a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 6px; }
-  nav.menu a.btn { color: var(--ivory); text-decoration: none; padding: 12px 20px; }
-  .burger { display: none; background: none; border: 1px solid var(--line); width: 44px; height: 44px; border-radius: 2px; cursor: pointer; }
+  nav.menu a.btn { color: var(--ivory); text-decoration: none; padding: 14px 24px; }
+  .top-actions { display: none; align-items: center; gap: 8px; }
+  .top-actions .btn { min-height: 46px; padding: 12px 16px; font-size: 14px; }
+  .burger { background: none; border: 1px solid var(--line); width: 46px; height: 46px; cursor: pointer; }
   .burger span { display: block; width: 18px; height: 1.5px; background: var(--ink); margin: 4px auto; }
 
-  /* ---------- hero ---------- */
-  .hero { background: var(--navy); color: var(--ivory); padding: 110px 0 100px; position: relative; overflow: hidden; }
-  .hero::after { content: ""; position: absolute; right: -180px; top: -180px; width: 560px; height: 560px; border: 1px solid var(--navy-line); border-radius: 50%; }
-  .hero::before { content: ""; position: absolute; right: -60px; top: -60px; width: 320px; height: 320px; border: 1px solid var(--navy-line); border-radius: 50%; }
-  .hero .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: end; position: relative; z-index: 1; }
-  .hero .eyebrow { color: rgba(246, 241, 231, .7); }
-  .hero h1 { color: var(--ivory); font-size: clamp(42px, 6vw, 76px); max-width: 15ch; }
-  .hero .lead { color: rgba(246, 241, 231, .78); }
-  .hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
-  .next { border: 1px solid var(--navy-line); background: var(--navy-2); padding: 30px; }
-  .next .eyebrow { margin-bottom: 14px; }
-  .next .d { font-family: var(--serif); font-size: 44px; font-weight: 600; line-height: 1; }
-  .next .t { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: rgba(246, 241, 231, .7); margin-top: 10px; }
-  .next p { margin: 16px 0 22px; font-size: 18px; line-height: 1.45; }
-  .next .meta { font-size: 14px; color: rgba(246, 241, 231, .7); border-top: 1px solid var(--navy-line); padding-top: 16px; }
+  /* ---------- apertura ---------- */
+  .hero { background: var(--navy); color: var(--ivory); padding: 0; position: relative; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 64px; align-items: center; min-height: 760px; padding-top: 72px; padding-bottom: 120px; position: relative; z-index: 1; }
+  .hero .ring { position: absolute; top: 50%; border: 1px solid rgba(246, 241, 231, .1); border-radius: 50%; pointer-events: none; }
+  .hero .ring.r1 { width: 820px; height: 820px; right: -140px; margin-top: -440px; }
+  .hero .ring.r2 { width: 580px; height: 580px; right: -20px; margin-top: -320px; border-color: rgba(246, 241, 231, .14); }
+  .hero .eyebrow { color: var(--on-navy-soft); }
+  .hero h1 { color: var(--ivory); font-size: clamp(44px, 6.2vw, 86px); line-height: 1; }
+  .hero .lead { color: var(--on-navy); max-width: 540px; margin-top: 28px; }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+  .hero-logo { display: flex; justify-content: center; }
+  .hero-logo img { width: min(420px, 100%); height: auto; }
+
+  /* ---------- prossimo incontro ---------- */
+  .next-wrap { padding: 0; }
+  .next { margin-top: -64px; position: relative; z-index: 2; background: var(--white); border: 1px solid var(--line); box-shadow: 0 24px 48px rgba(14, 31, 58, .10); display: grid; grid-template-columns: 240px minmax(0, 1fr) auto; gap: 48px; align-items: center; padding: 36px 48px; }
+  .next .when { display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--line); padding-right: 40px; }
+  .next .lbl { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  .next .d { font-family: var(--serif); font-size: 64px; font-weight: 600; line-height: 1; color: var(--navy); }
+  .next .wd { font-size: 14px; font-weight: 600; color: var(--muted); }
+  .next .what { display: flex; flex-direction: column; gap: 10px; }
+  .next .kind { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--navy); }
+  .next .ttl { font-family: var(--serif); font-size: 34px; font-weight: 600; line-height: 1.15; color: var(--ink); }
+  .next .empty-t { font-size: 17px; color: var(--muted); margin: 0; }
 
   /* ---------- perché nasce ---------- */
-  .why .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-  .why blockquote { margin: 0; font-family: var(--serif); font-size: clamp(28px, 3.2vw, 38px); line-height: 1.2; color: var(--navy); border-left: 1px solid var(--navy); padding-left: 28px; }
-  .why p { margin: 0 0 18px; }
+  .why .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px; }
+  .why .quote { margin: 0; font-family: var(--serif); font-size: clamp(34px, 3.8vw, 48px); font-weight: 500; line-height: 1.12; color: var(--navy); }
+  .why .body { padding-top: 52px; font-size: 18px; line-height: 1.7; }
+  .why .body p { margin: 0 0 20px; }
 
   /* ---------- numeri ---------- */
   .numbers { background: var(--white); }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 52px; border-top: 1px solid var(--line); }
-  .stat { padding: 34px 30px 0 0; }
-  .stat + .stat { padding-left: 30px; border-left: 1px solid var(--line); }
-  .stat b { display: block; font-family: var(--serif); font-size: 68px; font-weight: 600; color: var(--navy); line-height: 1; }
-  .stat p { margin: 14px 0 10px; }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 56px; border-top: 1px solid var(--ink); }
+  .stat { padding: 40px 40px 0 0; }
+  .stat + .stat { padding-left: 40px; border-left: 1px solid var(--line); }
+  .stat:last-child { padding-right: 0; }
+  .stat b { display: block; font-family: var(--serif); font-size: clamp(64px, 7vw, 96px); font-weight: 600; color: var(--navy); line-height: 1; }
+  .stat p { margin: 14px 0 12px; }
   .stat small { font-size: 13px; color: var(--muted); }
-  .numbers .closing { margin-top: 48px; font-family: var(--serif); font-size: 28px; color: var(--ink); }
+  .numbers .closing { margin: 56px 0 0; font-family: var(--serif); font-size: 32px; font-style: italic; color: var(--ink); }
 
   /* ---------- cos'è ---------- */
-  .isnot { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
-  .card { background: var(--white); border: 1px solid var(--line); padding: 36px; }
+  .whatis .wrap { display: grid; grid-template-columns: 400px minmax(0, 1fr); gap: 80px; align-items: start; }
+  .whatis h2 { font-size: clamp(36px, 3.8vw, 48px); }
+  .isnot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .card { background: var(--white); border: 1px solid var(--line); padding: 44px; display: flex; flex-direction: column; gap: 16px; }
   .card.dark { background: var(--navy); border-color: var(--navy); color: var(--ivory); }
   .card.dark h3 { color: var(--ivory); }
-  .card h3 { margin-bottom: 14px; }
-  .card p { margin: 0; }
-  .tag { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 18px; color: var(--muted); }
-  .card.dark .tag { color: rgba(246, 241, 231, .65); }
+  .card.dark p { color: var(--on-navy); }
+  .card p { margin: 0; font-size: 16px; }
+  .tag { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+  .card.dark .tag { color: var(--on-navy-soft); }
 
   /* ---------- per chi ---------- */
   .who { background: var(--white); }
-  .who .head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: end; }
-  .who .quote { font-family: var(--serif); font-size: clamp(26px, 2.8vw, 34px); line-height: 1.2; color: var(--navy); margin: 0; }
-  .themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 56px; }
-  .theme { background: var(--white); padding: 30px; }
-  .theme .n { font-family: var(--serif); font-size: 18px; color: var(--muted); }
-  .theme h3 { font-size: 24px; margin: 8px 0 8px; }
-  .theme p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .who .head { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px; align-items: end; }
+  .who .quote { font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-style: italic; line-height: 1.15; color: var(--navy); margin: 0; }
+  .who .lead { margin-top: 18px; }
+  .themes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 56px; border-top: 1px solid var(--ink); }
+  .theme { display: flex; gap: 20px; padding: 32px 32px 36px 0; border-bottom: 1px solid var(--line); }
+  .theme .n { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--muted); width: 28px; flex-shrink: 0; }
+  .theme h3 { font-size: 28px; margin-bottom: 8px; }
+  .theme p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.55; }
 
   /* ---------- formati ---------- */
   .formats { background: var(--navy); color: var(--ivory); }
   .formats h2, .formats h3 { color: var(--ivory); }
-  .formats .eyebrow, .formats .lead { color: rgba(246, 241, 231, .72); }
-  .fgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-  .fcard { border: 1px solid var(--navy-line); padding: 34px; display: flex; flex-direction: column; }
-  .fcard .freq { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: rgba(246, 241, 231, .65); margin-bottom: 16px; }
-  .fcard h3 { font-size: 32px; margin-bottom: 14px; }
-  .fcard p { margin: 0 0 22px; color: rgba(246, 241, 231, .82); }
-  .fcard ul { list-style: none; padding: 18px 0 0; margin: auto 0 0; border-top: 1px solid var(--navy-line); font-size: 14.5px; color: rgba(246, 241, 231, .78); }
-  .fcard li { padding: 4px 0; }
+  .formats .eyebrow { color: var(--on-navy-soft); }
+  .formats .lead { color: var(--on-navy); }
+  .fgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+  .fcard { background: var(--navy-2); border: 1px solid rgba(246, 241, 231, .14); padding: 40px; display: flex; flex-direction: column; gap: 18px; }
+  .fcard svg { width: 36px; height: 36px; }
+  .fcard .freq { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--on-navy-soft); }
+  .fcard h3 { font-size: 38px; line-height: 1; }
+  .fcard p { margin: 0; font-size: 16px; color: var(--on-navy); }
+  .fcard .rows { margin-top: auto; border-top: 1px solid var(--navy-line); padding-top: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 14.5px; color: var(--on-navy); }
+  .fcard .rows div { display: flex; justify-content: space-between; gap: 16px; }
+  .fcard.light { background: var(--ivory); border-color: var(--ivory); color: var(--ink); }
+  .fcard.light h3 { color: var(--navy); }
+  .fcard.light .freq, .fcard.light .rows { color: var(--muted); }
+  .fcard.light p { color: var(--text); }
+  .fcard.light .rows { border-top-color: var(--line); }
   .path { margin-top: 80px; padding-top: 56px; border-top: 1px solid var(--navy-line); }
-  .path .motto { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; max-width: 24ch; }
-  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-top: 44px; counter-reset: s; }
-  .step { counter-increment: s; }
-  .step::before { content: counter(s, decimal-leading-zero); display: block; font-family: var(--serif); font-size: 34px; color: rgba(246, 241, 231, .5); margin-bottom: 10px; }
-  .step b { display: block; font-size: 16px; margin-bottom: 6px; }
-  .step span { font-size: 14.5px; color: rgba(246, 241, 231, .72); }
+  .path .motto { margin: 0; font-family: var(--serif); font-size: clamp(32px, 3.6vw, 44px); font-weight: 500; line-height: 1.1; color: var(--ivory); }
+  .steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; margin-top: 40px; counter-reset: s; }
+  .step { counter-increment: s; border-top: 2px solid var(--ivory); padding-top: 20px; }
+  .step::before { content: counter(s, decimal-leading-zero); display: block; font-family: var(--serif); font-size: 30px; font-weight: 600; color: rgba(246, 241, 231, .6); margin-bottom: 10px; }
+  .step b { display: block; font-size: 16px; margin-bottom: 8px; }
+  .step span { font-size: 14.5px; line-height: 1.55; color: rgba(246, 241, 231, .75); }
 
   /* ---------- calendario ---------- */
-  .cal-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; }
+  .cal-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
   .filters { display: flex; gap: 8px; flex-wrap: wrap; }
-  .filters button { font: 500 14px var(--sans); padding: 10px 16px; border: 1px solid var(--line); background: var(--white); color: var(--text); border-radius: 2px; cursor: pointer; }
-  .filters button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--ivory); }
-  .month { margin-top: 52px; }
-  .month h3 { font-size: 30px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
-  .month h3 small { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-  .ev { display: grid; grid-template-columns: 92px 1fr auto; gap: 28px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--line); }
-  .ev .day { font-family: var(--serif); font-size: 50px; font-weight: 600; line-height: .9; color: var(--navy); }
-  .ev .day small { display: block; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
-  .ev .kind { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
-  .ev .kind i { font-style: normal; color: var(--muted); font-weight: 500; letter-spacing: .06em; text-transform: none; margin-left: 8px; }
-  .ev .title { font-family: var(--serif); font-size: 25px; line-height: 1.2; color: var(--ink); margin-top: 6px; }
-  .ev .invite { font-size: 14px; color: var(--muted); font-style: italic; white-space: nowrap; }
-  .empty { margin-top: 48px; padding: 44px; border: 1px solid var(--line); background: var(--white); text-align: center; }
+  .filters button { font: 500 14px var(--sans); min-height: 44px; padding: 12px 18px; border: 1px solid var(--line); background: var(--white); color: var(--text); cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--ivory); font-weight: 600; }
+  .evgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
+  .ev { background: var(--white); border: 1px solid var(--line); padding: 32px; display: flex; flex-direction: column; gap: 20px; min-height: 300px; }
+  .ev .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .ev .date { display: flex; align-items: baseline; gap: 10px; }
+  .ev .day { font-family: var(--serif); font-size: 64px; font-weight: 600; line-height: .9; color: var(--navy); }
+  .ev .mw { display: flex; flex-direction: column; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+  .ev .badge { font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 7px 10px; border: 1px solid var(--navy); color: var(--navy); text-align: center; }
+  .ev .title { font-family: var(--serif); font-size: 27px; font-weight: 600; line-height: 1.18; color: var(--ink); }
+  .ev .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid var(--ivory-2); padding-top: 18px; }
+  .ev .where { font-size: 14px; color: var(--muted); }
+  .ev .go { font-size: 15px; font-weight: 600; color: var(--navy); text-underline-offset: 5px; padding: 10px 0; }
+  .ev .invite { font-size: 14px; font-style: italic; color: var(--muted); }
+  .cal-more { display: flex; justify-content: center; margin-top: 40px; }
+  .empty { margin-top: 48px; padding: 48px; border: 1px solid var(--line); background: var(--white); text-align: center; }
   .empty h3 { margin-bottom: 10px; }
   .empty p { margin: 0 0 22px; color: var(--muted); }
 
   /* ---------- chi incontri ---------- */
   .meet { background: var(--white); }
-  .mgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
-  .mgrid .card { background: var(--ivory); }
+  .mgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px; margin-top: 52px; }
+  .mgrid div { border-top: 2px solid var(--navy); padding-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+  .mgrid p { margin: 0; font-size: 16px; }
 
   /* ---------- iscrizione ---------- */
   .join { background: var(--navy); color: var(--ivory); }
-  .join .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: start; }
+  .join .wrap { display: grid; grid-template-columns: 440px minmax(0, 1fr); gap: 88px; align-items: start; }
   .join h2 { color: var(--ivory); }
-  .join .eyebrow, .join .lead { color: rgba(246, 241, 231, .72); }
+  .join .eyebrow { color: var(--on-navy-soft); }
+  .join .lead { color: var(--on-navy); }
   .howto { list-style: none; padding: 0; margin: 40px 0 0; }
-  .howto li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 16px 0; border-top: 1px solid var(--navy-line); }
-  .howto li b { font-family: var(--serif); font-size: 22px; color: rgba(246, 241, 231, .55); font-weight: 600; }
-  .howto li strong { display: block; font-weight: 600; }
-  .howto li span { font-size: 15px; color: rgba(246, 241, 231, .72); }
-  form.f { background: var(--ivory); color: var(--text); padding: 40px; }
-  .f .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .f label { display: block; font-size: 13.5px; font-weight: 600; margin: 0 0 7px; color: var(--ink); }
+  .howto li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 12px; padding: 18px 0; border-top: 1px solid var(--navy-line); }
+  .howto li b { font-family: var(--serif); font-size: 24px; font-weight: 600; color: rgba(246, 241, 231, .55); }
+  .howto li strong { display: block; font-size: 16px; }
+  .howto li span { font-size: 15px; color: rgba(246, 241, 231, .75); }
+  form.f { background: var(--ivory); color: var(--text); padding: 48px; }
+  .f .ftitle { font-family: var(--serif); font-size: 32px; font-weight: 600; color: var(--ink); margin: 0 0 24px; }
+  .f .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 0; }
+  .f label { display: block; font-size: 14px; font-weight: 600; margin: 0 0 8px; color: var(--ink); }
   .f .fld { margin-bottom: 18px; }
-  .f input, .f select, .f textarea { width: 100%; font: 400 16px var(--sans); color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 2px; padding: 13px 14px; }
-  .f textarea { min-height: 92px; resize: vertical; }
+  .f input, .f select, .f textarea { width: 100%; min-width: 0; font: 400 16px var(--sans); color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 0; padding: 14px; }
+  .f input, .f select { height: 52px; }
+  .f .check input { height: 18px; }
+  .f textarea { min-height: 88px; resize: vertical; }
   .f input:focus, .f select:focus, .f textarea:focus { outline: 2px solid var(--navy); outline-offset: 1px; border-color: var(--navy); }
-  .f .check { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: 14px; color: var(--muted); margin: 6px 0 24px; }
-  .f .check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--navy); }
+  .f .check { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; font-weight: 400; line-height: 1.5; color: var(--muted); margin: 6px 0 24px; }
+  .f .check input { width: 18px; height: 18px; margin: 2px 0 0; padding: 0; accent-color: var(--navy); }
   .f .check a { color: var(--navy); font-weight: 600; }
-  .f .btn { width: 100%; justify-content: center; padding: 17px; font-size: 16px; }
-  .f .note { font-size: 13px; color: var(--muted); margin: 14px 0 0; text-align: center; }
+  .f .btn { width: 100%; padding: 19px; font-size: 17px; }
+  .f .note { font-size: 13.5px; color: var(--muted); margin: 14px 0 0; text-align: center; }
+  .opt { font-weight: 400; color: var(--muted); }
   .hp { position: absolute; left: -9999px; }
   .msg { display: none; padding: 16px 18px; margin-bottom: 20px; font-size: 15px; border: 1px solid; }
   .msg.ok { display: block; border-color: #2E6B4F; background: #EAF3EE; color: #1D4A35; }
   .msg.err { display: block; border-color: #9B2C2C; background: #FBEDED; color: #7A1F1F; }
 
   /* ---------- contatti ---------- */
-  .contacts .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
-  .clist { list-style: none; padding: 0; margin: 0; }
-  .clist li { padding: 22px 0; border-bottom: 1px solid var(--line); }
-  .clist li:first-child { border-top: 1px solid var(--ink); }
-  .clist small { display: block; font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  .clist a, .clist span { font-family: var(--serif); font-size: 26px; color: var(--ink); text-decoration: none; }
+  .contacts .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px; }
+  .clist { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--ink); }
+  .clist li { padding: 22px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+  .clist small { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  .clist a, .clist span { font-family: var(--serif); font-size: 28px; color: var(--ink); text-decoration: none; line-height: 1.25; }
   .clist a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 5px; }
 
-  /* ---------- footer ---------- */
-  footer { background: var(--ink); color: rgba(255, 255, 255, .72); padding: 56px 0 40px; font-size: 14.5px; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: end; }
+  /* ---------- piè di pagina ---------- */
+  footer { background: var(--ink); color: rgba(255, 255, 255, .75); padding: 56px 0; font-size: 14.5px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: center; }
+  footer .brandf { display: flex; align-items: center; gap: 32px; }
+  footer .flogo { height: 132px; width: auto; }
+  footer .who-f { display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+  footer .who-f strong { color: var(--white); font-weight: 600; }
   footer .wordmark b { color: var(--white); }
   footer .wordmark span { color: rgba(255, 255, 255, .55); }
-  footer .flogo { height: 118px; width: auto; }
-  footer a { color: rgba(255, 255, 255, .85); }
-  footer .legal { display: flex; gap: 22px; flex-wrap: wrap; }
+  footer a { color: rgba(255, 255, 255, .9); }
+  footer .legal { display: flex; gap: 28px; flex-wrap: wrap; }
 
-  /* ---------- privacy ---------- */
+  /* ---------- informativa ---------- */
   dialog { max-width: 640px; width: calc(100% - 32px); border: 0; padding: 40px; background: var(--ivory); color: var(--text); }
   dialog::backdrop { background: rgba(14, 31, 58, .6); }
   dialog h3 { margin-bottom: 16px; }
   dialog p { font-size: 15px; margin: 0 0 12px; }
 
-  /* ---------- responsive ---------- */
-  @media (max-width: 960px) {
-    section { padding: 72px 0; }
-    .hero { padding: 72px 0; }
-    .hero .wrap, .why .wrap, .who .head, .join .wrap, .contacts .wrap { grid-template-columns: 1fr; gap: 40px; }
+  /* ---------- tablet ---------- */
+  @media (max-width: 1080px) {
+    section { padding: 88px 0; }
+    .hero .wrap { grid-template-columns: 1fr; min-height: 0; padding-top: 64px; padding-bottom: 112px; gap: 40px; }
+    .hero-logo { display: none; }
+    .next { grid-template-columns: 1fr; gap: 20px; padding: 28px; }
+    .next .when { border-right: 0; padding-right: 0; flex-direction: row; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+    .next .when .lbl { width: 100%; }
+    .next .d { font-size: 52px; }
+    .next .ttl { font-size: 28px; }
+    .why .wrap, .who .head, .whatis .wrap, .join .wrap, .contacts .wrap { grid-template-columns: 1fr; gap: 40px; }
+    .why .body { padding-top: 0; }
     .fgrid, .mgrid { grid-template-columns: 1fr; }
-    .themes { grid-template-columns: 1fr 1fr; }
-    .steps { grid-template-columns: 1fr 1fr; }
+    .mgrid { gap: 36px; }
+    .themes, .evgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .stats { grid-template-columns: 1fr; }
     .stat, .stat + .stat { padding: 28px 0; border-left: 0; border-bottom: 1px solid var(--line); }
-    nav.menu { display: none; position: absolute; top: 88px; left: 0; right: 0; background: var(--ivory); flex-direction: column; align-items: stretch; gap: 0; padding: 8px 24px 24px; border-bottom: 1px solid var(--line); }
+    nav.menu { display: none; position: absolute; top: 96px; left: 0; right: 0; background: var(--ivory); flex-direction: column; align-items: stretch; gap: 0; padding: 8px 24px 24px; border-bottom: 1px solid var(--line); }
     nav.menu.open { display: flex; }
     nav.menu a { padding: 14px 0; border-bottom: 1px solid var(--line); }
-    nav.menu a.btn { margin-top: 16px; justify-content: center; border-bottom: 0; }
-    .burger { display: block; }
+    nav.menu a.btn { display: none; }
+    .top-actions { display: flex; }
   }
-  @media (max-width: 600px) {
+  /* ---------- telefono ---------- */
+  @media (max-width: 640px) {
     body { font-size: 16px; }
+    html { scroll-padding-top: 80px; }
     .wrap { padding: 0 16px; }
-    .isnot, .themes, .steps { grid-template-columns: 1fr; }
-    .ev { grid-template-columns: 64px 1fr; gap: 16px; }
-    .ev .day { font-size: 40px; }
-    .ev .act { grid-column: 2; }
+    section { padding: 72px 0; }
+    .top .wrap { height: 72px; }
+    .brand img { height: 54px; }
+    nav.menu { top: 72px; padding: 8px 16px 20px; }
+    .hero .wrap { padding-top: 44px; padding-bottom: 104px; }
+    .hero .ring.r1 { width: 380px; height: 380px; right: -170px; top: 0; margin-top: -120px; }
+    .hero .ring.r2 { display: none; }
+    .hero .ctas { flex-direction: column; }
+    .hero .ctas .btn { width: 100%; }
+    .next { margin-top: -64px; padding: 22px; }
+    .next .btn { width: 100%; }
+    .isnot, .themes, .evgrid, .steps { grid-template-columns: 1fr; }
+    .card, .fcard, form.f, dialog { padding: 26px; }
+    .ev { padding: 22px; min-height: 0; }
+    .ev .day { font-size: 52px; }
+    .ev .title { font-size: 23px; }
     .f .row { grid-template-columns: 1fr; gap: 0; }
-    form.f, .card, .fcard, .next, dialog { padding: 26px; }
-    .brand img { height: 60px; }
-    .wordmark b { font-size: 21px; }
+    .clist a, .clist span { font-size: 23px; }
+    footer .flogo { height: 104px; }
+    footer .brandf { flex-direction: column; align-items: flex-start; gap: 20px; }
   }
 </style>
 </head>
@@ -256,48 +314,59 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="OSM Business Club Bologna, torna all'inizio">
-      <!-- LOGO: logo.png (nero, trasparente). Se manca, compare la scritta testuale -->
-      <img src="logo.png" alt="OSM Business Club Bologna" onerror="this.remove(); document.querySelectorAll('.wm-fallback').forEach(function (e) { e.hidden = false; });">
+      <img src="logo.png" alt="OSM Business Club Bologna" onerror="this.remove(); document.querySelector('.wm-fallback').hidden = false;">
       <span class="wordmark wm-fallback" hidden><b>OSM Business Club</b><span>Bologna</span></span>
     </a>
-    <button class="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     <nav class="menu" id="menu">
       <a href="#club">Il Club</a>
       <a href="#per-chi">Per chi è</a>
       <a href="#formati">Formati</a>
       <a href="#calendario">Calendario</a>
       <a href="#contatti">Contatti</a>
-      <a class="btn btn-dark" href="#iscriviti">Iscriviti</a>
+      <a class="btn btn-dark" href="#iscriviti">Richiedi il tuo posto</a>
     </nav>
+    <div class="top-actions">
+      <a class="btn btn-dark" href="#iscriviti">Iscriviti</a>
+      <button class="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
+  <!-- APERTURA -->
   <section class="hero">
+    <span class="ring r1" aria-hidden="true"></span>
+    <span class="ring r2" aria-hidden="true"></span>
     <div class="wrap">
       <div>
         <p class="eyebrow">Bologna · Il club degli imprenditori del territorio</p>
-        <h1>Un'azienda che funziona al meglio. Anche senza di te.</h1>
-        <p class="lead">OSM Business Club Bologna è il luogo in cui i titolari d'azienda si incontrano, si confrontano e guardano i propri problemi da prospettive diverse. Formazione di valore, relazioni vere, nessun pitch.</p>
+        <h1>Un'azienda che funziona al meglio. <em class="serif">Anche senza di te.</em></h1>
+        <p class="lead">Il luogo in cui i titolari d'azienda si incontrano, si confrontano e guardano i propri problemi da prospettive diverse. Formazione di valore, relazioni vere, nessun pitch.</p>
         <div class="ctas">
           <a class="btn btn-light" href="#iscriviti">Iscriviti al prossimo incontro</a>
           <a class="btn btn-ghost" href="#calendario">Guarda il calendario</a>
         </div>
       </div>
-      <aside class="next" id="next" aria-live="polite"></aside>
+      <div class="hero-logo"><img src="logo-bianco.png" alt="" width="420" height="416"></div>
     </div>
   </section>
+
+  <!-- PROSSIMO INCONTRO -->
+  <div class="next-wrap">
+    <div class="wrap">
+      <div class="next" id="next" aria-live="polite"></div>
+    </div>
+  </div>
 
   <!-- PERCHÉ NASCE -->
   <section class="why" id="club">
     <div class="wrap">
       <div>
         <p class="eyebrow">Perché nasce</p>
-        <blockquote>Guidare un'azienda oggi significa decidere quasi sempre da soli.</blockquote>
+        <p class="quote">«Guidare un'azienda oggi significa decidere quasi sempre da soli.»</p>
       </div>
-      <div>
+      <div class="body">
         <p>Il confronto con chi vive gli stessi problemi manca troppo spesso. Da questa esigenza nasce <strong>OSM Business Club Bologna</strong>.</p>
         <p>Un club dove si incontrano imprenditori, consulenti e professionisti. Un luogo dove i titolari si confrontano e vedono i problemi della propria azienda da prospettive diverse.</p>
         <p>Il valore viene prima di tutto: si entra per imparare qualcosa di utile e si torna perché ne vale la pena.</p>
@@ -320,10 +389,12 @@
   </section>
 
   <!-- COS'È -->
-  <section>
+  <section class="whatis">
     <div class="wrap">
-      <p class="eyebrow">Che cosa è</p>
-      <h2>Un ecosistema permanente di relazione tra imprenditori.</h2>
+      <div>
+        <p class="eyebrow">Che cosa è</p>
+        <h2>Un ecosistema permanente di relazione tra imprenditori.</h2>
+      </div>
       <div class="isnot">
         <div class="card dark">
           <span class="tag">È</span>
@@ -353,12 +424,12 @@
         </div>
       </div>
       <div class="themes">
-        <div class="theme"><span class="n">01</span><h3>Persone</h3><p>Selezione, leadership, collaboratori.</p></div>
-        <div class="theme"><span class="n">02</span><h3>Organizzazione e delega</h3><p>Ruoli chiari, controllo senza fare tutto da solo.</p></div>
-        <div class="theme"><span class="n">03</span><h3>Denaro e libertà</h3><p>Redditività, cash flow, margini.</p></div>
-        <div class="theme"><span class="n">04</span><h3>Vendite e crescita</h3><p>Acquisizione clienti e sviluppo.</p></div>
-        <div class="theme"><span class="n">05</span><h3>Imprenditore</h3><p>Da operativo a strategico.</p></div>
-        <div class="theme"><span class="n">06</span><h3>Tempo e cultura finanziaria</h3><p>Priorità, tempo, consapevolezza economica.</p></div>
+        <div class="theme"><span class="n">01</span><div><h3>Persone</h3><p>Selezione, leadership, collaboratori.</p></div></div>
+        <div class="theme"><span class="n">02</span><div><h3>Organizzazione e delega</h3><p>Ruoli chiari, controllo senza fare tutto da solo.</p></div></div>
+        <div class="theme"><span class="n">03</span><div><h3>Denaro e libertà</h3><p>Redditività, cash flow, margini.</p></div></div>
+        <div class="theme"><span class="n">04</span><div><h3>Vendite e crescita</h3><p>Acquisizione clienti e sviluppo.</p></div></div>
+        <div class="theme"><span class="n">05</span><div><h3>Imprenditore</h3><p>Da operativo a strategico.</p></div></div>
+        <div class="theme"><span class="n">06</span><div><h3>Tempo e cultura finanziaria</h3><p>Priorità, tempo, consapevolezza economica.</p></div></div>
       </div>
     </div>
   </section>
@@ -371,28 +442,30 @@
       <p class="lead">Ogni incontro ha uno scopo diverso: dalla formazione in sala al confronto riservato a pochi.</p>
       <div class="fgrid">
         <article class="fcard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F6F1E7" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
           <span class="freq">2 volte al mese · In sede</span>
           <h3>Business Day</h3>
           <p>Due ore di formazione su un tema concreto, con casi reali e uno strumento applicabile. Poi aperitivo e networking con gli altri imprenditori.</p>
-          <ul><li>16:00 · Accoglienza</li><li>16:30 – 18:30 · Formazione</li><li>18:30 · Aperitivo e networking</li></ul>
+          <div class="rows"><div><span>Accoglienza</span><span>16:00</span></div><div><span>Formazione</span><span>16:30 – 18:30</span></div><div><span>Aperitivo e networking</span><span>18:30</span></div></div>
         </article>
         <article class="fcard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F6F1E7" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg>
           <span class="freq">2 volte al mese · Online</span>
           <h3>Webinar</h3>
           <p>Approfondimenti online su un tema specifico del trimestre, per portare nuovi spunti in azienda senza spostarti.</p>
-          <ul><li>Un tema, un approfondimento concreto</li><li>Da ufficio o da casa</li></ul>
+          <div class="rows"><div><span>Un tema, un approfondimento concreto</span></div><div><span>Da ufficio o da casa</span></div></div>
         </article>
-        <article class="fcard">
+        <article class="fcard light">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0E1F3A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v7a3 3 0 0 1-3 3M8 3v18M5 3v7M11 3v7a3 3 0 0 1-3 3"/><path d="M17 21V3c-2 1.5-3 4-3 7h3"/></svg>
           <span class="freq">1 volta a trimestre · Su invito</span>
           <h3>Business Dinner</h3>
           <p>Un tavolo ristretto, pochi titolari, un solo tema. Il momento più riservato del Club, solo su invito personale.</p>
-          <ul><li>Pochi posti</li><li>Solo su invito personale</li></ul>
+          <div class="rows"><div><span>Pochi posti</span></div><div><span>Solo su invito personale</span></div></div>
         </article>
       </div>
 
       <div class="path">
-        <p class="eyebrow">Il percorso</p>
-        <p class="motto">Prima il problema. Poi il principio. Poi lo strumento.</p>
+        <p class="motto">Prima il problema. <em class="serif">Poi il principio.</em> Poi lo strumento.</p>
         <div class="steps">
           <div class="step"><b>Un invito</b><span>Legato a un problema che riconosci come tuo.</span></div>
           <div class="step"><b>Due ore di valore</b><span>Un tema, casi reali, uno strumento applicabile.</span></div>
@@ -409,7 +482,7 @@
     <div class="wrap">
       <div class="cal-head">
         <div>
-          <p class="eyebrow">Calendario</p>
+          <p class="eyebrow" id="cal-range">Calendario</p>
           <h2>I prossimi incontri.</h2>
         </div>
         <div class="filters" role="group" aria-label="Filtra per formato">
@@ -429,9 +502,9 @@
       <p class="eyebrow">Chi incontri al Club</p>
       <h2>Persone che vivono i tuoi stessi problemi.</h2>
       <div class="mgrid">
-        <div class="card"><span class="tag">Imprenditori</span><h3>Titolari del territorio</h3><p>Aziende bolognesi con persone e processi da gestire: il confronto nasce tra chi prende ogni giorno le stesse decisioni.</p></div>
-        <div class="card"><span class="tag">Speaker</span><h3>Esperienza sul campo</h3><p>Chi sale sul palco non deve dimostrare quanto sa: deve farti vedere qualcosa che prima non vedevi.</p></div>
-        <div class="card"><span class="tag">Consulenti</span><h3>OSM Partner Bologna</h3><p>Consulenti che affiancano ogni giorno le aziende su persone, organizzazione, numeri e vendite. Al Club ascoltano prima di proporre.</p></div>
+        <div><span class="tag">Imprenditori</span><h3>Titolari del territorio</h3><p>Aziende bolognesi con persone e processi da gestire: il confronto nasce tra chi prende ogni giorno le stesse decisioni.</p></div>
+        <div><span class="tag">Speaker</span><h3>Esperienza sul campo</h3><p>Chi sale sul palco non deve dimostrare quanto sa: deve farti vedere qualcosa che prima non vedevi.</p></div>
+        <div><span class="tag">Consulenti</span><h3>OSM Partner Bologna</h3><p>Consulenti che affiancano ogni giorno le aziende su persone, organizzazione, numeri e vendite. Al Club ascoltano prima di proporre.</p></div>
       </div>
     </div>
   </section>
@@ -442,7 +515,7 @@
       <div>
         <p class="eyebrow">Come partecipare</p>
         <h2>Posti limitati, poche regole semplici.</h2>
-        <p class="lead">Si entra su invito o su candidatura. Compila il modulo: ti ricontattiamo noi per confermare il tuo posto.</p>
+        <p class="lead">Si entra su invito o su candidatura. Compila il modulo: ti ricontattiamo noi entro 48 ore per confermare il tuo posto.</p>
         <ol class="howto">
           <li><b>01</b><div><strong>Le iscrizioni aprono</strong><span>Tre settimane prima di ogni incontro.</span></div></li>
           <li><b>02</b><div><strong>Confermi il tuo posto</strong><span>In ordine di iscrizione, fino a esaurimento posti.</span></div></li>
@@ -452,6 +525,7 @@
       </div>
 
       <form class="f" id="form" novalidate>
+        <p class="ftitle">Richiedi il tuo posto</p>
         <div class="msg" id="msg" role="status"></div>
         <div class="fld">
           <label for="evento">A cosa vuoi partecipare?</label>
@@ -460,8 +534,6 @@
         <div class="row">
           <div class="fld"><label for="nome">Nome</label><input id="nome" name="Nome" autocomplete="given-name" required></div>
           <div class="fld"><label for="cognome">Cognome</label><input id="cognome" name="Cognome" autocomplete="family-name" required></div>
-        </div>
-        <div class="row">
           <div class="fld"><label for="azienda">Azienda</label><input id="azienda" name="Azienda" autocomplete="organization" required></div>
           <div class="fld"><label for="ruolo">Ruolo in azienda</label>
             <select id="ruolo" name="Ruolo" required>
@@ -469,8 +541,6 @@
               <option>Titolare</option><option>Socio</option><option>Amministratore delegato</option><option>Altro</option>
             </select>
           </div>
-        </div>
-        <div class="row">
           <div class="fld"><label for="collaboratori">Collaboratori in azienda</label>
             <select id="collaboratori" name="Collaboratori" required>
               <option value="">Seleziona</option>
@@ -480,7 +550,7 @@
           <div class="fld"><label for="telefono">Telefono</label><input id="telefono" name="Telefono" type="tel" autocomplete="tel" required></div>
         </div>
         <div class="fld"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
-        <div class="fld"><label for="note">Messaggio <span style="font-weight:400;color:var(--muted)">(facoltativo)</span></label><textarea id="note" name="Messaggio" placeholder="Un tema che ti sta a cuore, una domanda, come ci hai conosciuto…"></textarea></div>
+        <div class="fld"><label for="note">Messaggio <span class="opt">(facoltativo)</span></label><textarea id="note" name="Messaggio" placeholder="Un tema che ti sta a cuore, una domanda, come ci hai conosciuto…"></textarea></div>
         <input class="hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="check"><input type="checkbox" id="privacy" required><span>Ho letto l'<a href="#" data-privacy>informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato sulle iniziative di OSM Business Club Bologna.</span></label>
         <button class="btn btn-dark" type="submit" id="send">Invia la richiesta</button>
@@ -501,7 +571,7 @@
         <li><small>Sede</small><a href="https://www.google.com/maps/search/?api=1&query=Via+Persicetana+Vecchia+24+40132+Bologna" target="_blank" rel="noopener">Via Persicetana Vecchia 24, 40132 Bologna</a></li>
         <li><small>Telefono</small><a href="tel:+393313205200">331 320 5200</a></li>
         <li><small>Email</small><a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a></li>
-        <li><small>Social</small><a href="https://www.instagram.com/osmbusinessclub/" target="_blank" rel="noopener">Instagram</a> <span>·</span> <a href="https://www.facebook.com/osmbusinessclub" target="_blank" rel="noopener">Facebook</a></li>
+        <li><small>Social</small><span><a href="https://www.instagram.com/osmbusinessclub/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/osmbusinessclub" target="_blank" rel="noopener">Facebook</a></span></li>
       </ul>
     </div>
   </section>
@@ -509,10 +579,10 @@
 
 <footer>
   <div class="wrap">
-    <div>
+    <div class="brandf">
       <img class="flogo" src="logo-bianco.png" alt="OSM Business Club Bologna" onerror="this.remove(); document.querySelector('.fwm').hidden = false;">
       <span class="wordmark fwm" hidden><b>OSM Business Club</b><span>Bologna</span></span>
-      <p style="margin:18px 0 0">Un'iniziativa di OSM Partner Bologna · Via Persicetana Vecchia 24, 40132 Bologna</p>
+      <div class="who-f"><strong>Un'iniziativa di OSM Partner Bologna</strong><span>Via Persicetana Vecchia 24, 40132 Bologna</span></div>
     </div>
     <div class="legal">
       <a href="#" data-privacy>Informativa privacy</a>
@@ -558,8 +628,11 @@ var EVENTI = [
 var WEB3FORMS_KEY = 'a3fa3367-8427-4e0c-8e6a-5fdefbdc670d';
 
 var MESI = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+var MESI_BREVI = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
 var GIORNI = ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'];
-var ORARI = { day: 'In sede · 16:00 accoglienza · 16:30–18:30 · aperitivo', webinar: 'Online', dinner: 'Solo su invito personale' };
+var GIORNI_LUNGHI = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+var DOVE = { day: 'In sede · 16:30–18:30', webinar: 'Online', dinner: 'Solo su invito personale' };
+var MOSTRATI = 6;   // schede visibili prima di "Vedi tutti"
 
 function parseData(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
 function oggi() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
@@ -568,46 +641,66 @@ function etichetta(e) { var d = parseData(e.data); return GIORNI[d.getDay()] + '
 
 var futuri = EVENTI.filter(function (e) { return parseData(e.data) >= oggi(); })
                    .sort(function (a, b) { return parseData(a.data) - parseData(b.data); });
+var filtroAttivo = 'tutti', mostraTutti = false;
 
-function renderCal(filtro) {
-  var lista = futuri.filter(function (e) { return filtro === 'tutti' || e.formato === filtro; });
+function renderRange() {
+  var el = document.getElementById('cal-range');
+  if (!futuri.length) { el.textContent = 'Calendario'; return; }
+  var a = parseData(futuri[0].data), b = parseData(futuri[futuri.length - 1].data);
+  el.textContent = 'Calendario · ' + (a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear()
+    ? MESI[a.getMonth()] + ' ' + a.getFullYear()
+    : MESI[a.getMonth()] + (a.getFullYear() !== b.getFullYear() ? ' ' + a.getFullYear() : '') + ' – ' + MESI[b.getMonth()] + ' ' + b.getFullYear());
+}
+
+function renderCal() {
+  var lista = futuri.filter(function (e) { return filtroAttivo === 'tutti' || e.formato === filtroAttivo; });
   var box = document.getElementById('cal');
   if (!lista.length) {
     box.innerHTML = '<div class="empty"><h3>Nuove date in arrivo</h3><p>Stiamo definendo i prossimi incontri. Lasciaci i tuoi contatti e ti avvisiamo appena si aprono le iscrizioni.</p><a class="btn btn-outline" href="#iscriviti">Avvisami</a></div>';
     return;
   }
-  var html = '', meseCorrente = '';
-  lista.forEach(function (e) {
-    var d = parseData(e.data), chiave = d.getFullYear() + '-' + d.getMonth();
-    if (chiave !== meseCorrente) {
-      if (meseCorrente) html += '</div>';
-      html += '<div class="month"><h3>' + MESI[d.getMonth()] + ' ' + d.getFullYear() + ' <small>' + esc(e.tema) + '</small></h3>';
-      meseCorrente = chiave;
-    }
+  var visibili = mostraTutti ? lista : lista.slice(0, MOSTRATI);
+  var html = '<div class="evgrid">';
+  visibili.forEach(function (e) {
+    var d = parseData(e.data);
     var azione = e.formato === 'dinner'
       ? '<span class="invite">Su invito</span>'
-      : '<a class="btn btn-outline" href="#iscriviti" data-iscrivi="' + esc(e.data) + '">Iscriviti</a>';
-    html += '<article class="ev"><div class="day">' + d.getDate() + '<small>' + GIORNI[d.getDay()] + '</small></div>' +
-            '<div><div class="kind">' + esc(e.nome) + '<i>' + ORARI[e.formato] + '</i></div><div class="title">' + esc(e.titolo) + '</div></div>' +
-            '<div class="act">' + azione + '</div></article>';
+      : '<a class="go" href="#iscriviti" data-iscrivi="' + esc(e.data) + '">Iscriviti</a>';
+    html += '<article class="ev">' +
+      '<div class="top"><div class="date"><div class="day">' + d.getDate() + '</div><div class="mw"><span>' + MESI_BREVI[d.getMonth()] + '</span><span>' + GIORNI[d.getDay()] + '</span></div></div>' +
+      '<div class="badge">' + esc(e.nome) + '</div></div>' +
+      '<div class="title">' + esc(e.titolo) + '</div>' +
+      '<div class="foot"><span class="where">' + DOVE[e.formato] + '</span>' + azione + '</div></article>';
   });
-  box.innerHTML = html + '</div>';
+  html += '</div>';
+  if (lista.length > MOSTRATI) {
+    html += '<div class="cal-more"><button type="button" class="btn btn-outline" id="more">' +
+      (mostraTutti ? 'Mostra meno' : 'Vedi tutti i ' + lista.length + ' incontri') + '</button></div>';
+  }
+  box.innerHTML = html;
+  var more = document.getElementById('more');
+  if (more) more.addEventListener('click', function () {
+    mostraTutti = !mostraTutti; renderCal();
+    if (!mostraTutti) document.getElementById('calendario').scrollIntoView();
+  });
 }
 
 function renderNext() {
   var el = document.getElementById('next');
   var n = futuri.filter(function (e) { return e.formato !== 'dinner'; })[0];
   if (!n) {
-    el.innerHTML = '<p class="eyebrow">Prossimo incontro</p><p>Le nuove date sono in arrivo. Lasciaci i tuoi contatti: ti avvisiamo appena si aprono le iscrizioni.</p><a class="btn btn-light" href="#iscriviti">Avvisami</a>';
+    el.innerHTML = '<div class="when"><span class="lbl">Prossimo incontro</span></div>' +
+      '<div class="what"><p class="empty-t">Le nuove date sono in arrivo. Lasciaci i tuoi contatti: ti avvisiamo appena si aprono le iscrizioni.</p></div>' +
+      '<a class="btn btn-dark" href="#iscriviti">Avvisami</a>';
     return;
   }
   var d = parseData(n.data);
-  el.innerHTML = '<p class="eyebrow">Prossimo incontro</p>' +
-    '<div class="d">' + d.getDate() + ' ' + MESI[d.getMonth()] + '</div>' +
-    '<div class="t">' + GIORNI[d.getDay()] + ' · ' + esc(n.nome) + '</div>' +
-    '<p>' + esc(n.titolo) + '</p>' +
-    '<div class="meta">' + ORARI[n.formato] + '</div>' +
-    '<a class="btn btn-light" style="margin-top:22px" href="#iscriviti" data-iscrivi="' + esc(n.data) + '">Riserva il tuo posto</a>';
+  el.innerHTML = '<div class="when"><span class="lbl">Prossimo incontro</span>' +
+    '<span class="d">' + d.getDate() + ' ' + MESI_BREVI[d.getMonth()].toLowerCase() + '</span>' +
+    '<span class="wd">' + GIORNI_LUNGHI[d.getDay()] + '</span></div>' +
+    '<div class="what"><div class="kind">' + esc(n.nome) + ' · ' + DOVE[n.formato] + '</div>' +
+    '<div class="ttl">' + esc(n.titolo) + '</div></div>' +
+    '<a class="btn btn-dark" href="#iscriviti" data-iscrivi="' + esc(n.data) + '">Riserva il tuo posto</a>';
 }
 
 function renderSelect() {
@@ -634,7 +727,8 @@ document.querySelectorAll('.filters button').forEach(function (b) {
   b.addEventListener('click', function () {
     document.querySelectorAll('.filters button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
     b.setAttribute('aria-pressed', 'true');
-    renderCal(b.getAttribute('data-f'));
+    filtroAttivo = b.getAttribute('data-f'); mostraTutti = false;
+    renderCal();
   });
 });
 
@@ -687,7 +781,7 @@ document.getElementById('form').addEventListener('submit', function (ev) {
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
-renderNext(); renderCal('tutti'); renderSelect();
+renderRange(); renderNext(); renderCal(); renderSelect();
 </script>
 </body>
 </html>
