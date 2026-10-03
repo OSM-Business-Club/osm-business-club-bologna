@@ -150,7 +150,7 @@
   .formats h2, .formats h3 { color: var(--ivory); }
   .formats .eyebrow { color: var(--on-navy-soft); }
   .formats .lead { color: var(--on-navy); }
-  .fgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+  .fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
   .fcard { background: var(--navy-2); border: 1px solid rgba(246, 241, 231, .14); padding: 40px; display: flex; flex-direction: column; gap: 18px; }
   .fcard svg { width: 36px; height: 36px; }
   .fcard .freq { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--on-navy-soft); }
@@ -438,7 +438,7 @@
   <section class="formats" id="formati">
     <div class="wrap">
       <p class="eyebrow">I formati</p>
-      <h2>Tre modi di vivere il Club.</h2>
+      <h2>Quattro modi di vivere il Club.</h2>
       <p class="lead">Ogni incontro ha uno scopo diverso: dalla formazione in sala al confronto riservato a pochi.</p>
       <div class="fgrid">
         <article class="fcard">
@@ -453,7 +453,7 @@
           <span class="freq">2 volte al mese · Online</span>
           <h3>Webinar</h3>
           <p>Approfondimenti online su un tema specifico del trimestre, per portare nuovi spunti in azienda senza spostarti.</p>
-          <div class="rows"><div><span>Un tema, un approfondimento concreto</span></div><div><span>Da ufficio o da casa</span></div></div>
+          <div class="rows"><div><span>Orario</span><span>18:30 – 19:30</span></div><div><span>Un tema, un approfondimento concreto</span></div><div><span>Da ufficio o da casa</span></div></div>
         </article>
         <article class="fcard light">
           <svg viewBox="0 0 24 24" fill="none" stroke="#0E1F3A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v7a3 3 0 0 1-3 3M8 3v18M5 3v7M11 3v7a3 3 0 0 1-3 3"/><path d="M17 21V3c-2 1.5-3 4-3 7h3"/></svg>
@@ -461,6 +461,13 @@
           <h3>Business Dinner</h3>
           <p>Un tavolo ristretto, pochi titolari, un solo tema. Il momento più riservato del Club, solo su invito personale.</p>
           <div class="rows"><div><span>Pochi posti</span></div><div><span>Solo su invito personale</span></div></div>
+        </article>
+        <article class="fcard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F6F1E7" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M8.5 10.5h7M8.5 13.5h4.5"/></svg>
+          <span class="freq">Sempre attiva · Riservata</span>
+          <h3>Community WhatsApp</h3>
+          <p>Il gruppo WhatsApp del Club: aggiornamenti sui prossimi incontri, spunti e confronto tra imprenditori anche tra un evento e l'altro.</p>
+          <div class="rows"><div><span>Avvisi sui prossimi incontri</span></div><div><span>Riservata a chi partecipa agli eventi</span></div></div>
         </article>
       </div>
 
@@ -631,7 +638,7 @@ var MESI = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Ag
 var MESI_BREVI = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
 var GIORNI = ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'];
 var GIORNI_LUNGHI = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
-var DOVE = { day: 'In sede · 16:30–18:30', webinar: 'Online', dinner: 'Solo su invito personale' };
+var DOVE = { day: 'In sede · 16:30–18:30', webinar: 'Online · 18:30–19:30', dinner: 'Solo su invito personale' };
 var MOSTRATI = 6;   // schede visibili prima di "Vedi tutti"
 
 function parseData(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
