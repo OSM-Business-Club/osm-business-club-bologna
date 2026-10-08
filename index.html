@@ -557,6 +557,22 @@
           <div class="fld"><label for="telefono">Telefono</label><input id="telefono" name="Telefono" type="tel" autocomplete="tel" required></div>
         </div>
         <div class="fld"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
+        <div class="fld"><label for="consulente">Consulente che ti ha invitato <span class="opt">(facoltativo)</span></label>
+          <select id="consulente" name="Consulente">
+            <option value="">Seleziona</option>
+            <option>Rea Francesco</option>
+            <option>Partipilo Papalia Carlo</option>
+            <option>Gorgò Carlo</option>
+            <option>Gorgò Lorenzo</option>
+            <option>Gentilini Silvia</option>
+            <option>Gjuzi Greta</option>
+            <option>Fedozzi Anna Maria</option>
+            <option>Livoni Omar</option>
+            <option>Rossi Nicola</option>
+            <option>Bellanova Francesco</option>
+            <option>Acquafresca Fulvio</option>
+          </select>
+        </div>
         <div class="fld"><label for="note">Messaggio <span class="opt">(facoltativo)</span></label><textarea id="note" name="Messaggio" placeholder="Un tema che ti sta a cuore, una domanda, come ci hai conosciuto…"></textarea></div>
         <input class="hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="check"><input type="checkbox" id="privacy" required><span>Ho letto l'<a href="#" data-privacy>informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato sulle iniziative di OSM Business Club Bologna.</span></label>
@@ -765,6 +781,7 @@ document.getElementById('form').addEventListener('submit', function (ev) {
   new FormData(f).forEach(function (v, k) { dati[k] = v; });
   if (dati.botcheck) return;          // compilato solo dai programmi automatici
   delete dati.botcheck;
+  if (!dati.Consulente) dati.Consulente = 'Non indicato';
   dati.access_key = WEB3FORMS_KEY;
   dati.subject = 'Nuova richiesta OSM Business Club — ' + dati.Evento;
   dati.from_name = 'Sito OSM Business Club Bologna';
