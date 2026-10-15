@@ -618,7 +618,7 @@
   <h3 id="privacy-title">Informativa privacy sintetica</h3>
   <!-- TESTO DA FAR VERIFICARE: sostituire con l'informativa completa fornita dal consulente privacy / DPO di OSM Partner Bologna -->
   <p>I dati inseriti nel modulo (nome, cognome, azienda, ruolo, numero di collaboratori, telefono, email ed eventuale messaggio) sono trattati da OSM Partner Bologna, Via Persicetana Vecchia 24, 40132 Bologna, al solo scopo di gestire la tua richiesta di partecipazione e ricontattarti sulle iniziative di OSM Business Club Bologna.</p>
-  <p>Per l'invio, il modulo utilizza il servizio esterno Web3Forms, che inoltra i dati via email a OSM Partner Bologna. I dati non vengono ceduti a terzi per finalità commerciali. Puoi chiederne in qualsiasi momento l'accesso, la modifica o la cancellazione scrivendo a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a>.</p>
+  <p>Per l'invio, il modulo utilizza il servizio esterno Web3Forms, che inoltra i dati via email a OSM Partner Bologna, e i servizi Google di OSM Partner Bologna, che registrano la richiesta in un archivio interno e ti inviano una mail di riepilogo. I dati non vengono ceduti a terzi per finalità commerciali. Puoi chiederne in qualsiasi momento l'accesso, la modifica o la cancellazione scrivendo a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a>.</p>
   <form method="dialog"><button class="btn btn-dark" style="margin-top:12px">Chiudi</button></form>
 </dialog>
 
@@ -649,6 +649,11 @@ var EVENTI = [
    (servizio Web3Forms). Incollare qui la chiave ricevuta da web3forms.com
    ===================================================================== */
 var WEB3FORMS_KEY = 'a3fa3367-8427-4e0c-8e6a-5fdefbdc670d';
+
+/* MAIL DI CONFERMA alla persona che si iscrive + elenco iscritti nel Foglio Google.
+   Incollare qui l'indirizzo dell'app web Google Apps Script (finisce con /exec).
+   Finché è vuoto il sito funziona come prima, senza mail di conferma. */
+var CONFERMA_URL = 'https://script.google.com/macros/s/AKfycbxQw-IEkM-berinbbTEpFcDNUGgFJjBmz9hSwO3oR1lqHfFL6azs-MxEbrFkCFypqin/exec';
 
 var MESI = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 var MESI_BREVI = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
@@ -762,6 +767,36 @@ burger.addEventListener('click', function () {
 });
 menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } });
 
+/* Dati per la mail di conferma: quelli del modulo + i dettagli dell'incontro scelto */
+function datiPerConferma(dati, selEvento) {
+  var out = {};
+  Object.keys(dati).forEach(function (k) { out[k] = dati[k]; });
+  var opt = selEvento.options[selEvento.selectedIndex];
+  var e = opt && opt.getAttribute('data-d') ? EVENTI.filter(function (x) { return x.data === opt.getAttribute('data-d'); })[0] : null;
+  if (e) {
+    var d = parseData(e.data);
+    out.evNome = e.nome;
+    out.evTitolo = e.titolo;
+    out.evFormato = e.formato;
+    out.evDove = DOVE[e.formato];
+    out.evData = GIORNI_LUNGHI[d.getDay()] + ' ' + d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase() + ' ' + d.getFullYear();
+    out.evDataBreve = d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase();
+  }
+  return out;
+}
+
+/* Invio allo script Google che manda la mail e salva l'iscritto nel foglio.
+   Non blocca nulla: se fallisce, la richiesta è comunque già arrivata via email. */
+function inviaConferma(dati) {
+  if (!CONFERMA_URL) return;
+  fetch(CONFERMA_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(dati)
+  }).catch(function () {});
+}
+
 document.getElementById('form').addEventListener('submit', function (ev) {
   ev.preventDefault();
   var f = ev.target, msg = document.getElementById('msg'), btn = document.getElementById('send');
@@ -782,6 +817,7 @@ document.getElementById('form').addEventListener('submit', function (ev) {
   if (dati.botcheck) return;          // compilato solo dai programmi automatici
   delete dati.botcheck;
   if (!dati.Consulente) dati.Consulente = 'Non indicato';
+  var perConferma = datiPerConferma(dati, document.getElementById('evento'));
   dati.access_key = WEB3FORMS_KEY;
   dati.subject = 'Nuova richiesta OSM Business Club — ' + dati.Evento;
   dati.from_name = 'Sito OSM Business Club Bologna';
@@ -792,9 +828,11 @@ document.getElementById('form').addEventListener('submit', function (ev) {
     body: JSON.stringify(dati)
   }) : Promise.reject(new Error('chiave Web3Forms mancante'))).then(function (r) { return r.json(); }).then(function (r) {
     if (String(r.success) !== 'true') throw new Error(r.message || 'invio non riuscito');
+    inviaConferma(perConferma);
     f.reset(); renderSelect();
     msg.className = 'msg ok';
-    msg.textContent = 'Grazie! Abbiamo ricevuto la tua richiesta: ti ricontattiamo entro 48 ore per confermare il posto.';
+    msg.textContent = 'Grazie! Abbiamo ricevuto la tua richiesta' + (CONFERMA_URL ? ' e ti abbiamo mandato una mail di riepilogo' : '') +
+      ': ti ricontattiamo entro 48 ore per confermare il posto.';
   }).catch(function () {
     msg.className = 'msg err';
     msg.innerHTML = 'Non siamo riusciti a inviare la richiesta. Scrivici a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a> o chiama il 331 320 5200.';
