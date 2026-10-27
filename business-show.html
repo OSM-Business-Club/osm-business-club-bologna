@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Show · OSM Business Club Bologna</title>
+<meta name="description" content="Business Show di OSM Business Club Bologna: venerdì 27 novembre 2026 a Il Boccone del Prete, Golf Club Siepelunga. Una serata riservata agli imprenditori del territorio.">
+<link rel="canonical" href="https://osm-business-club.github.io/osm-business-club-bologna/business-show.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="OSM Business Club Bologna">
+<meta property="og:title" content="Business Show · 27 novembre 2026">
+<meta property="og:description" content="Una serata riservata agli imprenditori del territorio. Il Boccone del Prete, Golf Club Siepelunga (BO).">
+<meta property="og:url" content="https://osm-business-club.github.io/osm-business-club-bologna/business-show.html">
+<meta property="og:image" content="https://osm-business-club.github.io/osm-business-club-bologna/anteprima-condivisione.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E1F3A">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0E1F3A;
+    --navy-2: #182C4E;
+    --navy-3: #0A1730;
+    --on-navy: rgba(246, 241, 231, .82);
+    --on-navy-soft: rgba(246, 241, 231, .62);
+    --navy-line: rgba(246, 241, 231, .18);
+    --ivory: #F6F1E7;
+    --ivory-2: #ECE4D4;
+    --white: #FFFFFF;
+    --ink: #111111;
+    --text: #1E2430;
+    --muted: #5B6270;
+    --line: #DDD4C3;
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans: 'Hanken Grotesk', Helvetica, Arial, sans-serif;
+    --wrap: 1200px;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+  body { margin: 0; background: var(--ivory); color: var(--text); font-family: var(--sans); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; font-variant-numeric: lining-nums; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+  section { padding: 112px 0; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 20px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; color: var(--ink); margin: 0; line-height: 1.05; letter-spacing: -.005em; }
+  h2 { font-size: clamp(38px, 4.6vw, 58px); max-width: 22ch; }
+  h3 { font-size: 30px; line-height: 1.12; }
+  em.serif { font-style: italic; font-weight: 500; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 60ch; margin: 22px 0 0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 16px 28px; border-radius: 0; font: 600 16px/1.2 var(--sans); letter-spacing: .01em; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background .2s, color .2s, border-color .2s; white-space: nowrap; }
+  .btn-light { background: var(--ivory); color: var(--navy); }
+  .btn-light:hover { background: var(--white); }
+  .btn-ghost { border-color: rgba(246, 241, 231, .35); color: var(--ivory); }
+  .btn-ghost:hover { border-color: var(--ivory); }
+  .btn-dark { background: var(--navy); color: var(--ivory); }
+  .btn-dark:hover { background: var(--ink); }
+  .btn-outline { border-color: var(--navy); color: var(--navy); background: transparent; }
+  .btn-outline:hover { background: var(--navy); color: var(--ivory); }
+
+  /* ornamento: filetto con rombo centrale */
+  .orn { display: flex; align-items: center; justify-content: center; gap: 14px; color: currentColor; }
+  .orn::before, .orn::after { content: ""; height: 1px; width: 64px; background: currentColor; opacity: .55; }
+  .orn i { width: 7px; height: 7px; border: 1px solid currentColor; transform: rotate(45deg); }
+
+  /* ---------- intestazione ---------- */
+  header.top { position: sticky; top: 0; z-index: 50; background: rgba(246, 241, 231, .97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 96px; gap: 24px; }
+  .brand { display: flex; align-items: center; text-decoration: none; color: var(--ink); }
+  .brand img { height: 72px; width: auto; }
+  .wordmark { display: flex; flex-direction: column; line-height: 1; }
+  .wordmark b { font-family: var(--serif); font-size: 25px; font-weight: 700; }
+  .wordmark span { font-size: 10.5px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); margin-top: 5px; }
+  nav.menu { display: flex; align-items: center; gap: 36px; }
+  nav.menu a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--text); }
+  nav.menu a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 6px; }
+  nav.menu a.back { color: var(--muted); }
+  nav.menu a.btn { color: var(--ivory); text-decoration: none; padding: 14px 24px; }
+  .top-actions { display: none; align-items: center; gap: 8px; }
+  .top-actions .btn { min-height: 46px; padding: 12px 16px; font-size: 14px; }
+  .burger { background: none; border: 1px solid var(--line); width: 46px; height: 46px; cursor: pointer; }
+  .burger span { display: block; width: 18px; height: 1.5px; background: var(--ink); margin: 4px auto; }
+
+  /* ---------- apertura: l'invito ---------- */
+  .hero { background: radial-gradient(120% 90% at 50% 0%, var(--navy-2) 0%, var(--navy) 55%, var(--navy-3) 100%); color: var(--ivory); padding: 56px 0 72px; position: relative; overflow: hidden; }
+  .hero .ring { position: absolute; left: 50%; top: 50%; border: 1px solid rgba(246, 241, 231, .07); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); }
+  .hero .ring.r1 { width: 1180px; height: 1180px; }
+  .hero .ring.r2 { width: 900px; height: 900px; border-color: rgba(246, 241, 231, .09); }
+  .invite { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; border: 1px solid rgba(246, 241, 231, .32); padding: 10px; }
+  .invite-in { border: 1px solid rgba(246, 241, 231, .16); padding: 72px 48px 64px; text-align: center; position: relative; }
+  .invite-in .corner { position: absolute; width: 22px; height: 22px; border-color: rgba(246, 241, 231, .55); border-style: solid; }
+  .corner.tl { top: 14px; left: 14px; border-width: 1px 0 0 1px; }
+  .corner.tr { top: 14px; right: 14px; border-width: 1px 1px 0 0; }
+  .corner.bl { bottom: 14px; left: 14px; border-width: 0 0 1px 1px; }
+  .corner.br { bottom: 14px; right: 14px; border-width: 0 1px 1px 0; }
+  .invite .crest { width: 112px; height: auto; margin: 0 auto 28px; opacity: .95; }
+  .invite .pre { font-size: 12.5px; font-weight: 600; letter-spacing: .34em; text-transform: uppercase; color: var(--on-navy-soft); margin: 0 0 22px; }
+  .invite h1 { color: var(--ivory); font-size: clamp(64px, 11vw, 148px); font-weight: 600; line-height: .92; letter-spacing: -.01em; }
+  .invite h1 em { display: block; font-style: italic; font-weight: 500; font-size: .42em; letter-spacing: .02em; color: var(--on-navy); margin-top: 14px; }
+  .invite .orn { color: rgba(246, 241, 231, .7); margin: 34px 0 30px; }
+  .invite .tagline { font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.35; color: var(--on-navy); max-width: 30ch; margin: 0 auto; }
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 44px auto 0; max-width: 780px; border-top: 1px solid var(--navy-line); border-bottom: 1px solid var(--navy-line); }
+  .facts div { padding: 22px 12px; display: flex; flex-direction: column; gap: 6px; }
+  .facts div + div { border-left: 1px solid var(--navy-line); }
+  .facts small { font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--on-navy-soft); }
+  .facts b { font-family: var(--serif); font-size: 24px; font-weight: 600; line-height: 1.2; color: var(--ivory); }
+  .invite .ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+
+  /* conto alla rovescia */
+  .count { display: flex; justify-content: center; gap: 0; margin: 48px auto 0; position: relative; z-index: 1; }
+  .count div { min-width: 112px; padding: 0 22px; text-align: center; }
+  .count div + div { border-left: 1px solid var(--navy-line); }
+  .count b { display: block; font-family: var(--serif); font-size: 52px; font-weight: 600; line-height: 1; color: var(--ivory); font-variant-numeric: lining-nums tabular-nums; }
+  .count span { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--on-navy-soft); }
+  .count-done { text-align: center; margin-top: 44px; font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--on-navy); position: relative; z-index: 1; }
+
+  /* ---------- la serata ---------- */
+  .about .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px; }
+  .about .quote { margin: 0; font-family: var(--serif); font-size: clamp(34px, 3.8vw, 48px); font-weight: 500; line-height: 1.12; color: var(--navy); }
+  .about .body { padding-top: 52px; font-size: 18px; line-height: 1.75; }
+  .about .body p { margin: 0 0 20px; }
+  .about .sign { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--navy); margin-top: 28px; }
+
+  /* ---------- tre pilastri ---------- */
+  .pillars { background: var(--white); }
+  .pgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 56px; border-top: 1px solid var(--ink); }
+  .pillar { padding: 40px 40px 8px 0; }
+  .pillar + .pillar { padding-left: 40px; border-left: 1px solid var(--line); }
+  .pillar .num { font-family: var(--serif); font-size: 64px; font-weight: 600; line-height: 1; color: var(--navy); }
+  .pillar h3 { margin: 18px 0 12px; }
+  .pillar p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  /* ---------- programma ---------- */
+  .program { background: var(--navy); color: var(--ivory); }
+  .program h2, .program h3 { color: var(--ivory); }
+  .program .eyebrow { color: var(--on-navy-soft); }
+  .program .lead { color: var(--on-navy); }
+  .timeline { list-style: none; padding: 0; margin: 64px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .timeline li { border-top: 2px solid var(--ivory); padding-top: 24px; position: relative; }
+  .timeline li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; background: var(--navy); border: 2px solid var(--ivory); transform: rotate(45deg); }
+  .timeline .act { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--on-navy-soft); display: block; margin-bottom: 10px; }
+  .timeline h3 { font-size: 30px; margin-bottom: 12px; }
+  .timeline p { margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(246, 241, 231, .75); }
+  .program .note { margin: 56px 0 0; padding-top: 28px; border-top: 1px solid var(--navy-line); font-size: 15px; color: var(--on-navy-soft); }
+
+  /* ---------- location ---------- */
+  .venue .wrap.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; align-items: center; }
+  .venue .photo { position: relative; aspect-ratio: 4 / 5; background: var(--navy); overflow: hidden; }
+  .venue .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .venue .photo .frame { position: absolute; inset: 14px; border: 1px solid rgba(246, 241, 231, .45); pointer-events: none; }
+  .venue .art { width: 100%; height: 100%; display: flex; }
+  .venue .art svg { width: 100%; height: 100%; }
+  .venue h2 { max-width: none; }
+  .venue .sub { font-family: var(--serif); font-style: italic; font-size: 28px; color: var(--navy); margin: 10px 0 0; }
+  .vlist { list-style: none; padding: 0; margin: 36px 0 0; border-top: 1px solid var(--ink); }
+  .vlist li { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .vlist small { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .vlist span, .vlist a { font-size: 17px; color: var(--ink); text-decoration: none; }
+  .vlist a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .venue .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .map { margin-top: 88px; border: 1px solid var(--line); background: var(--white); padding: 10px; }
+  .map iframe { display: block; width: 100%; height: 380px; border: 0; filter: grayscale(.85) contrast(1.05); }
+
+  /* ---------- per chi ---------- */
+  .guests { background: var(--white); }
+  .guests .head { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px; align-items: end; }
+  .guests .quote { font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-style: italic; line-height: 1.15; color: var(--navy); margin: 0; }
+  .rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px; margin-top: 56px; }
+  .rules div { border-top: 2px solid var(--navy); padding-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .rules .tag { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+  .rules p { margin: 0; font-size: 16px; }
+
+  /* ---------- iscrizione ---------- */
+  .join { background: var(--navy); color: var(--ivory); }
+  .join .wrap { display: grid; grid-template-columns: 440px minmax(0, 1fr); gap: 88px; align-items: start; }
+  .join h2 { color: var(--ivory); }
+  .join .eyebrow { color: var(--on-navy-soft); }
+  .join .lead { color: var(--on-navy); }
+  .ticket { margin-top: 40px; border: 1px solid var(--navy-line); padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .ticket .orn { color: rgba(246, 241, 231, .6); justify-content: flex-start; }
+  .ticket .orn::before { display: none; }
+  .ticket b { font-family: var(--serif); font-size: 30px; font-weight: 600; line-height: 1.1; }
+  .ticket span { font-size: 15px; color: var(--on-navy); }
+  .ticket .fee { font-size: 13.5px; color: var(--on-navy-soft); padding-top: 12px; border-top: 1px solid var(--navy-line); }
+  form.f { background: var(--ivory); color: var(--text); padding: 48px; }
+  .f .ftitle { font-family: var(--serif); font-size: 34px; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+  .f .fsub { font-size: 15px; color: var(--muted); margin: 0 0 26px; }
+  .f .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 0; }
+  .f label { display: block; font-size: 14px; font-weight: 600; margin: 0 0 8px; color: var(--ink); }
+  .f .fld { margin-bottom: 18px; }
+  .f input, .f select, .f textarea { width: 100%; min-width: 0; font: 400 16px var(--sans); color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 0; padding: 14px; }
+  .f input, .f select { height: 52px; }
+  .f textarea { min-height: 88px; resize: vertical; }
+  .f input:focus, .f select:focus, .f textarea:focus { outline: 2px solid var(--navy); outline-offset: 1px; border-color: var(--navy); }
+  .f .check { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; font-weight: 400; line-height: 1.5; color: var(--muted); margin: 6px 0 24px; }
+  .f .check input { width: 18px; height: 18px; margin: 2px 0 0; padding: 0; accent-color: var(--navy); }
+  .f .check a { color: var(--navy); font-weight: 600; }
+  .f .btn { width: 100%; padding: 19px; font-size: 17px; }
+  .f .note { font-size: 13.5px; color: var(--muted); margin: 14px 0 0; text-align: center; }
+  .opt { font-weight: 400; color: var(--muted); }
+  .hp { position: absolute; left: -9999px; }
+  .msg { display: none; padding: 16px 18px; margin-bottom: 20px; font-size: 15px; border: 1px solid; }
+  .msg.ok { display: block; border-color: #2E6B4F; background: #EAF3EE; color: #1D4A35; }
+  .msg.err { display: block; border-color: #9B2C2C; background: #FBEDED; color: #7A1F1F; }
+
+  /* ---------- contatti ---------- */
+  .contacts .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px; }
+  .clist { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--ink); }
+  .clist li { padding: 22px 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+  .clist small { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  .clist a, .clist span { font-family: var(--serif); font-size: 28px; color: var(--ink); text-decoration: none; line-height: 1.25; }
+  .clist a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 5px; }
+
+  /* ---------- piè di pagina ---------- */
+  footer { background: var(--ink); color: rgba(255, 255, 255, .75); padding: 56px 0; font-size: 14.5px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; align-items: center; }
+  footer .brandf { display: flex; align-items: center; gap: 32px; }
+  footer .flogo { height: 132px; width: auto; }
+  footer .who-f { display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+  footer .who-f strong { color: var(--white); font-weight: 600; }
+  footer .wordmark b { color: var(--white); }
+  footer .wordmark span { color: rgba(255, 255, 255, .55); }
+  footer a { color: rgba(255, 255, 255, .9); }
+  footer .legal { display: flex; gap: 28px; flex-wrap: wrap; }
+
+  dialog { max-width: 640px; width: calc(100% - 32px); border: 0; padding: 40px; background: var(--ivory); color: var(--text); }
+  dialog::backdrop { background: rgba(14, 31, 58, .6); }
+  dialog h3 { margin-bottom: 16px; }
+  dialog p { font-size: 15px; margin: 0 0 12px; }
+
+  /* ---------- tablet ---------- */
+  @media (max-width: 1080px) {
+    section { padding: 88px 0; }
+    .about .wrap, .guests .head, .venue .wrap.split, .join .wrap, .contacts .wrap { grid-template-columns: 1fr; gap: 40px; }
+    .about .body { padding-top: 0; }
+    .venue .photo { aspect-ratio: 16 / 10; }
+    .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 48px; }
+    .pgrid { grid-template-columns: 1fr; }
+    .pillar, .pillar + .pillar { padding: 32px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+    .rules { grid-template-columns: 1fr; gap: 36px; }
+    .map { margin-top: 56px; }
+    nav.menu { display: none; position: absolute; top: 96px; left: 0; right: 0; background: var(--ivory); flex-direction: column; align-items: stretch; gap: 0; padding: 8px 24px 24px; border-bottom: 1px solid var(--line); }
+    nav.menu.open { display: flex; }
+    nav.menu a { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    nav.menu a.btn { display: none; }
+    .top-actions { display: flex; }
+  }
+  /* ---------- telefono ---------- */
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    html { scroll-padding-top: 80px; }
+    .wrap { padding: 0 16px; }
+    section { padding: 72px 0; }
+    .top .wrap { height: 72px; }
+    .brand img { height: 54px; }
+    nav.menu { top: 72px; padding: 8px 16px 20px; }
+    .hero { padding: 28px 0 56px; }
+    .invite { padding: 6px; }
+    .invite-in { padding: 52px 18px 44px; }
+    .invite .crest { width: 84px; }
+    .invite .pre { letter-spacing: .22em; font-size: 11.5px; }
+    .facts { grid-template-columns: 1fr; }
+    .facts div + div { border-left: 0; border-top: 1px solid var(--navy-line); }
+    .invite .ctas { flex-direction: column; }
+    .invite .ctas .btn { width: 100%; }
+    .count div { min-width: 0; flex: 1; padding: 0 8px; }
+    .count b { font-size: 38px; }
+    .count span { font-size: 10px; letter-spacing: .14em; }
+    .timeline { grid-template-columns: 1fr; }
+    .vlist li { grid-template-columns: 1fr; gap: 4px; }
+    .venue .photo { aspect-ratio: 1 / 1; }
+    .map iframe { height: 300px; }
+    form.f, dialog { padding: 26px; }
+    .f .row { grid-template-columns: 1fr; }
+    .clist a, .clist span { font-size: 23px; }
+    footer .flogo { height: 104px; }
+    footer .brandf { flex-direction: column; align-items: flex-start; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="OSM Business Club Bologna, torna al sito del Club">
+      <img src="logo.png" alt="OSM Business Club Bologna" onerror="this.remove(); document.querySelector('.wm-fallback').hidden = false;">
+      <span class="wordmark wm-fallback" hidden><b>OSM Business Club</b><span>Bologna</span></span>
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#serata">La serata</a>
+      <a href="#programma">Programma</a>
+      <a href="#location">Location</a>
+      <a class="back" href="index.html">Il Club</a>
+      <a class="btn btn-dark" href="#iscriviti">Riserva il tuo posto</a>
+    </nav>
+    <div class="top-actions">
+      <a class="btn btn-dark" href="#iscriviti">Iscriviti</a>
+      <button class="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- APERTURA: L'INVITO -->
+  <section class="hero">
+    <span class="ring r1" aria-hidden="true"></span>
+    <span class="ring r2" aria-hidden="true"></span>
+    <div class="wrap">
+      <div class="invite">
+        <div class="invite-in">
+          <span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span>
+          <span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span>
+          <img class="crest" src="logo-bianco.png" alt="" width="112" height="111" onerror="this.remove()">
+          <p class="pre">OSM Business Club Bologna presenta</p>
+          <h1>Business Show <em>Bologna 2026</em></h1>
+          <div class="orn" aria-hidden="true"><i></i></div>
+          <p class="tagline">La serata in cui gli imprenditori del territorio si ritrovano attorno allo stesso tavolo.</p>
+          <div class="facts">
+            <div><small>Data</small><b>Venerdì 27 novembre 2026</b></div>
+            <div><small>Luogo</small><b>Il Boccone del Prete</b></div>
+            <div><small>Dove</small><b>Golf Club Siepelunga, Bologna</b></div>          </div>
+          <div class="ctas">
+            <a class="btn btn-light" href="#iscriviti">Riserva il tuo posto</a>
+            <a class="btn btn-ghost" href="#programma">Scopri la serata</a>
+          </div>
+        </div>
+      </div>
+      <div class="count" id="count" aria-label="Tempo che manca alla serata">
+        <div><b id="c-d">–</b><span>Giorni</span></div>
+        <div><b id="c-h">–</b><span>Ore</span></div>
+        <div><b id="c-m">–</b><span>Minuti</span></div>
+      </div>
+      <p class="count-done" id="count-done" hidden>Grazie a tutti gli imprenditori che hanno partecipato.</p>
+    </div>
+  </section>
+
+  <!-- LA SERATA -->
+  <section class="about" id="serata">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">La serata</p>
+        <p class="quote">«Le decisioni migliori nascono spesso fuori dall'ufficio, dal confronto con chi vive le stesse sfide.»</p>
+      </div>
+      <div class="body">
+        <p>Il <strong>Business Show</strong> è l'appuntamento più importante dell'anno di <strong>OSM Business Club Bologna</strong>: una serata riservata ai titolari d'azienda del territorio, pensata per chi guida un'organizzazione e vuole guardarla da una prospettiva diversa.</p>
+        <p>Sul palco, contenuti concreti sul tema che accompagna il Club in questo periodo: <strong>il tempo dell'imprenditore e la delega</strong>. A tavola, il confronto tra imprenditori che prendono ogni giorno le stesse decisioni.</p>
+        <p>Una cornice elegante sui colli bolognesi, pochi posti, nessun pitch commerciale. Solo valore, relazioni e la cena di chi fa impresa a Bologna.</p>
+        <p class="sign">Ti aspettiamo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRE PILASTRI -->
+  <section class="pillars">
+    <div class="wrap">
+      <p class="eyebrow">Perché esserci</p>
+      <h2>Una sera, tre ragioni per non mancare.</h2>
+      <div class="pgrid">
+        <div class="pillar"><div class="num">I</div><h3>Contenuti di valore</h3><p>Interventi pensati per i titolari: casi reali e principi che puoi portare in azienda già dal lunedì successivo.</p></div>
+        <div class="pillar"><div class="num">II</div><h3>Relazioni vere</h3><p>Imprenditori, professionisti e consulenti del territorio riuniti in un contesto riservato, dove il confronto nasce in modo naturale.</p></div>
+        <div class="pillar"><div class="num">III</div><h3>Una cornice esclusiva</h3><p>La cena a Il Boccone del Prete, nel verde del Golf Club Siepelunga, con la città ai piedi delle colline.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMMA -->
+  <section class="program" id="programma">
+    <div class="wrap">
+      <p class="eyebrow">Il programma</p>
+      <h2>Quattro momenti, <em class="serif">una sola serata.</em></h2>
+      <ol class="timeline">
+        <li><span class="act">Primo atto</span><h3>Accoglienza</h3><p>L'arrivo al Golf Club Siepelunga, il benvenuto del Club e i primi scambi con gli altri ospiti.</p></li>
+        <li><span class="act">Secondo atto</span><h3>Lo Show</h3><p>Gli interventi sul palco: il tempo dell'imprenditore, la delega e come costruire un'azienda che funziona anche senza di te.</p></li>
+        <li><span class="act">Terzo atto</span><h3>La cena</h3><p>A tavola con gli altri titolari, nella sala de Il Boccone del Prete, tra cucina bolognese e confronto.</p></li>
+        <li><span class="act">Quarto atto</span><h3>Networking</h3><p>Il momento in cui nascono le relazioni: conoscersi, scambiarsi idee e contatti, senza fretta.</p></li>
+      </ol>
+      <p class="note">Il programma completo, con gli orari della serata, ti arriva via email nei giorni che precedono l'evento.</p>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="venue" id="location">
+    <div class="wrap split">
+      <div class="photo">
+        <!-- FOTO DELLA LOCATION: salvare l'immagine come "business-show-location.jpg" accanto a questo file. Finché manca, si vede l'illustrazione. -->
+        <img src="business-show-location.jpg" alt="Il Boccone del Prete al Golf Club Siepelunga" onerror="this.remove(); document.getElementById('venue-art').hidden = false;">
+        <div class="art" id="venue-art" hidden aria-hidden="true">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A1730"/><stop offset=".65" stop-color="#182C4E"/><stop offset="1" stop-color="#22385E"/></linearGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#sky)"/>
+            <circle cx="300" cy="110" r="34" fill="#F6F1E7" opacity=".9"/>
+            <circle cx="314" cy="102" r="30" fill="#0F2140"/>
+            <g fill="#F6F1E7"><circle cx="60" cy="70" r="1.2"/><circle cx="120" cy="40" r="1"/><circle cx="180" cy="95" r="1.3"/><circle cx="230" cy="55" r="1"/><circle cx="360" cy="190" r="1.1"/><circle cx="40" cy="160" r="1"/><circle cx="210" cy="150" r=".9"/></g>
+            <path d="M0 330 C 70 270 140 285 200 300 C 260 315 320 265 400 285 L400 500 L0 500 Z" fill="#14284A"/>
+            <path d="M0 370 C 90 320 170 345 240 350 C 310 355 350 330 400 340 L400 500 L0 500 Z" fill="#0F2140"/>
+            <path d="M0 420 C 110 395 230 400 400 410 L400 500 L0 500 Z" fill="#0A1730"/>
+            <g fill="#F6F1E7" opacity=".85"><circle cx="70" cy="350" r="1.4"/><circle cx="82" cy="352" r="1.2"/><circle cx="160" cy="338" r="1.3"/><circle cx="168" cy="341" r="1.1"/><circle cx="300" cy="335" r="1.4"/><circle cx="350" cy="342" r="1.2"/></g>
+            <line x1="256" y1="408" x2="256" y2="350" stroke="#F6F1E7" stroke-width="1.6"/>
+            <path d="M256 350 L282 358 L256 366 Z" fill="#F6F1E7"/>
+            <ellipse cx="256" cy="409" rx="10" ry="2.2" fill="#F6F1E7" opacity=".5"/>
+          </svg>
+        </div>
+        <span class="frame" aria-hidden="true"></span>
+      </div>
+      <div>
+        <p class="eyebrow">La location</p>
+        <h2>Il Boccone del Prete</h2>
+        <p class="sub">Golf Club Siepelunga · Colli bolognesi</p>
+        <p class="lead">Nel verde del Golf Club Siepelunga, sulle colline a pochi minuti dal centro di Bologna: una sala elegante e una vista sulla città che fa da cornice alla serata.</p>
+        <ul class="vlist">
+          <li><small>Indirizzo</small><span>Via Siepelunga 56/4, 40141 Bologna</span></li>
+          <li><small>Data</small><span>Venerdì 27 novembre 2026</span></li>
+          <li><small>Cena</small><span>€ 50,00 a persona</span></li>
+          <li><small>Come arrivare</small><span>A circa 5 km dal centro, in direzione Monte Donato</span></li>
+        </ul>
+        <div class="ctas">
+          <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&query=Il+Boccone+del+Prete+Via+Siepelunga+56%2F4+Bologna" target="_blank" rel="noopener">Apri in Google Maps</a>
+          <a class="btn btn-outline" href="#iscriviti">Riserva il tuo posto</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="map">
+        <iframe title="Mappa: Il Boccone del Prete, Golf Club Siepelunga" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Il+Boccone+del+Prete,+Via+Siepelunga+56%2F4,+40141+Bologna&z=14&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- PER CHI È -->
+  <section class="guests">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Per chi è</p>
+          <h2>Una serata riservata a chi guida un'azienda.</h2>
+        </div>
+        <p class="quote">«Non un evento a cui assistere, ma un tavolo a cui sedersi.»</p>
+      </div>
+      <div class="rules">
+        <div><span class="tag">Gli ospiti</span><h3>Titolari d'azienda</h3><p>Imprenditori, soci e amministratori di aziende del territorio con persone e organizzazione da guidare.</p></div>
+        <div><span class="tag">I posti</span><h3>Disponibilità limitata</h3><p>La sala ha una capienza definita: i posti vengono assegnati in ordine di iscrizione fino a esaurimento.</p></div>
+        <div><span class="tag">La conferma</span><h3>Subito via email</h3><p>Dopo l'iscrizione ricevi la mail di conferma; nei giorni precedenti l'evento, il programma completo della serata.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ISCRIZIONE -->
+  <section class="join" id="iscriviti">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Iscrizione</p>
+        <h2>Riserva il tuo posto al tavolo.</h2>
+        <p class="lead">Compila il modulo: la conferma della tua partecipazione ti arriva subito via email.</p>
+        <div class="ticket">
+          <div class="orn" aria-hidden="true"><i></i></div>
+          <b>Business Show</b>
+          <span>Venerdì 27 novembre 2026</span>
+          <span>Il Boccone del Prete · Golf Club Siepelunga<br>Via Siepelunga 56/4, Bologna</span>
+          <span class="fee">Cena: € 50,00 a persona</span>
+        </div>
+      </div>
+
+      <form class="f" id="form" novalidate>
+        <p class="ftitle">Richiedi il tuo posto</p>
+        <p class="fsub">Business Show · Venerdì 27 novembre 2026</p>
+        <div class="msg" id="msg" role="status"></div>
+        <div class="row">
+          <div class="fld"><label for="nome">Nome</label><input id="nome" name="Nome" autocomplete="given-name" required></div>
+          <div class="fld"><label for="cognome">Cognome</label><input id="cognome" name="Cognome" autocomplete="family-name" required></div>
+          <div class="fld"><label for="azienda">Azienda</label><input id="azienda" name="Azienda" autocomplete="organization" required></div>
+          <div class="fld"><label for="ruolo">Ruolo in azienda</label>
+            <select id="ruolo" name="Ruolo" required>
+              <option value="">Seleziona</option>
+              <option>Titolare</option><option>Socio</option><option>Amministratore delegato</option><option>Altro</option>
+            </select>
+          </div>
+          <div class="fld"><label for="collaboratori">Collaboratori in azienda</label>
+            <select id="collaboratori" name="Collaboratori" required>
+              <option value="">Seleziona</option>
+              <option>Meno di 5</option><option>Da 5 a 15</option><option>Da 16 a 50</option><option>Oltre 50</option>
+            </select>
+          </div>
+          <div class="fld"><label for="telefono">Telefono</label><input id="telefono" name="Telefono" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="fld"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
+        <div class="fld"><label for="consulente">Consulente che ti ha invitato <span class="opt">(facoltativo)</span></label>
+          <select id="consulente" name="Consulente">
+            <option value="">Seleziona</option>
+            <option>Rea Francesco</option>
+            <option>Partipilo Papalia Carlo</option>
+            <option>Gorgò Carlo</option>
+            <option>Gorgò Lorenzo</option>
+            <option>Gentilini Silvia</option>
+            <option>Gjuzi Greta</option>
+            <option>Fedozzi Anna Maria</option>
+            <option>Livoni Omar</option>
+            <option>Rossi Nicola</option>
+            <option>Bellanova Francesco</option>
+            <option>Acquafresca Fulvio</option>
+            <option>Realdini Gaia</option>
+            <option>Luciani Luca</option>
+          </select>
+        </div>
+        <div class="fld"><label for="note">Messaggio <span class="opt">(facoltativo)</span></label><textarea id="note" name="Messaggio" placeholder="Esigenze alimentari, una domanda, come ci hai conosciuto…"></textarea></div>
+        <input class="hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check"><input type="checkbox" id="privacy" required><span>Ho letto l'<a href="#" data-privacy>informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato sulle iniziative di OSM Business Club Bologna.</span></label>
+        <button class="btn btn-dark" type="submit" id="send">Conferma la partecipazione</button>
+        <p class="note">Riceverai subito la mail di conferma.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="contacts" id="contatti">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Informazioni</p>
+        <h2>Hai domande sulla serata?</h2>
+        <p class="lead">Per informazioni sul Business Show, sulla location o sulla tua iscrizione, scrivici o chiamaci.</p>
+      </div>
+      <ul class="clist">
+        <li><small>Telefono</small><a href="tel:+393313205200">331 320 5200</a></li>
+        <li><small>Email</small><a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a></li>
+        <li><small>Social</small><span><a href="https://www.instagram.com/osmbusinessclub/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/osmbusinessclub" target="_blank" rel="noopener">Facebook</a></span></li>
+        <li><small>Il Club</small><a href="index.html">Scopri OSM Business Club Bologna</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brandf">
+      <img class="flogo" src="logo-bianco.png" alt="OSM Business Club Bologna" onerror="this.remove(); document.querySelector('.fwm').hidden = false;">
+      <span class="wordmark fwm" hidden><b>OSM Business Club</b><span>Bologna</span></span>
+      <div class="who-f"><strong>Un'iniziativa di OSM Partner Bologna</strong><span>Via Persicetana Vecchia 24, 40132 Bologna</span></div>
+    </div>
+    <div class="legal">
+      <a href="#" data-privacy>Informativa privacy</a>
+      <span>© <span id="year">2026</span> OSM Business Club Bologna</span>
+    </div>
+  </div>
+</footer>
+
+<dialog id="privacy-dlg" aria-labelledby="privacy-title">
+  <h3 id="privacy-title">Informativa privacy sintetica</h3>
+  <!-- TESTO DA FAR VERIFICARE: sostituire con l'informativa completa fornita dal consulente privacy / DPO di OSM Partner Bologna -->
+  <p>I dati inseriti nel modulo (nome, cognome, azienda, ruolo, numero di collaboratori, telefono, email ed eventuale messaggio) sono trattati da OSM Partner Bologna, Via Persicetana Vecchia 24, 40132 Bologna, al solo scopo di gestire la tua richiesta di partecipazione e ricontattarti sulle iniziative di OSM Business Club Bologna.</p>
+  <p>Per l'invio, il modulo utilizza il servizio esterno Web3Forms, che inoltra i dati via email a OSM Partner Bologna, e i servizi Google di OSM Partner Bologna, che registrano la richiesta in un archivio interno e ti inviano una mail di riepilogo. I dati non vengono ceduti a terzi per finalità commerciali. Puoi chiederne in qualsiasi momento l'accesso, la modifica o la cancellazione scrivendo a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a>.</p>
+  <form method="dialog"><button class="btn btn-dark" style="margin-top:12px">Chiudi</button></form>
+</dialog>
+
+<script>
+/* =====================================================================
+   BUSINESS SHOW — dati della serata (usati dal conto alla rovescia,
+   dalla mail di iscrizione e dalla mail di conferma)
+   ===================================================================== */
+var SHOW = {
+  data: '2026-11-27',
+  ora: '19:30',              // solo per il conto alla rovescia: aggiornare quando l'orario è definitivo
+  nome: 'Business Show',
+  titolo: 'La serata degli imprenditori di OSM Business Club Bologna',
+  dove: 'Il Boccone del Prete · Golf Club Siepelunga, Via Siepelunga 56/4, Bologna'
+};
+
+/* Stesse chiavi del sito principale (index.html) */
+var WEB3FORMS_KEY = 'a3fa3367-8427-4e0c-8e6a-5fdefbdc670d';
+var CONFERMA_URL = 'https://script.google.com/macros/s/AKfycbxQw-IEkM-berinbbTEpFcDNUGgFJjBmz9hSwO3oR1lqHfFL6azs-MxEbrFkCFypqin/exec';
+
+var MESI = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+var GIORNI_LUNGHI = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+
+function parseData(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+
+/* Conto alla rovescia */
+function aggiornaConto() {
+  var p = SHOW.ora.split(':'), t = parseData(SHOW.data);
+  t.setHours(+p[0], +p[1], 0, 0);
+  var diff = t - new Date();
+  if (diff <= 0) {
+    document.getElementById('count').hidden = true;
+    document.getElementById('count-done').hidden = false;
+    return;
+  }
+  var min = Math.floor(diff / 60000);
+  document.getElementById('c-d').textContent = Math.floor(min / 1440);
+  document.getElementById('c-h').textContent = String(Math.floor(min % 1440 / 60)).padStart(2, '0');
+  document.getElementById('c-m').textContent = String(min % 60).padStart(2, '0');
+}
+aggiornaConto();
+setInterval(aggiornaConto, 30000);
+
+document.addEventListener('click', function (ev) {
+  var p = ev.target.closest('[data-privacy]');
+  if (p) { ev.preventDefault(); document.getElementById('privacy-dlg').showModal(); }
+});
+
+var burger = document.querySelector('.burger'), menu = document.getElementById('menu');
+burger.addEventListener('click', function () {
+  var open = menu.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } });
+
+/* Invio allo script Google che manda la mail e salva l'iscritto nel foglio */
+function inviaConferma(dati) {
+  if (!CONFERMA_URL) return;
+  fetch(CONFERMA_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(dati)
+  }).catch(function () {});
+}
+
+document.getElementById('form').addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  var f = ev.target, msg = document.getElementById('msg'), btn = document.getElementById('send');
+  msg.className = 'msg';
+  var mancanti = Array.prototype.filter.call(f.querySelectorAll('[required]'), function (i) {
+    return i.type === 'checkbox' ? !i.checked : !i.value.trim();
+  });
+  if (mancanti.length || !f.Email.checkValidity()) {
+    msg.className = 'msg err';
+    msg.textContent = mancanti.some(function (i) { return i.id === 'privacy'; }) && mancanti.length === 1
+      ? "Per inviare la richiesta serve il consenso all'informativa privacy."
+      : 'Compila tutti i campi obbligatori con dati validi.';
+    (mancanti[0] || f.Email).focus();
+    return;
+  }
+  var dati = {}, d = parseData(SHOW.data);
+  new FormData(f).forEach(function (v, k) { dati[k] = v; });
+  if (dati.botcheck) return;          // compilato solo dai programmi automatici
+  delete dati.botcheck;
+  if (!dati.Consulente) dati.Consulente = 'Non indicato';
+  dati.Evento = GIORNI_LUNGHI[d.getDay()].slice(0, 3) + ' ' + d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase() + ' · ' + SHOW.nome + ' · ' + SHOW.dove;
+
+  var perConferma = {};
+  Object.keys(dati).forEach(function (k) { perConferma[k] = dati[k]; });
+  perConferma.evNome = SHOW.nome;
+  perConferma.evTitolo = SHOW.titolo;
+  perConferma.evFormato = 'show';
+  perConferma.evDove = SHOW.dove;
+  perConferma.evData = GIORNI_LUNGHI[d.getDay()] + ' ' + d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase() + ' ' + d.getFullYear();
+  perConferma.evDataBreve = d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase();
+
+  dati.access_key = WEB3FORMS_KEY;
+  dati.subject = 'Nuova iscrizione Business Show — ' + dati.Nome + ' ' + dati.Cognome;
+  dati.from_name = 'Sito OSM Business Club Bologna';
+  btn.disabled = true; btn.textContent = 'Invio in corso…';
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(dati)
+  }).then(function (r) { return r.json(); }).then(function (r) {
+    if (String(r.success) !== 'true') throw new Error(r.message || 'invio non riuscito');
+    inviaConferma(perConferma);
+    f.reset();
+    msg.className = 'msg ok';
+    msg.textContent = 'Grazie! La tua partecipazione al Business Show è confermata: ti abbiamo mandato una mail con tutti i dettagli.';
+  }).catch(function () {
+    msg.className = 'msg err';
+    msg.innerHTML = 'Non siamo riusciti a inviare la richiesta. Scrivici a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a> o chiama il 331 320 5200.';
+  }).then(function () {
+    btn.disabled = false; btn.textContent = 'Conferma la partecipazione';
+    msg.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
