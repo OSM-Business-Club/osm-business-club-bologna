@@ -105,6 +105,18 @@
   .next .ttl { font-family: var(--serif); font-size: 34px; font-weight: 600; line-height: 1.15; color: var(--ink); }
   .next .empty-t { font-size: 17px; color: var(--muted); margin: 0; }
 
+  /* ---------- evento speciale: Business Show ---------- */
+  .special { padding: 56px 0 0; }
+  .special a.band { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 40px; align-items: center; padding: 34px 48px; background: var(--navy); color: var(--ivory); text-decoration: none; border: 1px solid var(--navy); outline: 1px solid rgba(246, 241, 231, .22); outline-offset: -10px; transition: background .2s; }
+  .special a.band:hover { background: var(--navy-2); }
+  .special .sd { font-family: var(--serif); font-size: 60px; font-weight: 600; line-height: .9; text-align: center; }
+  .special .sd small { display: block; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--on-navy-soft); margin-top: 8px; }
+  .special .st { display: flex; flex-direction: column; gap: 6px; padding-left: 40px; border-left: 1px solid var(--navy-line); }
+  .special .st span { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--on-navy-soft); }
+  .special .st b { font-family: var(--serif); font-size: 36px; font-weight: 600; line-height: 1.1; }
+  .special .st em { font-family: var(--serif); font-size: 20px; color: var(--on-navy); }
+  .special .sgo { font-weight: 600; font-size: 16px; padding: 16px 24px; background: var(--ivory); color: var(--navy); white-space: nowrap; }
+
   /* ---------- perché nasce ---------- */
   .why .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px; }
   .why .quote { margin: 0; font-family: var(--serif); font-size: clamp(34px, 3.8vw, 48px); font-weight: 500; line-height: 1.12; color: var(--navy); }
@@ -267,6 +279,9 @@
     .next .when .lbl { width: 100%; }
     .next .d { font-size: 52px; }
     .next .ttl { font-size: 28px; }
+    .special a.band { grid-template-columns: auto minmax(0, 1fr); padding: 28px; gap: 24px; }
+    .special .st { padding-left: 24px; }
+    .special .sgo { grid-column: 1 / -1; text-align: center; }
     .why .wrap, .who .head, .whatis .wrap, .join .wrap, .contacts .wrap { grid-template-columns: 1fr; gap: 40px; }
     .why .body { padding-top: 0; }
     .fgrid, .mgrid { grid-template-columns: 1fr; }
@@ -297,6 +312,9 @@
     .hero .ctas .btn { width: 100%; }
     .next { margin-top: -64px; padding: 22px; }
     .next .btn { width: 100%; }
+    .special a.band { grid-template-columns: 1fr; padding: 26px 22px; text-align: center; }
+    .special .st { padding-left: 0; border-left: 0; border-top: 1px solid var(--navy-line); padding-top: 18px; }
+    .special .st b { font-size: 30px; }
     .isnot, .themes, .evgrid, .steps { grid-template-columns: 1fr; }
     .card, .fcard, form.f, dialog { padding: 26px; }
     .ev { padding: 22px; min-height: 0; }
@@ -322,6 +340,7 @@
       <a href="#per-chi">Per chi è</a>
       <a href="#formati">Formati</a>
       <a href="#calendario">Calendario</a>
+      <a href="business-show.html">Business Show</a>
       <a href="#contatti">Contatti</a>
       <a class="btn btn-dark" href="#iscriviti">Richiedi il tuo posto</a>
     </nav>
@@ -356,6 +375,17 @@
   <div class="next-wrap">
     <div class="wrap">
       <div class="next" id="next" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- EVENTO SPECIALE: BUSINESS SHOW (sparisce da solo dopo la data) -->
+  <div class="special" id="special" data-fino="2026-11-27">
+    <div class="wrap">
+      <a class="band" href="business-show.html">
+        <div class="sd">27<small>Novembre</small></div>
+        <div class="st"><span>Evento speciale · Su iscrizione</span><b>Business Show</b><em>Il Boccone del Prete · Golf Club Siepelunga</em></div>
+        <span class="sgo">Scopri la serata</span>
+      </a>
     </div>
   </div>
 
@@ -496,7 +526,7 @@
           <button type="button" data-f="tutti" aria-pressed="true">Tutti</button>
           <button type="button" data-f="day" aria-pressed="false">Business Day</button>
           <button type="button" data-f="webinar" aria-pressed="false">Webinar</button>
-          <button type="button" data-f="dinner" aria-pressed="false">Business Dinner</button>
+          <button type="button" data-f="show" aria-pressed="false">Business Show</button>
         </div>
       </div>
       <div id="cal"></div>
@@ -522,10 +552,10 @@
       <div>
         <p class="eyebrow">Come partecipare</p>
         <h2>Posti limitati, poche regole semplici.</h2>
-        <p class="lead">Si entra su invito o su candidatura. Compila il modulo: ti ricontattiamo noi entro 48 ore per confermare il tuo posto.</p>
+        <p class="lead">Si entra su invito o su candidatura. Compila il modulo: la conferma della tua iscrizione ti arriva subito via email.</p>
         <ol class="howto">
           <li><b>01</b><div><strong>Le iscrizioni aprono</strong><span>Tre settimane prima di ogni incontro.</span></div></li>
-          <li><b>02</b><div><strong>Confermi il tuo posto</strong><span>In ordine di iscrizione, fino a esaurimento posti.</span></div></li>
+          <li><b>02</b><div><strong>Ricevi la conferma</strong><span>Subito via email. I posti sono limitati: vale l'ordine di iscrizione.</span></div></li>
           <li><b>03</b><div><strong>Arrivi in sede</strong><span>Accoglienza alle 16:00, formazione dalle 16:30.</span></div></li>
           <li><b>04</b><div><strong>Resti per l'aperitivo</strong><span>Networking libero con gli altri imprenditori del Club.</span></div></li>
         </ol>
@@ -579,7 +609,7 @@
         <input class="hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="check"><input type="checkbox" id="privacy" required><span>Ho letto l'<a href="#" data-privacy>informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato sulle iniziative di OSM Business Club Bologna.</span></label>
         <button class="btn btn-dark" type="submit" id="send">Invia la richiesta</button>
-        <p class="note">Ti ricontattiamo entro 48 ore.</p>
+        <p class="note">Riceverai subito la mail di conferma.</p>
       </form>
     </div>
   </section>
@@ -640,7 +670,7 @@ var EVENTI = [
   { data: '2026-11-05', formato: 'day',     nome: 'Business Thursday', tema: 'Time Management e Delega',    titolo: "Quanto rende il capitale che hai dentro l'azienda." },
   { data: '2026-11-19', formato: 'webinar', nome: 'Webinar',           tema: 'Time Management e Delega',    titolo: 'La tua azienda è un investimento o è il tuo posto di lavoro?' },
   { data: '2026-11-23', formato: 'day',     nome: 'Business Monday',   tema: 'Time Management e Delega',    titolo: 'Delegare non è dare via il lavoro: è dare via il risultato.' },
-  { data: '2026-11-27', formato: 'dinner',  nome: 'Business Dinner',   tema: 'Time Management e Delega',    titolo: 'Un tavolo, pochi titolari, un solo tema.' },
+  { data: '2026-11-27', formato: 'show',    nome: 'Business Show',     tema: 'Time Management e Delega',    titolo: 'La serata degli imprenditori del Club, sui colli bolognesi.' },
   { data: '2026-11-30', formato: 'webinar', nome: 'Webinar',           tema: 'Time Management e Delega',    titolo: "Se ti fermi tu, si ferma l'azienda." },
   { data: '2026-12-09', formato: 'day',     nome: 'Business Wednesday', tema: 'Passaggio Generazionale',    titolo: 'I figli in azienda: ruoli veri o poltrone di cortesia.' },
   { data: '2026-12-14', formato: 'webinar', nome: 'Webinar',           tema: 'Passaggio Generazionale',     titolo: "Il passaggio generazionale non si improvvisa a settant'anni." }
@@ -661,7 +691,7 @@ var MESI = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Ag
 var MESI_BREVI = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
 var GIORNI = ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'];
 var GIORNI_LUNGHI = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
-var DOVE = { day: 'In sede · 16:30–18:30', webinar: 'Online · 18:30–19:30', dinner: 'Solo su invito personale' };
+var DOVE = { day: 'In sede · 16:30–18:30', webinar: 'Online · 18:30–19:30', dinner: 'Solo su invito personale', show: 'Il Boccone del Prete · Golf Club Siepelunga' };
 var MOSTRATI = 6;   // schede visibili prima di "Vedi tutti"
 
 function parseData(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
@@ -695,6 +725,8 @@ function renderCal() {
     var d = parseData(e.data);
     var azione = e.formato === 'dinner'
       ? '<span class="invite">Su invito</span>'
+      : e.formato === 'show'
+      ? '<a class="go" href="business-show.html">Scopri e iscriviti</a>'
       : '<a class="go" href="#iscriviti" data-iscrivi="' + esc(e.data) + '">Iscriviti</a>';
     html += '<article class="ev">' +
       '<div class="top"><div class="date"><div class="day">' + d.getDate() + '</div><div class="mw"><span>' + MESI_BREVI[d.getMonth()] + '</span><span>' + GIORNI[d.getDay()] + '</span></div></div>' +
@@ -717,7 +749,7 @@ function renderCal() {
 
 function renderNext() {
   var el = document.getElementById('next');
-  var n = futuri.filter(function (e) { return e.formato !== 'dinner'; })[0];
+  var n = futuri.filter(function (e) { return e.formato !== 'dinner' && e.formato !== 'show'; })[0];
   if (!n) {
     el.innerHTML = '<div class="when"><span class="lbl">Prossimo incontro</span></div>' +
       '<div class="what"><p class="empty-t">Le nuove date sono in arrivo. Lasciaci i tuoi contatti: ti avvisiamo appena si aprono le iscrizioni.</p></div>' +
@@ -737,7 +769,7 @@ function renderSelect() {
   var sel = document.getElementById('evento');
   var opts = '<option value="">Seleziona</option>';
   futuri.forEach(function (e) {
-    if (e.formato !== 'dinner') opts += '<option value="' + esc(etichetta(e)) + '" data-d="' + esc(e.data) + '">' + esc(etichetta(e)) + '</option>';
+    if (e.formato !== 'dinner' && e.formato !== 'show') opts += '<option value="' + esc(etichetta(e)) + '" data-d="' + esc(e.data) + '">' + esc(etichetta(e)) + '</option>';
   });
   opts += '<option value="Avvisami dei prossimi incontri">Avvisami dei prossimi incontri</option>';
   sel.innerHTML = opts;
@@ -833,8 +865,9 @@ document.getElementById('form').addEventListener('submit', function (ev) {
     inviaConferma(perConferma);
     f.reset(); renderSelect();
     msg.className = 'msg ok';
-    msg.textContent = 'Grazie! Abbiamo ricevuto la tua richiesta' + (CONFERMA_URL ? ' e ti abbiamo mandato una mail di riepilogo' : '') +
-      ': ti ricontattiamo entro 48 ore per confermare il posto.';
+    msg.textContent = !perConferma.evNome
+      ? 'Grazie! Ti avviseremo appena si aprono le iscrizioni ai prossimi incontri.'
+      : 'Grazie! La tua iscrizione è confermata: ti abbiamo mandato una mail con tutti i dettagli.';
   }).catch(function () {
     msg.className = 'msg err';
     msg.innerHTML = 'Non siamo riusciti a inviare la richiesta. Scrivici a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a> o chiama il 331 320 5200.';
@@ -845,6 +878,8 @@ document.getElementById('form').addEventListener('submit', function (ev) {
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+var special = document.getElementById('special');
+if (special && parseData(special.getAttribute('data-fino')) < oggi()) special.hidden = true;
 renderRange(); renderNext(); renderCal(); renderSelect();
 </script>
 </body>
