@@ -188,6 +188,10 @@
   .ticket b { font-family: var(--serif); font-size: 30px; font-weight: 600; line-height: 1.1; }
   .ticket span { font-size: 15px; color: var(--on-navy); }
   .ticket .fee { font-size: 13.5px; color: var(--on-navy-soft); padding-top: 12px; border-top: 1px solid var(--navy-line); }
+  .pay { background: var(--ivory); padding: 18px 18px 8px; margin-top: 4px; }
+  .pay p { margin: 0 0 12px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+  .pay #paypal-container-JKUYPQFMEXGL6 { min-height: 48px; }
+  .pay .pay-alt { margin: 0 0 10px; color: var(--text); }
   form.f { background: var(--ivory); color: var(--text); padding: 48px; }
   .f .ftitle { font-family: var(--serif); font-size: 34px; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
   .f .fsub { font-size: 15px; color: var(--muted); margin: 0 0 26px; }
@@ -466,6 +470,12 @@
           <span>Venerdì 27 novembre 2026</span>
           <span>Il Boccone del Prete · Golf Club Siepelunga<br>Via Siepelunga 56/4, Bologna</span>
           <span class="fee">Cena: € 50,00 a persona</span>
+          <div class="pay">
+            <p>Puoi saldare la quota della cena online, con PayPal o con carta.</p>
+            <!-- PULSANTE PAYPAL (pulsante ospitato JKUYPQFMEXGL6, creato da Lorenzo su PayPal) -->
+            <div id="paypal-container-JKUYPQFMEXGL6"></div>
+            <p class="pay-alt" id="pay-alt" hidden>Il pagamento online non è disponibile in questo momento. Per informazioni sulla quota chiamaci al 331 320 5200.</p>
+          </div>
         </div>
       </div>
 
@@ -677,6 +687,19 @@ document.getElementById('form').addEventListener('submit', function (ev) {
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* PAYPAL — quota della cena. Se il servizio non si carica (rete, blocco pubblicità)
+   al posto del pulsante compare una riga di testo, il resto della pagina funziona comunque. */
+function paypalNonDisponibile() {
+  document.getElementById('pay-alt').hidden = false;
+}
+function avviaPaypal() {
+  if (!window.paypal || !paypal.HostedButtons) { paypalNonDisponibile(); return; }
+  paypal.HostedButtons({
+    hostedButtonId: 'JKUYPQFMEXGL6'
+  }).render('#paypal-container-JKUYPQFMEXGL6').catch(paypalNonDisponibile);
+}
 </script>
+<script src="https://www.paypal.com/sdk/js?client-id=BAA7uyc_GpSIEDUIrm1z3Wpual9AaikJwiqEFEqLutIzHZm0Vb4M99QqlsP6_DGam3gGBlqDUT0MTjtX2U&components=hosted-buttons&disable-funding=venmo&currency=EUR" onload="avviaPaypal()" onerror="paypalNonDisponibile()" async></script>
 </body>
 </html>
