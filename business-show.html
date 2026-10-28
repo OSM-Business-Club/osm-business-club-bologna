@@ -188,7 +188,8 @@
   .ticket b { font-family: var(--serif); font-size: 30px; font-weight: 600; line-height: 1.1; }
   .ticket span { font-size: 15px; color: var(--on-navy); }
   .ticket .fee { font-size: 13.5px; color: var(--on-navy-soft); padding-top: 12px; border-top: 1px solid var(--navy-line); }
-  .pay { background: var(--ivory); padding: 18px 18px 8px; margin-top: 4px; }
+  .pay { background: var(--ivory); color: var(--ink); padding: 18px 18px 8px; margin-top: 4px; }
+  .pay label, .pay span, .pay div { color: var(--ink); }   /* le etichette del modulo PayPal ereditano il colore: senza questa riga sarebbero avorio su avorio */
   .pay p { margin: 0 0 12px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
   .pay #paypal-container-JKUYPQFMEXGL6 { min-height: 48px; }
   .pay .pay-alt { margin: 0 0 10px; color: var(--text); }
