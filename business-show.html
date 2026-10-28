@@ -127,6 +127,27 @@
   .about .body p { margin: 0 0 20px; }
   .about .sign { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--navy); margin-top: 28px; }
 
+  /* ---------- lo speaker ---------- */
+  .speaker { background: var(--navy); color: var(--ivory); padding-bottom: 0; overflow: hidden; }
+  .speaker .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 80px; align-items: end; }
+  .speaker .portrait { order: 2; position: relative; display: flex; justify-content: center; align-items: flex-end; min-height: 560px; }
+  .speaker .portrait .arch { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: min(440px, 92%); height: 86%; background: radial-gradient(70% 55% at 50% 38%, rgba(246, 241, 231, .2) 0%, rgba(246, 241, 231, .06) 55%, transparent 80%), var(--navy-2); border: 1px solid rgba(246, 241, 231, .2); border-bottom: 0; border-radius: 220px 220px 0 0; }
+  .speaker .portrait .arch::after { content: ""; position: absolute; inset: 12px 12px 0; border: 1px solid rgba(246, 241, 231, .12); border-bottom: 0; border-radius: 210px 210px 0 0; }
+  .speaker .portrait img { position: relative; width: min(400px, 86%); height: auto; }
+  .speaker .text { padding-bottom: 104px; }
+  .speaker .eyebrow { color: var(--on-navy-soft); }
+  .speaker h2 { color: var(--ivory); font-size: clamp(48px, 6vw, 80px); }
+  .speaker .role { font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.2vw, 28px); line-height: 1.3; color: var(--on-navy); margin: 14px 0 0; }
+  .speaker .orn { color: rgba(246, 241, 231, .6); justify-content: flex-start; margin: 30px 0; }
+  .speaker .orn::before { display: none; }
+  .speaker .bio p { margin: 0 0 18px; font-size: 17px; line-height: 1.75; color: var(--on-navy); }
+  .speaker .bio strong { color: var(--ivory); }
+  .creds { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--navy-line); }
+  .creds li { padding: 20px 16px 0 0; display: flex; flex-direction: column; gap: 6px; }
+  .creds li + li { padding-left: 20px; border-left: 1px solid var(--navy-line); }
+  .creds small { font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--on-navy-soft); }
+  .creds b { font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.2; color: var(--ivory); }
+
   /* ---------- tre pilastri ---------- */
   .pillars { background: var(--white); }
   .pgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 56px; border-top: 1px solid var(--ink); }
@@ -151,8 +172,8 @@
 
   /* ---------- location ---------- */
   .venue .wrap.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; align-items: center; }
-  .venue .photo { position: relative; aspect-ratio: 4 / 5; background: var(--navy); overflow: hidden; }
-  .venue .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .venue .photo { position: relative; aspect-ratio: 4 / 3; background: var(--navy); overflow: hidden; }
+  .venue .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
   .venue .photo .frame { position: absolute; inset: 14px; border: 1px solid rgba(246, 241, 231, .45); pointer-events: none; }
   .venue .art { width: 100%; height: 100%; display: flex; }
   .venue .art svg { width: 100%; height: 100%; }
@@ -245,6 +266,10 @@
     .about .wrap, .guests .head, .venue .wrap.split, .join .wrap, .contacts .wrap { grid-template-columns: 1fr; gap: 40px; }
     .about .body { padding-top: 0; }
     .venue .photo { aspect-ratio: 16 / 10; }
+    .speaker .wrap { grid-template-columns: 1fr; gap: 8px; }
+    .speaker .portrait { order: 2; min-height: 0; padding-top: 24px; }
+    .speaker .portrait img { width: min(340px, 80%); }
+    .speaker .text { padding-bottom: 24px; }
     .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 48px; }
     .pgrid { grid-template-columns: 1fr; }
     .pillar, .pillar + .pillar { padding: 32px 0; border-left: 0; border-bottom: 1px solid var(--line); }
@@ -279,7 +304,9 @@
     .count span { font-size: 10px; letter-spacing: .14em; }
     .timeline { grid-template-columns: 1fr; }
     .vlist li { grid-template-columns: 1fr; gap: 4px; }
-    .venue .photo { aspect-ratio: 1 / 1; }
+    .venue .photo { aspect-ratio: 4 / 3; }
+    .creds { grid-template-columns: 1fr; }
+    .creds li, .creds li + li { padding: 16px 0; border-left: 0; border-bottom: 1px solid var(--navy-line); }
     .map iframe { height: 300px; }
     form.f, dialog { padding: 26px; }
     .f .row { grid-template-columns: 1fr; }
@@ -299,6 +326,7 @@
     </a>
     <nav class="menu" id="menu">
       <a href="#serata">La serata</a>
+      <a href="#speaker">Lo speaker</a>
       <a href="#programma">Programma</a>
       <a href="#location">Location</a>
       <a class="back" href="index.html">Il Club</a>
@@ -362,6 +390,31 @@
     </div>
   </section>
 
+  <!-- LO SPEAKER -->
+  <section class="speaker" id="speaker">
+    <div class="wrap">
+      <div class="portrait">
+        <span class="arch" aria-hidden="true"></span>
+        <img src="speaker-michele-tampieri.png" alt="Michele Tampieri" width="600" height="943" loading="lazy">
+      </div>
+      <div class="text">
+        <p class="eyebrow">Lo speaker della serata</p>
+        <h2>Michele Tampieri</h2>
+        <p class="role">Imprenditore, consulente e formatore, specializzato in sistemi e strategie di marketing.</p>
+        <div class="orn" aria-hidden="true"><i></i></div>
+        <div class="bio">
+          <p>Insieme al socio Alessandro Bentivoglio ha fondato <strong>Funnel Company</strong>, la società con cui ha affiancato centinaia di imprenditori e professionisti in Italia, Spagna e Svizzera nella costruzione di sistemi di vendita efficaci.</p>
+          <p>È autore di <strong>Funnel Marketing Formula</strong>, il primo libro italiano sui funnel, e di <strong>Marketing Formula – Sistemi per far crescere la tua azienda</strong>, entrambi pubblicati da Dario Flaccovio Editore. Speaker internazionale, porta sul palco il suo approccio concreto alla crescita delle imprese.</p>
+        </div>
+        <ul class="creds">
+          <li><small>Co-fondatore</small><b>Funnel Company</b></li>
+          <li><small>Autore</small><b>Funnel Marketing Formula</b></li>
+          <li><small>Sul palco</small><b>Speaker internazionale</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- TRE PILASTRI -->
   <section class="pillars">
     <div class="wrap">
@@ -394,8 +447,8 @@
   <section class="venue" id="location">
     <div class="wrap split">
       <div class="photo">
-        <!-- FOTO DELLA LOCATION: salvare l'immagine come "business-show-location.jpg" accanto a questo file. Finché manca, si vede l'illustrazione. -->
-        <img src="business-show-location.jpg" alt="Il Boccone del Prete al Golf Club Siepelunga" onerror="this.remove(); document.getElementById('venue-art').hidden = false;">
+        <!-- FOTO DELLA LOCATION: "business-show-location.jpg" accanto a questo file. Se manca, si vede l'illustrazione. -->
+        <img src="business-show-location.jpg" alt="Il Boccone del Prete al Golf Club Siepelunga, illuminato di sera"onerror="this.remove(); document.getElementById('venue-art').hidden = false;">
         <div class="art" id="venue-art" hidden aria-hidden="true">
           <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
             <defs>
