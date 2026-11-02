@@ -209,14 +209,15 @@
   .ticket b { font-family: var(--serif); font-size: 30px; font-weight: 600; line-height: 1.1; }
   .ticket span { font-size: 15px; color: var(--on-navy); }
   .ticket .fee { font-size: 13.5px; color: var(--on-navy-soft); padding-top: 12px; border-top: 1px solid var(--navy-line); }
-  .pay { background: var(--ivory); color: var(--ink); padding: 18px 18px 8px; margin-top: 4px; }
-  .pay label, .pay span, .pay div { color: var(--ink); }   /* le etichette del modulo PayPal ereditano il colore: senza questa riga sarebbero avorio su avorio */
-  .pay p { margin: 0 0 12px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
-  .pay #paypal-container-JKUYPQFMEXGL6 { min-height: 48px; }
-  .pay .pay-alt { margin: 0 0 10px; color: var(--text); }
   form.f { background: var(--ivory); color: var(--text); padding: 48px; }
   .f .ftitle { font-family: var(--serif); font-size: 34px; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
-  .f .fsub { font-size: 15px; color: var(--muted); margin: 0 0 26px; }
+  .f .fsub { font-size: 15px; color: var(--muted); margin: 0 0 20px; }
+  .f .prezzo { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); padding: 14px 0; margin: 0 0 26px; }
+  .f .prezzo span { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .f .prezzo b { font-family: var(--serif); font-size: 34px; font-weight: 600; line-height: 1; color: var(--navy); white-space: nowrap; }
+  .f .prezzo small { font-family: var(--sans); font-size: 14px; font-weight: 400; color: var(--muted); }
+  form.f.chiuso > :not(.ftitle):not(.fsub):not(.msg) { display: none; }   /* a pagamento avvenuto resta solo il messaggio: niente secondo pagamento per sbaglio */
+  form.f.chiuso .msg { margin-bottom: 0; }
   .f .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 0; }
   .f label { display: block; font-size: 14px; font-weight: 600; margin: 0 0 8px; color: var(--ink); }
   .f .fld { margin-bottom: 18px; }
@@ -507,7 +508,7 @@
       <div class="rules">
         <div><span class="tag">Gli ospiti</span><h3>Titolari d'azienda</h3><p>Imprenditori, soci e amministratori di aziende del territorio con persone e organizzazione da guidare.</p></div>
         <div><span class="tag">I posti</span><h3>Disponibilità limitata</h3><p>La sala ha una capienza definita: i posti vengono assegnati in ordine di iscrizione fino a esaurimento.</p></div>
-        <div><span class="tag">La conferma</span><h3>Subito via email</h3><p>Dopo l'iscrizione ricevi la mail di conferma; nei giorni precedenti l'evento, il programma completo della serata.</p></div>
+        <div><span class="tag">La conferma</span><h3>Via email, dopo il pagamento</h3><p>Appena il pagamento è completato ricevi la mail di conferma; nei giorni precedenti l'evento, il programma completo della serata.</p></div>
       </div>
     </div>
   </section>
@@ -518,25 +519,20 @@
       <div>
         <p class="eyebrow">Iscrizione</p>
         <h2>Riserva il tuo posto al tavolo.</h2>
-        <p class="lead">Compila il modulo: la conferma della tua partecipazione ti arriva subito via email.</p>
+        <p class="lead">Compila il modulo e completa il pagamento su PayPal: la conferma della tua partecipazione ti arriva via email appena il pagamento è andato a buon fine.</p>
         <div class="ticket">
           <div class="orn" aria-hidden="true"><i></i></div>
           <b>Business Show</b>
           <span>Venerdì 27 novembre 2026</span>
           <span>Il Boccone del Prete · Golf Club Siepelunga<br>Via Siepelunga 56/4, Bologna</span>
           <span class="fee">Cena: € 50,00 a persona</span>
-          <div class="pay">
-            <p>Puoi saldare la quota della cena online, con PayPal o con carta.</p>
-            <!-- PULSANTE PAYPAL (pulsante ospitato JKUYPQFMEXGL6, creato da Lorenzo su PayPal) -->
-            <div id="paypal-container-JKUYPQFMEXGL6"></div>
-            <p class="pay-alt" id="pay-alt" hidden>Il pagamento online non è disponibile in questo momento. Per informazioni sulla quota chiamaci al 331 320 5200.</p>
-          </div>
         </div>
       </div>
 
       <form class="f" id="form" novalidate>
         <p class="ftitle">Richiedi il tuo posto</p>
         <p class="fsub">Business Show · Venerdì 27 novembre 2026</p>
+        <div class="prezzo"><span>Prezzo della cena</span><b>€ 50,00 <small>a persona</small></b></div>
         <div class="msg" id="msg" role="status"></div>
         <div class="row">
           <div class="fld"><label for="nome">Nome</label><input id="nome" name="Nome" autocomplete="given-name" required></div>
@@ -578,8 +574,8 @@
         <div class="fld"><label for="note">Messaggio <span class="opt">(facoltativo)</span></label><textarea id="note" name="Messaggio" placeholder="Esigenze alimentari, una domanda, come ci hai conosciuto…"></textarea></div>
         <input class="hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="check"><input type="checkbox" id="privacy" required><span>Ho letto l'<a href="#" data-privacy>informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato sulle iniziative di OSM Business Club Bologna.</span></label>
-        <button class="btn btn-dark" type="submit" id="send">Conferma la partecipazione</button>
-        <p class="note">Riceverai subito la mail di conferma.</p>
+        <button class="btn btn-dark" type="submit" id="send">Conferma e Paga</button>
+        <p class="note">Verrai portato su PayPal per il pagamento, con conto PayPal o carta. La mail di conferma arriva appena il pagamento è completato.</p>
       </form>
     </div>
   </section>
@@ -620,7 +616,7 @@
   <h3 id="privacy-title">Informativa privacy sintetica</h3>
   <!-- TESTO DA FAR VERIFICARE: sostituire con l'informativa completa fornita dal consulente privacy / DPO di OSM Partner Bologna -->
   <p>I dati inseriti nel modulo (nome, cognome, azienda, ruolo, numero di collaboratori, telefono, email ed eventuale messaggio) sono trattati da OSM Partner Bologna, Via Persicetana Vecchia 24, 40132 Bologna, al solo scopo di gestire la tua richiesta di partecipazione e ricontattarti sulle iniziative di OSM Business Club Bologna.</p>
-  <p>Per l'invio, il modulo utilizza il servizio esterno Web3Forms, che inoltra i dati via email a OSM Partner Bologna, e i servizi Google di OSM Partner Bologna, che registrano la richiesta in un archivio interno e ti inviano una mail di riepilogo. I dati non vengono ceduti a terzi per finalità commerciali. Puoi chiederne in qualsiasi momento l'accesso, la modifica o la cancellazione scrivendo a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a>.</p>
+  <p>Per l'invio, il modulo utilizza i servizi Google di OSM Partner Bologna, che registrano la richiesta in un archivio interno e, a pagamento completato, ti inviano la mail di conferma. Il pagamento avviene sul sito di PayPal, che tratta i dati necessari al pagamento come titolare autonomo. I dati non vengono ceduti a terzi per finalità commerciali. Puoi chiederne in qualsiasi momento l'accesso, la modifica o la cancellazione scrivendo a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a>.</p>
   <form method="dialog"><button class="btn btn-dark" style="margin-top:12px">Chiudi</button></form>
 </dialog>
 
@@ -637,8 +633,8 @@ var SHOW = {
   dove: 'Il Boccone del Prete · Golf Club Siepelunga, Via Siepelunga 56/4, Bologna'
 };
 
-/* Stesse chiavi del sito principale (index.html) */
-var WEB3FORMS_KEY = 'a3fa3367-8427-4e0c-8e6a-5fdefbdc670d';
+/* Stesso script Google del sito principale (index.html): crea l'ordine su PayPal,
+   verifica il pagamento e solo allora manda le mail e registra l'iscritto */
 var CONFERMA_URL = 'https://script.google.com/macros/s/AKfycbxQw-IEkM-berinbbTEpFcDNUGgFJjBmz9hSwO3oR1lqHfFL6azs-MxEbrFkCFypqin/exec';
 
 var MESI = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
@@ -676,15 +672,31 @@ burger.addEventListener('click', function () {
 });
 menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } });
 
-/* Invio allo script Google che manda la mail e salva l'iscritto nel foglio */
-function inviaConferma(dati) {
-  if (!CONFERMA_URL) return;
-  fetch(CONFERMA_URL, {
+/* Chiamata allo script Google: la risposta dice come procedere */
+function chiamaScript(dati) {
+  return fetch(CONFERMA_URL, {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify(dati)
-  }).catch(function () {});
+  }).then(function (r) { return r.json(); });
+}
+
+/* I dati scritti restano nel browser finché la persona è su PayPal:
+   se annulla e torna indietro non deve ricompilare il modulo */
+var CHIAVE_BOZZA = 'business-show-bozza';
+function salvaBozza(dati) { try { sessionStorage.setItem(CHIAVE_BOZZA, JSON.stringify(dati)); } catch (e) {} }
+function cancellaBozza() { try { sessionStorage.removeItem(CHIAVE_BOZZA); } catch (e) {} }
+function ripristinaBozza() {
+  var f = document.getElementById('form'), bozza;
+  try { bozza = JSON.parse(sessionStorage.getItem(CHIAVE_BOZZA) || 'null'); } catch (e) {}
+  if (!bozza) return;
+  ['Nome', 'Cognome', 'Azienda', 'Ruolo', 'Collaboratori', 'Telefono', 'Email', 'Messaggio'].forEach(function (k) { if (bozza[k]) f[k].value = bozza[k]; });
+  if (bozza.Consulente && bozza.Consulente !== 'Non indicato') f.Consulente.value = bozza.Consulente;
+}
+
+function bottonePronto() {
+  var btn = document.getElementById('send');
+  btn.disabled = false; btn.textContent = 'Conferma e Paga';
 }
 
 document.getElementById('form').addEventListener('submit', function (ev) {
@@ -709,52 +721,75 @@ document.getElementById('form').addEventListener('submit', function (ev) {
   if (!dati.Consulente) dati.Consulente = 'Non indicato';
   dati.Evento = GIORNI_LUNGHI[d.getDay()].slice(0, 3) + ' ' + d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase() + ' · ' + SHOW.nome + ' · ' + SHOW.dove;
 
-  var perConferma = {};
-  Object.keys(dati).forEach(function (k) { perConferma[k] = dati[k]; });
-  perConferma.evNome = SHOW.nome;
-  perConferma.evTitolo = SHOW.titolo;
-  perConferma.evFormato = 'show';
-  perConferma.evDove = SHOW.dove;
-  perConferma.evData = GIORNI_LUNGHI[d.getDay()] + ' ' + d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase() + ' ' + d.getFullYear();
-  perConferma.evDataBreve = d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase();
+  dati.azione = 'show-paga';
+  dati.evNome = SHOW.nome;
+  dati.evTitolo = SHOW.titolo;
+  dati.evFormato = 'show';
+  dati.evDove = SHOW.dove;
+  dati.evData = GIORNI_LUNGHI[d.getDay()] + ' ' + d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase() + ' ' + d.getFullYear();
+  dati.evDataBreve = d.getDate() + ' ' + MESI[d.getMonth()].toLowerCase();
 
-  dati.access_key = WEB3FORMS_KEY;
-  dati.subject = 'Nuova iscrizione Business Show — ' + dati.Nome + ' ' + dati.Cognome;
-  dati.from_name = 'Sito OSM Business Club Bologna';
-  btn.disabled = true; btn.textContent = 'Invio in corso…';
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(dati)
-  }).then(function (r) { return r.json(); }).then(function (r) {
-    if (String(r.success) !== 'true') throw new Error(r.message || 'invio non riuscito');
-    inviaConferma(perConferma);
-    f.reset();
-    msg.className = 'msg ok';
-    msg.textContent = 'Grazie! La tua partecipazione al Business Show è confermata: ti abbiamo mandato una mail con tutti i dettagli.';
+  btn.disabled = true; btn.textContent = 'Ti stiamo portando su PayPal…';
+  chiamaScript(dati).then(function (r) {
+    if (!r.ok || !r.url) throw new Error(r.messaggio || 'ordine non creato');
+    salvaBozza(dati);
+    window.location.href = r.url;
   }).catch(function () {
+    bottonePronto();
     msg.className = 'msg err';
-    msg.innerHTML = 'Non siamo riusciti a inviare la richiesta. Scrivici a <a href="mailto:marketing@osmpartnerbologna.it">marketing@osmpartnerbologna.it</a> o chiama il 331 320 5200.';
-  }).then(function () {
-    btn.disabled = false; btn.textContent = 'Conferma la partecipazione';
+    msg.innerHTML = 'Non siamo riusciti ad aprire la pagina di pagamento: nessun importo è stato addebitato. Riprova tra qualche minuto, oppure chiama il 331 320 5200.';
     msg.scrollIntoView({ block: 'center', behavior: 'smooth' });
   });
 });
 
-document.getElementById('year').textContent = new Date().getFullYear();
+/* Se la persona torna da PayPal col tasto "indietro" il browser ripresenta la pagina com'era */
+window.addEventListener('pageshow', function (ev) { if (ev.persisted) bottonePronto(); });
 
-/* PAYPAL — quota della cena. Se il servizio non si carica (rete, blocco pubblicità)
-   al posto del pulsante compare una riga di testo, il resto della pagina funziona comunque. */
-function paypalNonDisponibile() {
-  document.getElementById('pay-alt').hidden = false;
+/* RITORNO DA PAYPAL — PayPal rimanda qui con ?pagamento=ok&token=<ordine>.
+   L'incasso lo fa lo script Google: finché non risponde "pagato" non si conferma nulla. */
+function togliParametri() {
+  history.replaceState(null, '', location.pathname);
 }
-function avviaPaypal() {
-  if (!window.paypal || !paypal.HostedButtons) { paypalNonDisponibile(); return; }
-  paypal.HostedButtons({
-    hostedButtonId: 'JKUYPQFMEXGL6'
-  }).render('#paypal-container-JKUYPQFMEXGL6').catch(paypalNonDisponibile);
+function mostraEsito(tipo, testo) {
+  var msg = document.getElementById('msg');
+  msg.className = 'msg ' + tipo;
+  msg.innerHTML = testo;
+  msg.scrollIntoView({ block: 'center' });
 }
+(function () {
+  var q = new URLSearchParams(location.search), esito = q.get('pagamento'), f = document.getElementById('form');
+  if (esito === 'annullato') {
+    ripristinaBozza();
+    togliParametri();
+    mostraEsito('err', 'Il pagamento è stato annullato: il tuo posto non è ancora riservato. Per confermare clicca di nuovo su "Conferma e Paga".');
+    return;
+  }
+  if (esito !== 'ok' || !q.get('token')) return;
+  f.classList.add('chiuso');
+  mostraEsito('ok', 'Stiamo verificando il pagamento con PayPal: non chiudere questa pagina…');
+  chiamaScript({ azione: 'show-verifica', ordine: q.get('token') }).then(function (r) {
+    if (r.ok && r.messaggio === 'pagato') {
+      cancellaBozza();
+      togliParametri();
+      mostraEsito('ok', 'Pagamento ricevuto, grazie! La tua partecipazione al Business Show è confermata: ti abbiamo mandato una mail con tutti i dettagli.');
+    } else if (r.ok && r.messaggio === 'in-verifica') {
+      cancellaBozza();
+      togliParametri();
+      mostraEsito('ok', 'PayPal sta ancora verificando il tuo pagamento. La conferma non è ancora definitiva: per qualsiasi dubbio chiamaci al 331 320 5200.');
+    } else if (r.messaggio === 'non riuscito' || r.messaggio === 'ordine sconosciuto') {
+      f.classList.remove('chiuso');
+      ripristinaBozza();
+      togliParametri();
+      mostraEsito('err', 'Il pagamento non è andato a buon fine e il tuo posto non è ancora riservato. Controlla il metodo di pagamento e clicca di nuovo su "Conferma e Paga", oppure chiama il 331 320 5200.');
+    } else {
+      throw new Error(r.messaggio);   // esito ignoto: l'indirizzo resta com'è, ricaricando si riverifica
+    }
+  }).catch(function () {
+    mostraEsito('err', 'Non riusciamo a verificare il pagamento in questo momento. Ricarica la pagina tra qualche minuto; se il problema resta chiama il 331 320 5200.');
+  });
+})();
+
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-<script src="https://www.paypal.com/sdk/js?client-id=BAA7uyc_GpSIEDUIrm1z3Wpual9AaikJwiqEFEqLutIzHZm0Vb4M99QqlsP6_DGam3gGBlqDUT0MTjtX2U&components=hosted-buttons&disable-funding=venmo&currency=EUR" onload="avviaPaypal()" onerror="paypalNonDisponibile()" async></script>
 </body>
 </html>
