@@ -449,8 +449,9 @@
   <section class="venue" id="location">
     <div class="wrap split">
       <div class="photo">
-        <!-- FOTO DELLA LOCATION: per mostrare una foto di Villa Valfiore, salvarla accanto a questo file e rimettere qui un <img> (vedi storico). Senza foto si vede l'illustrazione. -->
-        <div class="art" id="venue-art" aria-hidden="true">
+        <!-- FOTO DELLA LOCATION: "business-show-villa-valfiore.jpg" accanto a questo file. Se manca, si vede l'illustrazione. -->
+        <img src="business-show-villa-valfiore.jpg" alt="Il Relais Villa Valfiore illuminato di sera, con il parco" onerror="this.remove(); document.getElementById('venue-art').hidden = false;">
+        <div class="art" id="venue-art" hidden aria-hidden="true">
           <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
             <defs>
               <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A1730"/><stop offset=".65" stop-color="#182C4E"/><stop offset="1" stop-color="#22385E"/></linearGradient>
