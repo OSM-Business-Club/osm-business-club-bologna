@@ -266,6 +266,116 @@
   dialog h3 { margin-bottom: 16px; }
   dialog p { font-size: 15px; margin: 0 0 12px; }
 
+  /* ===================== ANIMAZIONI ===================== */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--navy); transform-origin: 0 50%; transform: scaleX(0); z-index: 60; pointer-events: none; }
+  header.top { transition: box-shadow .3s; }
+  header.top.scrolled { box-shadow: 0 8px 24px rgba(14, 31, 58, .08); }
+  .top .wrap, .brand img { transition: height .3s; }
+  @media (min-width: 1081px) {
+    header.top.scrolled .wrap { height: 76px; }
+    header.top.scrolled .brand img { height: 58px; }
+  }
+  @keyframes upIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes cardIn { from { opacity: 0; transform: scale(.94) translateY(20px); } to { opacity: 1; transform: none; } }
+  @keyframes cornerIn { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
+  @keyframes sheen { 0%, 55% { background-position: 120% 0; } 100% { background-position: -120% 0; } }
+  @keyframes spin { to { transform: rotate(405deg); } }
+  @keyframes orbit { to { transform: translate(-50%, -50%) rotate(360deg); } }
+  @keyframes glow { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+
+  /* apertura: bollicine, cerchi che ruotano, invito che si apre */
+  .hero canvas.bubbles { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  .hero .ring.r1 { animation: orbit 120s linear infinite; }
+  .hero .ring.r2 { animation: orbit 80s linear infinite reverse; }
+  .hero .ring::after { content: ""; position: absolute; top: -4px; left: 50%; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; background: rgba(246, 241, 231, .55); box-shadow: 0 0 14px rgba(246, 241, 231, .7); }
+  .invite { animation: cardIn 1.1s .1s cubic-bezier(.2, .7, .2, 1) both; }
+  .invite-in .corner { animation: cornerIn .7s cubic-bezier(.3, 1.5, .5, 1) both; }
+  .corner.tl { animation-delay: .7s !important; transform-origin: 0 0; } .corner.tr { animation-delay: .8s !important; transform-origin: 100% 0; }
+  .corner.br { animation-delay: .9s !important; transform-origin: 100% 100%; } .corner.bl { animation-delay: 1s !important; transform-origin: 0 100%; }
+  .invite .crest { animation: upIn .9s .4s both, float 6s 1.4s ease-in-out infinite; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .invite .pre { animation: upIn .8s .55s both; }
+  .invite h1 { animation: upIn .9s .7s both; background: linear-gradient(100deg, var(--ivory) 42%, #FFFFFF 50%, var(--ivory) 58%) 120% 0 / 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .invite h1.lit { animation: upIn .9s .7s both, sheen 6s 2s ease-in-out infinite; }
+  .invite .orn { animation: upIn .8s .9s both; }
+  .invite .orn i { animation: spin 1.4s 1.2s cubic-bezier(.5, 0, .2, 1) both; }
+  .invite .tagline { animation: upIn .8s 1s both; }
+  .facts div { animation: upIn .8s both; }
+  .facts div:nth-child(1) { animation-delay: 1.1s; } .facts div:nth-child(2) { animation-delay: 1.2s; } .facts div:nth-child(3) { animation-delay: 1.3s; }
+  .invite .ctas { animation: upIn .8s 1.4s both; }
+
+  /* orologio in tempo reale */
+  .count-wrap { position: relative; z-index: 1; margin-top: 48px; text-align: center; animation: upIn .9s 1.5s both; }
+  .count-lbl { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--on-navy-soft); margin: 0 0 18px; }
+  .count-lbl i { width: 8px; height: 8px; border-radius: 50%; background: #E0565B; animation: pulseDot 1.6s ease-in-out infinite; }
+  @keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(224, 86, 91, .6); } 70% { box-shadow: 0 0 0 9px rgba(224, 86, 91, 0); } 100% { box-shadow: 0 0 0 0 rgba(224, 86, 91, 0); } }
+  .count { margin-top: 0; gap: 14px; }
+  .count div { min-width: 118px; padding: 18px 10px 14px; border: 1px solid rgba(246, 241, 231, .2); background: rgba(246, 241, 231, .04); position: relative; overflow: hidden; }
+  .count div + div { border-left: 1px solid rgba(246, 241, 231, .2); }
+  .count div::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(10, 23, 48, .55); }
+  .count b { overflow: hidden; }
+  .count b.tick { animation: tick .45s cubic-bezier(.3, 1.4, .5, 1); }
+  @keyframes tick { 0% { transform: translateY(-55%) rotateX(70deg); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  .count .sec b { color: #FFFFFF; }
+  .count-msg { margin: 18px 0 0; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--on-navy); }
+
+  /* elementi che compaiono mentre scorri */
+  .rv { opacity: 0; transform: translateY(34px); transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1); }
+  .rv.rv-l { transform: translateX(-34px); } .rv.rv-r { transform: translateX(34px); } .rv.rv-z { transform: scale(.94); }
+  .rv.in { opacity: 1; transform: none; }
+
+  /* speaker: arco che respira e ritratto che sale */
+  .speaker .portrait .arch { animation: glow 5s ease-in-out infinite; }
+  .speaker .portrait img.rv { transform: translateY(60px); transition-duration: 1.2s; }
+  .speaker .portrait img.rv.in { transform: none; }
+  .creds li { transition: transform .3s; }
+  .creds li:hover { transform: translateY(-4px); }
+
+  /* pilastri e programma: linee che si disegnano */
+  .pgrid, .timeline { position: relative; }
+  .pgrid { border-top-color: transparent; }
+  .pgrid::before { content: ""; position: absolute; top: -1px; left: 0; width: 100%; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.4s cubic-bezier(.2, .7, .2, 1); }
+  .pgrid.in::before { transform: scaleX(1); }
+  .pillar .num { display: inline-block; transition: transform .4s cubic-bezier(.3, 1.5, .5, 1); }
+  .pillar:hover .num { transform: scale(1.15) rotate(-4deg); }
+  .timeline li { border-top-color: rgba(246, 241, 231, .15); }
+  .timeline li::after { content: ""; position: absolute; top: -2px; left: 0; width: 100%; height: 2px; background: var(--ivory); transform: scaleX(0); transform-origin: 0 50%; transition: transform .9s cubic-bezier(.2, .7, .2, 1); transition-delay: inherit; }
+  .timeline li.in::after { transform: scaleX(1); }
+  .timeline li::before { z-index: 1; transition: transform .5s, background .3s; }
+  .timeline li:hover::before { transform: rotate(225deg) scale(1.3); background: var(--ivory); }
+
+  /* location: foto che respira (effetto Ken Burns) */
+  .venue .photo img, .venue-wide img { animation: kenburns 22s ease-in-out infinite alternate; }
+  @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.09) translate(-1.5%, -1%); } }
+  .venue .art circle[r="1"], .venue .art circle[r="1.1"], .venue .art circle[r="1.2"], .venue .art circle[r="1.3"], .venue .art circle[r=".9"] { animation: twinkle 3s ease-in-out infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+  .map { transition: box-shadow .4s; }
+  .map:hover { box-shadow: 0 20px 40px rgba(14, 31, 58, .12); }
+  .map:hover iframe { filter: none; }
+  .map iframe { transition: filter .6s; }
+
+  /* biglietto con riflesso, bottoni con lampo di luce */
+  .ticket { position: relative; overflow: hidden; }
+  .ticket::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(246, 241, 231, .12), transparent); transform: skewX(-20deg); animation: sweep 5s 1s ease-in-out infinite; pointer-events: none; }
+  @keyframes sweep { 0% { left: -60%; } 45%, 100% { left: 140%; } }
+  .btn { position: relative; overflow: hidden; }
+  .btn::after { content: ""; position: absolute; top: 0; left: -120%; width: 60%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .28), transparent); transform: skewX(-20deg); transition: left .6s; pointer-events: none; }
+  .btn:hover::after { left: 140%; }
+  .f .prezzo b { display: inline-block; animation: pricePulse 3s ease-in-out infinite; }
+  @keyframes pricePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+  .rules div { transition: transform .35s; }
+  .rules div:hover { transform: translateY(-5px); }
+
+  /* coriandoli al pagamento riuscito */
+  .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 100; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .rv { opacity: 1; transform: none; }
+    .invite h1 { color: var(--ivory); background: none; }
+    .progress, .hero canvas.bubbles { display: none; }
+  }
+
   /* ---------- tablet ---------- */
   @media (max-width: 1080px) {
     section { padding: 88px 0; }
@@ -307,8 +417,10 @@
     .facts div + div { border-left: 0; border-top: 1px solid var(--navy-line); }
     .invite .ctas { flex-direction: column; }
     .invite .ctas .btn { width: 100%; }
-    .count div { min-width: 0; flex: 1; padding: 0 8px; }
-    .count b { font-size: 38px; }
+    .count { gap: 6px; }
+    .count div { min-width: 0; flex: 1; padding: 14px 4px 10px; }
+    .count b { font-size: 34px; }
+    .count-msg { font-size: 19px; }
     .count span { font-size: 10px; letter-spacing: .14em; }
     .timeline { grid-template-columns: 1fr; }
     .vlist li { grid-template-columns: 1fr; gap: 4px; }
@@ -351,6 +463,7 @@
 
   <!-- APERTURA: L'INVITO -->
   <section class="hero">
+    <canvas class="bubbles" id="bubbles" aria-hidden="true"></canvas>
     <span class="ring r1" aria-hidden="true"></span>
     <span class="ring r2" aria-hidden="true"></span>
     <div class="wrap">
@@ -373,10 +486,15 @@
           </div>
         </div>
       </div>
-      <div class="count" id="count" aria-label="Tempo che manca alla serata">
-        <div><b id="c-d">–</b><span>Giorni</span></div>
-        <div><b id="c-h">–</b><span>Ore</span></div>
-        <div><b id="c-m">–</b><span>Minuti</span></div>
+      <div class="count-wrap" id="count-wrap">
+        <p class="count-lbl"><i aria-hidden="true"></i>Il conto alla rovescia è partito</p>
+        <div class="count" id="count" role="timer" aria-label="Tempo che manca alla serata">
+          <div><b id="c-d">–</b><span>Giorni</span></div>
+          <div><b id="c-h">–</b><span>Ore</span></div>
+          <div><b id="c-m">–</b><span>Minuti</span></div>
+          <div class="sec"><b id="c-s" aria-hidden="true">–</b><span>Secondi</span></div>
+        </div>
+        <p class="count-msg" id="count-msg" hidden></p>
       </div>
       <p class="count-done" id="count-done" hidden>Grazie a tutti gli imprenditori che hanno partecipato.</p>
     </div>
@@ -669,23 +787,42 @@ var GIORNI_LUNGHI = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Ve
 
 function parseData(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
 
-/* Conto alla rovescia */
+/* Conto alla rovescia in tempo reale: scatta ogni secondo, le cifre che cambiano "girano" */
+function scrivi(id, v) {
+  var el = document.getElementById(id);
+  if (el.textContent === v) return;
+  el.textContent = v;
+  el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
+}
+var timerConto;
 function aggiornaConto() {
   var p = SHOW.ora.split(':'), t = parseData(SHOW.data);
   t.setHours(+p[0], +p[1], 0, 0);
   var diff = t - new Date();
+  var fine = parseData(SHOW.data); fine.setDate(fine.getDate() + 1);   // la serata dura fino a mezzanotte
   if (diff <= 0) {
-    document.getElementById('count').hidden = true;
-    document.getElementById('count-done').hidden = false;
+    document.getElementById('count-wrap').hidden = true;
+    var done = document.getElementById('count-done');
+    done.textContent = new Date() < fine ? 'Ci siamo: il Business Show è in corso. Buona serata!' : 'Grazie a tutti gli imprenditori che hanno partecipato.';
+    done.hidden = false;
+    clearInterval(timerConto);
     return;
   }
-  var min = Math.floor(diff / 60000);
-  document.getElementById('c-d').textContent = Math.floor(min / 1440);
-  document.getElementById('c-h').textContent = String(Math.floor(min % 1440 / 60)).padStart(2, '0');
-  document.getElementById('c-m').textContent = String(min % 60).padStart(2, '0');
+  var sec = Math.floor(diff / 1000);
+  scrivi('c-d', String(Math.floor(sec / 86400)));
+  scrivi('c-h', String(Math.floor(sec % 86400 / 3600)).padStart(2, '0'));
+  scrivi('c-m', String(Math.floor(sec % 3600 / 60)).padStart(2, '0'));
+  scrivi('c-s', String(sec % 60).padStart(2, '0'));
+  // frase che cambia man mano che la serata si avvicina
+  var msg = document.getElementById('count-msg'), oggi0 = new Date(); oggi0.setHours(0, 0, 0, 0);
+  var giorni = Math.round((parseData(SHOW.data) - oggi0) / 86400000), testo = '';
+  if (diff < 3600000) testo = 'Ci siamo quasi: si aprono le porte di Villa Valfiore!';
+  else if (giorni === 0) testo = 'È stasera! Ci vediamo alle ' + SHOW.ora + '.';
+  else if (giorni === 1) testo = 'È domani sera: ti aspettiamo a Villa Valfiore.';
+  msg.textContent = testo; msg.hidden = !testo;
 }
 aggiornaConto();
-setInterval(aggiornaConto, 30000);
+timerConto = setInterval(aggiornaConto, 1000);
 
 document.addEventListener('click', function (ev) {
   var p = ev.target.closest('[data-privacy]');
@@ -799,6 +936,7 @@ function mostraEsito(tipo, testo) {
       cancellaBozza();
       togliParametri();
       mostraEsito('ok', 'Pagamento ricevuto, grazie! La tua partecipazione al Business Show è confermata: ti abbiamo mandato una mail con tutti i dettagli.');
+      coriandoli();
     } else if (r.ok && r.messaggio === 'in-verifica') {
       cancellaBozza();
       togliParametri();
@@ -817,6 +955,93 @@ function mostraEsito(tipo, testo) {
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ===================== ANIMAZIONI ===================== */
+var FERMO = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Coriandoli blu e avorio, a pagamento confermato */
+function coriandoli() {
+  if (FERMO) return;
+  var c = document.createElement('canvas'); c.className = 'confetti'; document.body.appendChild(c);
+  var x = c.getContext('2d'), W = c.width = innerWidth, H = c.height = innerHeight;
+  var colori = ['#0E1F3A', '#F6F1E7', '#C98A2B', '#24406E', '#FFFFFF'], pezzi = [];
+  for (var i = 0; i < 160; i++) pezzi.push({ x: W / 2 + (Math.random() - .5) * 200, y: H * .4, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 4, r: Math.random() * 6 + 4, a: Math.random() * 6, va: (Math.random() - .5) * .3, col: colori[i % colori.length] });
+  var t0 = performance.now();
+  (function frame(t) {
+    x.clearRect(0, 0, W, H);
+    pezzi.forEach(function (p) {
+      p.vy += .35; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.a += p.va;
+      x.save(); x.translate(p.x, p.y); x.rotate(p.a); x.fillStyle = p.col; x.strokeStyle = 'rgba(14,31,58,.25)';
+      x.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); x.strokeRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); x.restore();
+    });
+    if (t - t0 < 4500) requestAnimationFrame(frame); else c.remove();
+  })(t0);
+}
+
+(function () {
+  // barra di avanzamento + intestazione compatta
+  var bar = document.createElement('div'); bar.className = 'progress'; document.body.appendChild(bar);
+  var head = document.querySelector('header.top');
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')';
+    head.classList.toggle('scrolled', scrollY > 40);
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  if (FERMO) return;
+  document.querySelector('.invite h1').classList.add('lit');
+
+  // bollicine che salgono nell'apertura (si fermano quando l'apertura non è visibile)
+  var hero = document.querySelector('.hero'), cv = document.getElementById('bubbles'), cx = cv.getContext('2d');
+  var bolle = [], W, H, attivo = true, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function misura() { W = hero.offsetWidth; H = hero.offsetHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function nuova(sotto) { return { x: Math.random() * W, y: sotto ? H + Math.random() * 40 : Math.random() * H, r: Math.random() * 2.6 + .6, v: Math.random() * .5 + .2, f: Math.random() * Math.PI * 2, a: Math.random() * .5 + .15 }; }
+  misura(); addEventListener('resize', misura);
+  for (var i = 0; i < Math.round(W / 18); i++) bolle.push(nuova(false));
+  new IntersectionObserver(function (v) { attivo = v[0].isIntersecting; if (attivo) requestAnimationFrame(disegna); }).observe(hero);
+  function disegna() {
+    if (!attivo) return;
+    cx.clearRect(0, 0, W, H);
+    bolle.forEach(function (b, i) {
+      b.y -= b.v; b.f += .02; var px = b.x + Math.sin(b.f) * 8;
+      var alpha = b.a * (.6 + .4 * Math.sin(b.f * 2));
+      cx.beginPath(); cx.arc(px, b.y, b.r, 0, Math.PI * 2);
+      cx.fillStyle = 'rgba(246,241,231,' + alpha + ')'; cx.fill();
+      if (b.r > 2.2) { cx.beginPath(); cx.arc(px, b.y, b.r * 3, 0, Math.PI * 2); cx.fillStyle = 'rgba(246,241,231,' + alpha * .12 + ')'; cx.fill(); }
+      if (b.y < -10) bolle[i] = nuova(true);
+    });
+    requestAnimationFrame(disegna);
+  }
+  requestAnimationFrame(disegna);
+
+  if (!('IntersectionObserver' in window)) return;
+  var gruppi = [
+    ['section:not(.hero) .eyebrow, section:not(.hero) h2, section:not(.hero) .lead', '', 0],
+    ['.about .quote', 'rv-l', 0], ['.about .body p', '', .12],
+    ['.speaker .role, .speaker .bio p', '', .1], ['.creds li', '', .12], ['.speaker .portrait img', '', 0],
+    ['.pillar', '', .15], ['.timeline li', '', .2], ['.program .note', '', 0],
+    ['.venue .photo', 'rv-l', 0], ['.venue .sub, .vlist li', '', .08], ['.venue-wide, .map', 'rv-z', 0],
+    ['.guests .quote', 'rv-r', 0], ['.rules div', '', .15],
+    ['.ticket', 'rv-l', 0], ['form.f', 'rv-r', 0], ['.clist li', '', .1], ['.pgrid', '', 0]
+  ];
+  var io = new IntersectionObserver(function (voci) {
+    voci.forEach(function (v) { if (v.isIntersecting) { v.target.classList.add('in'); io.unobserve(v.target); } });
+  }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  gruppi.forEach(function (g) {
+    var visti = new Map();
+    document.querySelectorAll(g[0]).forEach(function (el) {
+      if (el.classList.contains('rv')) return;
+      if (!el.matches('.pgrid, .timeline li')) { el.classList.add('rv'); if (g[1]) el.classList.add(g[1]); }
+      var i = visti.get(el.parentNode) || 0; visti.set(el.parentNode, i + 1);
+      if (g[2]) el.style.transitionDelay = (i * g[2]) + 's';
+      io.observe(el);
+    });
+  });
+  document.addEventListener('transitionend', function (e) {
+    if (e.target.classList && e.target.classList.contains('in') && e.propertyName === 'opacity') e.target.style.transitionDelay = '';
+  });
+})();
 </script>
 </body>
 </html>
