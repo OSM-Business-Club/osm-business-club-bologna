@@ -280,6 +280,11 @@
 
   /* ---------- i Club sul territorio (mappa) ---------- */
   .clubs { background: var(--ivory); }
+  .clubs-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: center; }
+  .area-logo { width: 200px; height: auto; }
+  .club-item a.go-site { color: var(--ivory); background: var(--navy); text-decoration: none; padding: 10px 14px; margin-top: 4px; }
+  .club-item a.go-site:hover { background: var(--ink); }
+  footer .area-f { height: 104px; opacity: .9; }
   .clubs-grid { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 32px; margin-top: 56px; align-items: stretch; }
   .clist-map { display: flex; flex-direction: column; gap: 16px; }
   .club-item { text-align: left; font: inherit; color: inherit; background: var(--white); border: 1px solid var(--line); padding: 26px 28px; cursor: pointer; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, box-shadow .2s; }
@@ -463,6 +468,8 @@
     .why .body { padding-top: 0; }
     .fgrid, .mgrid { grid-template-columns: 1fr; }
     .clubs-grid { grid-template-columns: 1fr; }
+    .clubs-head { grid-template-columns: 1fr; gap: 28px; }
+    .area-logo { width: 150px; }
     .mapbox { min-height: 440px; }
     .tgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .mgrid { gap: 36px; }
@@ -810,9 +817,14 @@
   <!-- I CLUB SUL TERRITORIO (mappa generata dalla lista CLUB nello script in fondo) -->
   <section class="clubs" id="club-territorio">
     <div class="wrap">
-      <p class="eyebrow">OSM Business Club</p>
-      <h2>I Club aperti sul territorio.</h2>
-      <p class="lead">Il Business Club cresce: dopo Bologna, il network degli imprenditori arriva in altre città. Trova il Club più vicino a te.</p>
+      <div class="clubs-head">
+        <div>
+          <p class="eyebrow">OSM Business Club Via Emilia</p>
+          <h2>I Club aperti sul territorio.</h2>
+          <p class="lead">Il network degli imprenditori cresce lungo la Via Emilia: dopo Bologna, il Club arriva a Piacenza. Trova il Club più vicino a te e visita il suo sito.</p>
+        </div>
+        <img class="area-logo" src="logo-via-emilia.png" alt="OSM Business Club Via Emilia" width="200" height="200" onerror="this.remove()">
+      </div>
       <div class="clubs-grid">
         <div class="clist-map" id="club-list"></div>
         <div class="mapbox">
@@ -915,7 +927,8 @@
     <div class="brandf">
       <img class="flogo" src="logo-bianco.png" alt="OSM Business Club Bologna" onerror="this.remove(); document.querySelector('.fwm').hidden = false;">
       <span class="wordmark fwm" hidden><b>OSM Business Club</b><span>Bologna</span></span>
-      <div class="who-f"><strong>Un'iniziativa di OSM Partner Bologna</strong><span>Via Persicetana Vecchia 24, 40132 Bologna</span></div>
+      <div class="who-f"><strong>Un'iniziativa di OSM Partner Bologna</strong><span>Via Persicetana Vecchia 24, 40132 Bologna</span><span>Parte del network OSM Business Club Via Emilia</span></div>
+      <img class="flogo area-f" src="logo-via-emilia-bianco.png" alt="OSM Business Club Via Emilia" onerror="this.remove()">
     </div>
     <div class="legal">
       <a href="#" data-privacy>Informativa privacy</a>
@@ -981,10 +994,13 @@ var TEAM = [
    I CLUB SUL TERRITORIO — per aprirne uno nuovo aggiungi una riga.
    lat/lng: coordinate (da Google Maps: tasto destro sul punto → clic sui numeri per copiarli)
    indirizzo: testo mostrato · maps: cosa cercare su Google Maps per "Indicazioni"
+   sito: indirizzo del sito di quel Club · qui: true solo per il Club di questo sito
    ===================================================================== */
 var CLUB = [
-  { citta: 'Bologna',  nome: 'OSM Business Club Bologna',  indirizzo: 'Via Persicetana Vecchia 24, 40132 Bologna (Borgo Panigale)', lat: 44.528072, lng: 11.273984, maps: 'Via Persicetana Vecchia 24, 40132 Bologna' },
-  { citta: 'Piacenza', nome: 'OSM Business Club Piacenza', indirizzo: 'Territorio di Piacenza',                                      lat: 45.052600, lng: 9.693000,  maps: 'Piacenza' }
+  { citta: 'Bologna',  nome: 'OSM Business Club Bologna',  indirizzo: 'Via Persicetana Vecchia 24, 40132 Bologna (Borgo Panigale)', lat: 44.528072, lng: 11.273984, maps: 'Via Persicetana Vecchia 24, 40132 Bologna',
+    sito: 'https://osm-business-club.github.io/osm-business-club-bologna/', qui: true },
+  { citta: 'Piacenza', nome: 'OSM Business Club Piacenza', indirizzo: 'Territorio di Piacenza',                                      lat: 45.052600, lng: 9.693000,  maps: 'Piacenza',
+    sito: 'https://osm-business-club.github.io/osm-business-club-piacenza/' }
 ];
 
 /* =====================================================================
@@ -1211,7 +1227,8 @@ function renderClub() {
   var list = document.getElementById('club-list');
   list.innerHTML = CLUB.map(function (c, i) {
     return '<div class="club-item" role="button" tabindex="0" aria-pressed="false" data-club="' + i + '">' +
-      '<span class="st">Attivo</span><b>' + esc(c.citta) + '</b><span class="addr">' + esc(c.indirizzo) + '</span>' +
+      '<span class="st">' + (c.qui ? 'Attivo · Sei qui' : 'Attivo') + '</span><b>' + esc(c.citta) + '</b><span class="addr">' + esc(c.indirizzo) + '</span>' +
+      (c.sito && !c.qui ? '<a class="go-site" href="' + esc(c.sito) + '" target="_blank" rel="noopener">Vai al sito di ' + esc(c.citta) + ' →</a>' : '') +
       '<a href="' + mapsLink(c) + '" target="_blank" rel="noopener">Apri in Google Maps</a></div>';
   }).join('') + '<div class="club-soon"><strong>Nuove città in arrivo</strong>Il network si allarga: presto altri Club sul territorio.</div>';
 
@@ -1255,7 +1272,9 @@ function renderClub() {
   });
   var markers = CLUB.map(function (c) {
     return L.marker([c.lat, c.lng], { icon: icona, title: c.nome }).addTo(map)
-      .bindPopup('<b>' + esc(c.nome) + '</b>' + esc(c.indirizzo) + '<br><a href="' + mapsLink(c) + '" target="_blank" rel="noopener">Indicazioni su Google Maps</a>');
+      .bindPopup('<b>' + esc(c.nome) + '</b>' + esc(c.indirizzo) +
+        (c.sito && !c.qui ? '<br><a href="' + esc(c.sito) + '" target="_blank" rel="noopener">Visita il sito →</a>' : '') +
+        '<br><a href="' + mapsLink(c) + '" target="_blank" rel="noopener">Indicazioni su Google Maps</a>');
   });
   var tutti = L.latLngBounds(CLUB.map(function (c) { return [c.lat, c.lng]; }));
   map.fitBounds(tutti, { padding: [60, 60], maxZoom: 12 });
